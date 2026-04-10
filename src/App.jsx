@@ -46,6 +46,14 @@ const projects = [
     desc: "Web-based hotel booking platform with room inventory management, overbooking prevention, guest registration, and secure admin dashboard.",
     color: "#0ea5e9",
     icon: "🏨"
+  },
+  {
+    title: "Attendee Registry App",
+    subtitle: "Church Event Attendance Platform",
+    stack: ["React", "Express.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "Tailwind CSS"],
+    desc: "Full-stack monorepo app for managing church event attendance. Returning attendees are auto-recognized; monthly records are tracked without re-registration. Admin dashboard with search, filter, pagination, bulk email campaigns (newcomers/returning), CSV export, and SMTP configuration.",
+    color: "#a855f7",
+    icon: "📋"
   }
 ];
 

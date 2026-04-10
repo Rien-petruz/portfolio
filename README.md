@@ -49,6 +49,17 @@ portfolio/
 └── package.json
 ```
 
+## Featured Projects
+
+| Project | Stack | Description |
+|---|---|---|
+| ProUtility FM | Laravel, PHP, MySQL | Facility management platform with admin panel and full SEO |
+| AI Gold Breakout System | Python, MT5, XGBoost | ML-powered algorithmic trading with Telegram alerts |
+| SMC Trading Bot | Python, MetaTrader 5 | Smart Money Concepts engine with HTF trend detection |
+| VidStory AI | Python, Streamlit, OpenAI, FFmpeg | Automated video generation pipeline |
+| Hotel Management System | Laravel, MySQL, Bootstrap | Hotel booking platform with overbooking prevention |
+| Attendee Registry App | React, Express.js, TypeScript, PostgreSQL | Church event attendance tracker with admin dashboard and bulk email |
+
 ## Contact
 
 - Email: kekpepeter@gmail.com
