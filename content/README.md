@@ -7,10 +7,15 @@ Facebook and TikTok.
 **Nothing gets designed before it has been studied.** See
 `content/research/README.md` for the standard and why it exists.
 
+**All copy follows `content/STYLE.md`.** No dashes anywhere, catchy and curious
+titles, one combined tag block for every platform. Run `node tools/lint-copy.mjs`
+before rendering.
+
 ## What's here
 
 ```
 content/
+  STYLE.md                    copy rules, enforced by tools/lint-copy.mjs
   master-list.md              328 topics, 18 sections (human-readable)
   topics.json                 the same list as data, with per-topic status
   research/
@@ -29,6 +34,7 @@ brand/
   assets/fonts/               Inter, JetBrains Mono, Caveat, Source Serif 4
 tools/
   build-topics.mjs            rebuilds the topic bank from the source docx
+  lint-copy.mjs               enforces content/STYLE.md
   status.mjs                  the daily queue driver
   render.mjs                  slides.json -> PNG
   templates.mjs               the four slide themes
@@ -66,8 +72,9 @@ node tools/status.mjs T0XX researching      # claim it
 #    with a runnable experiment where a claim can be measured.
 node tools/status.mjs T0XX researched
 
-# 2. DESIGN — only now
+# 2. DESIGN, only now
 mkdir -p content/posts/00N-<slug>           # slides.json + post.md + captions.md
+node tools/lint-copy.mjs content/posts/00N-<slug>    # style gate
 node tools/render.mjs content/posts/00N-<slug>
 node tools/status.mjs T0XX drafted 00N-<slug>
 

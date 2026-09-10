@@ -19,7 +19,7 @@
       "type": "statement",
       "kicker": "The 3am incident",
       "headline": "One customer.\n==Three== charges.",
-      "sub": "The client never sent three requests.\n**It sent one — and retried twice.**",
+      "sub": "The client never sent three requests.\n**It sent one, then retried twice.**",
       "doodle": true
     },
     {
@@ -28,13 +28,13 @@
       "label": "What actually happened",
       "headline": "The response died,\nnot the write",
       "mono": "POST /payments  →  201 · response lost",
-      "desc": "Your server committed the charge. The connection dropped before the response came back. The client saw a timeout — and retried.",
+      "desc": "Your server committed the charge. The connection dropped before the response came back. The client saw a timeout and did the only sensible thing it could. It retried.",
       "block": {
         "kind": "list",
         "items": [
-          "Attempt 1 — charge committed, **response lost**",
-          "Attempt 2 — retry, **charged again**",
-          "Attempt 3 — retry, **charged again**"
+          "Attempt 1: charge committed, **response lost**",
+          "Attempt 2: retry, **charged again**",
+          "Attempt 3: retry, **charged again**"
         ]
       }
     },
@@ -95,11 +95,11 @@
       "number": "05",
       "label": "The fix",
       "headline": "Give every attempt a name",
-      "desc": "One key per **intent** — not per attempt. The same key rides every retry.",
+      "desc": "One key per **intent**, not per attempt. The same key rides every retry.",
       "bad": {
         "tag": "Without a key",
         "code": "POST /payments",
-        "verdict": "Every retry looks like a brand-new order."
+        "verdict": "Every retry looks like a brand new order."
       },
       "good": {
         "tag": "With a key",
@@ -113,7 +113,7 @@
       "label": "The bug in every tutorial",
       "headline": "The loser has\nnothing to replay",
       "mono": "20 concurrent retries → 19 saw 'in_progress'",
-      "desc": "The winner hasn't finished yet, so no response is stored. Returning **200** here tells the client the payment succeeded — before it has.",
+      "desc": "The winner hasn't finished yet, so no response is stored. Returning **200** here tells the client the payment succeeded before it actually has.",
       "block": {
         "kind": "list",
         "items": [
@@ -129,8 +129,8 @@
       "headline": "Claim the key *first*",
       "file": "payments.controller.js",
       "lang": "js",
-      "code": "const claim = await db.query(\n  `INSERT INTO idempotency_keys (key, status)\n   VALUES ($1, 'in_progress')\n   ON CONFLICT (key) DO NOTHING\n   RETURNING key`, [key]);\n\nif (!claim.rowCount) {\n  const prior = await load(key);\n  // Winner still running — nothing to replay yet.\n  if (prior.status === 'in_progress')\n    return res.status(409);\n  return res.status(prior.code).json(prior.body);\n}",
-      "note": "The unique index arbitrates, not an if-statement. Claim it in its own transaction — never the one doing the charge."
+      "code": "const claim = await db.query(\n  `INSERT INTO idempotency_keys (key, status)\n   VALUES ($1, 'in_progress')\n   ON CONFLICT (key) DO NOTHING\n   RETURNING key`, [key]);\n\nif (!claim.rowCount) {\n  const prior = await load(key);\n  // Winner still running. Nothing to replay yet.\n  if (prior.status === 'in_progress')\n    return res.status(409);\n  return res.status(prior.code).json(prior.body);\n}",
+      "note": "The unique index arbitrates, not your code. Claim it in its own transaction, never the one doing the charge."
     },
     {
       "type": "code",
@@ -146,7 +146,7 @@
       "eyebrow": "Takeaway",
       "headline": "A retry is not\na new request.\nIt is the *same intent*,\nasking again.",
       "sub": "Design every write endpoint so the second attempt is boring.",
-      "cta": "Backend Engineering & System Architecture — daily.\nFollow @peter-kekpe for the next one.",
+      "cta": "Backend Engineering & System Architecture, daily.\nFollow @peter-kekpe for the next one.",
       "headlineSize": 76
     }
   ],
