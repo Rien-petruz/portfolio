@@ -1,0 +1,38 @@
+{
+  "author": {
+    "name": "Peter Kekpe",
+    "handle": "@peter-kekpe",
+    "avatar": "brand/assets/avatar.png"
+  },
+  "series": "Backend Engineering",
+  "note": "Colours sampled directly from the reference cover art (tools/source/reference-cover.png).",
+  "formats": {
+    "square": { "w": 1080, "h": 1080 },
+    "portrait": { "w": 1080, "h": 1350 }
+  },
+  "color": {
+    "ink": "#05060f",
+    "inkSoft": "#3f4455",
+    "muted": "#6b7186",
+    "navy": "#001060",
+    "navySoft": "#3a49a0",
+    "lavender": "#e0e0f0",
+    "lavenderSoft": "#eceCf8",
+    "paper": "#ffffff",
+    "cream": "#fbf8f1",
+    "marker": "#ffe14d",
+    "gold": "#b08d2e",
+    "blue": "#2563eb",
+    "green": "#1a7f4b",
+    "greenSoft": "#e6f4ec",
+    "red": "#c0392b",
+    "redSoft": "#fcecea",
+    "rule": "#dcdfea"
+  },
+  "font": {
+    "display": "Inter",
+    "mono": "JetBrains Mono",
+    "serif": "Source Serif 4",
+    "hand": "Caveat"
+  }
+}

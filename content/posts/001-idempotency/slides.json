@@ -1,0 +1,137 @@
+{
+  "id": "001",
+  "topicId": "T021",
+  "title": "Idempotency: how to prevent duplicate payments/orders",
+  "format": "square",
+  "series": "Backend Engineering",
+  "slides": [
+    {
+      "type": "cover",
+      "eyebrow": "Backend Engineering",
+      "headline": "Idempotency:\nMake retries\n*safe.*",
+      "underlineWidth": 430,
+      "sub": "Networks fail. Clients retry.\nYour system should be ready\nfor ==both.==",
+      "subWidth": 620,
+      "icon": "shield",
+      "iconSize": 330
+    },
+    {
+      "type": "statement",
+      "kicker": "The 3am incident",
+      "headline": "One customer.\n==Three== charges.",
+      "sub": "The client never sent three requests.\n**It sent one — and retried twice.**",
+      "doodle": true
+    },
+    {
+      "type": "concept",
+      "number": "03",
+      "label": "What actually happened",
+      "headline": "The response died,\nnot the write",
+      "mono": "POST /payments  →  201 · response lost",
+      "desc": "Your server committed the charge. The connection dropped before the response came back. The client saw a timeout — and retried.",
+      "block": {
+        "kind": "list",
+        "items": [
+          "Attempt 1 — charge committed, **response lost**",
+          "Attempt 2 — retry, **charged again**",
+          "Attempt 3 — retry, **charged again**"
+        ]
+      }
+    },
+    {
+      "type": "flow",
+      "headline": "The retry storm",
+      "hand": "A timeout is not a failure.",
+      "handRule": 330,
+      "diagram": {
+        "columns": [
+          {
+            "nodes": [
+              {
+                "label": "Client",
+                "sub": "retries 3x",
+                "tone": "amber"
+              }
+            ]
+          },
+          {
+            "nodes": [
+              {
+                "label": "Payments API",
+                "sub": "no dedupe",
+                "tone": "red"
+              }
+            ]
+          },
+          {
+            "nodes": [
+              {
+                "label": "charge #1",
+                "sub": "$50.00",
+                "tone": "red"
+              },
+              {
+                "label": "charge #2",
+                "sub": "$50.00",
+                "tone": "red"
+              },
+              {
+                "label": "charge #3",
+                "sub": "$50.00",
+                "tone": "red"
+              }
+            ]
+          }
+        ],
+        "connectors": [
+          "POST /payments",
+          "INSERT"
+        ]
+      },
+      "callout": "A timeout tells you the response is missing. It never tells you the write didn't happen."
+    },
+    {
+      "type": "compare",
+      "number": "05",
+      "label": "The fix",
+      "headline": "Give every attempt a name",
+      "desc": "One key per **intent** — not per attempt. The same key rides every retry.",
+      "bad": {
+        "tag": "Without a key",
+        "code": "POST /payments",
+        "verdict": "Every retry looks like a brand-new order."
+      },
+      "good": {
+        "tag": "With a key",
+        "code": "Idempotency-Key: 7c9e-4f21",
+        "verdict": "Every retry resolves to the same order."
+      }
+    },
+    {
+      "type": "code",
+      "eyebrow": "Implementation",
+      "headline": "Claim the key *first*",
+      "file": "payments.controller.js",
+      "lang": "js",
+      "code": "const key = req.header('Idempotency-Key');\n\n// The unique index is the referee.\nconst claim = await db.query(\n  `INSERT INTO idempotency_keys (key, status)\n   VALUES ($1, 'in_progress')\n   ON CONFLICT (key) DO NOTHING`, [key]);\n\nif (!claim.rowCount) return replay(res, key);",
+      "note": "If two retries race, exactly one wins the INSERT. The loser replays the stored response instead of charging again."
+    },
+    {
+      "type": "code",
+      "eyebrow": "Implementation",
+      "headline": "Two retries, *one row*",
+      "file": "schema.sql",
+      "lang": "sql",
+      "code": "CREATE TABLE idempotency_keys (\n  key        TEXT PRIMARY KEY,\n  status     TEXT NOT NULL,\n  response   JSONB,\n  created_at TIMESTAMPTZ DEFAULT now()\n);\n\n-- Two retries in the same millisecond both hit\n-- this index. Exactly one INSERT survives.",
+      "note": "No lock. No queue. No distributed coordinator. One `PRIMARY KEY` does the arbitration for you."
+    },
+    {
+      "type": "takeaway",
+      "eyebrow": "Takeaway",
+      "headline": "A retry is not\na new request.\nIt is the *same intent*,\nasking again.",
+      "sub": "Design every write endpoint so the second attempt is boring.",
+      "cta": "Backend Engineering & System Architecture — daily.\nFollow @peter-kekpe for the next one.",
+      "headlineSize": 76
+    }
+  ]
+}

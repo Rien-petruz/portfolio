@@ -1,0 +1,13 @@
+001 — Idempotency: how to prevent duplicate payments/orders
+topic: T021
+format: square (1080x1080)
+slides: 8
+
+01.png  cover
+02.png  statement
+03.png  concept
+04.png  flow
+05.png  compare
+06.png  code
+07.png  code
+08.png  takeaway

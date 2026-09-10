@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-content-tools",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Slide rendering pipeline for the Backend Engineering content series.",
+  "scripts": {
+    "topics": "node build-topics.mjs",
+    "render": "node render.mjs"
+  }
+}

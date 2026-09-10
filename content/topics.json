@@ -1,0 +1,3412 @@
+{
+  "title": "BACKEND ENGINEERING & SYSTEM ARCHITECTURECONTENT MASTER LIST",
+  "positioning": [
+    "A social-media topic bank focused on the things developers often overlook—and discover too late.",
+    "Core positioning: Teach developers not only how to build software, but what is actually happening underneath their applications: memory, processes, operating systems, networking, databases, media pipelines, distributed systems, reliability, security, performance, and cloud architecture."
+  ],
+  "sections": [
+    {
+      "n": 1,
+      "id": "database-data-architecture",
+      "title": "Database & Data Architecture",
+      "count": 20
+    },
+    {
+      "n": 2,
+      "id": "api-backend-design",
+      "title": "API & Backend Design",
+      "count": 18
+    },
+    {
+      "n": 3,
+      "id": "distributed-systems-architecture",
+      "title": "Distributed Systems & Architecture",
+      "count": 18
+    },
+    {
+      "n": 4,
+      "id": "queues-events-background-jobs",
+      "title": "Queues, Events & Background Jobs",
+      "count": 12
+    },
+    {
+      "n": 5,
+      "id": "memory-runtime-internals",
+      "title": "Memory & Runtime Internals",
+      "count": 21
+    },
+    {
+      "n": 6,
+      "id": "processes-threads-concurrency",
+      "title": "Processes, Threads & Concurrency",
+      "count": 27
+    },
+    {
+      "n": 7,
+      "id": "operating-system-low-level-backend",
+      "title": "Operating System & Low-Level Backend",
+      "count": 29
+    },
+    {
+      "n": 8,
+      "id": "media-processing-images",
+      "title": "Media Processing — Images",
+      "count": 13
+    },
+    {
+      "n": 9,
+      "id": "media-processing-video",
+      "title": "Media Processing — Video",
+      "count": 25
+    },
+    {
+      "n": 10,
+      "id": "media-processing-audio",
+      "title": "Media Processing — Audio",
+      "count": 9
+    },
+    {
+      "n": 11,
+      "id": "networking-from-the-backend-perspective",
+      "title": "Networking From the Backend Perspective",
+      "count": 27
+    },
+    {
+      "n": 12,
+      "id": "storage-filesystems",
+      "title": "Storage & Filesystems",
+      "count": 20
+    },
+    {
+      "n": 13,
+      "id": "performance-engineering",
+      "title": "Performance Engineering",
+      "count": 24
+    },
+    {
+      "n": 14,
+      "id": "reliability-production-engineering",
+      "title": "Reliability & Production Engineering",
+      "count": 17
+    },
+    {
+      "n": 15,
+      "id": "security-developers-often-underestimate",
+      "title": "Security Developers Often Underestimate",
+      "count": 17
+    },
+    {
+      "n": 16,
+      "id": "architecture-cloud-cost",
+      "title": "Architecture & Cloud Cost",
+      "count": 11
+    },
+    {
+      "n": 17,
+      "id": "signature-what-actually-happens-series",
+      "title": "Signature 'What Actually Happens?' Series",
+      "count": 10
+    },
+    {
+      "n": 18,
+      "id": "strong-thought-provoking-posts",
+      "title": "Strong Thought-Provoking Posts",
+      "count": 10
+    }
+  ],
+  "formula": [
+    "HOOK — Start with a surprising statement or question.",
+    "PROBLEM — Show the real engineering problem.",
+    "REAL SCENARIO — Give a production-style example.",
+    "WHY IT HAPPENS — Explain the underlying mechanism.",
+    "ARCHITECTURE / SOLUTION — Show what a robust implementation does.",
+    "TAKEAWAY — End with one practical lesson developers can remember."
+  ],
+  "direction": [
+    "Hook: Your server has 16 GB of RAM. Why can't your application use all 16 GB?",
+    "The goal of the series is to move from surface-level coding tutorials into systems thinking: help developers understand the runtime, OS, network, storage, database, infrastructure, and failure modes beneath the code they write."
+  ],
+  "totalTopics": 328,
+  "topics": [
+    {
+      "id": "T001",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 1,
+      "title": "Your database is not your application cache",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T002",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 2,
+      "title": "Why database indexes can make your system slower",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T003",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 3,
+      "title": "The hidden cost of SELECT *",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T004",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 4,
+      "title": "What happens when your database connection pool is exhausted?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T005",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 5,
+      "title": "Database connection pooling: the bottleneck developers overlook",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T006",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 6,
+      "title": "Why your database works perfectly in development but collapses in production",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T007",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 7,
+      "title": "Read replicas don't automatically solve database scaling",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T008",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 8,
+      "title": "When should you use SQL vs NoSQL?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T009",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 9,
+      "title": "The danger of storing everything in one giant table",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T010",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 10,
+      "title": "Soft deletes: the database problem nobody talks about",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T011",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 11,
+      "title": "Database migrations can take down production",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T012",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 12,
+      "title": "What happens when two requests update the same record simultaneously?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T013",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 13,
+      "title": "Race conditions in databases",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T014",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 14,
+      "title": "Optimistic vs pessimistic locking",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T015",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 15,
+      "title": "Why distributed transactions are painful",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T016",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 16,
+      "title": "Data consistency vs availability: what are you actually choosing?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T017",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 17,
+      "title": "The hidden consequences of deleting data",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T018",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 18,
+      "title": "Why your database backup strategy may be useless",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T019",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 19,
+      "title": "Point-in-time recovery: the feature you hope you never need",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T020",
+      "section": 1,
+      "sectionTitle": "Database & Data Architecture",
+      "index": 20,
+      "title": "How bad database queries become an infrastructure problem",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T021",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 1,
+      "title": "Idempotency: how to prevent duplicate payments/orders",
+      "status": "drafted",
+      "postedAt": null,
+      "postDir": "content/posts/001-idempotency"
+    },
+    {
+      "id": "T022",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 2,
+      "title": "Why retrying an API request can make things worse",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T023",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 3,
+      "title": "Timeouts: the backend setting developers underestimate",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T024",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 4,
+      "title": "Your API needs a timeout—even if the service is reliable",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T025",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 5,
+      "title": "Rate limiting isn't just about stopping hackers",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T026",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 6,
+      "title": "Pagination: why OFFSET can become expensive",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T027",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 7,
+      "title": "Cursor pagination vs offset pagination",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T028",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 8,
+      "title": "API versioning: what happens when you change your response format?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T029",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 9,
+      "title": "Backward compatibility in APIs",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T030",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 10,
+      "title": "Why APIs should not expose your database structure",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T031",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 11,
+      "title": "The danger of trusting data from your frontend",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T032",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 12,
+      "title": "Request validation vs business-rule validation",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T033",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 13,
+      "title": "Why an API returning HTTP 200 for everything is a problem",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T034",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 14,
+      "title": "How poorly designed error responses make systems harder to maintain",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T035",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 15,
+      "title": "The hidden complexity of file uploads",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T036",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 16,
+      "title": "Why large API responses can kill performance",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T037",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 17,
+      "title": "API aggregation and the N+1 request problem",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T038",
+      "section": 2,
+      "sectionTitle": "API & Backend Design",
+      "index": 18,
+      "title": "What happens when one API depends on five other APIs?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T039",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 1,
+      "title": "Distributed systems fail in ways local applications don't",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T040",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 2,
+      "title": "The fallacy that the network is reliable",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T041",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 3,
+      "title": "What happens when Service A is up but Service B is down?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T042",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 4,
+      "title": "Cascading failures: how one small failure takes down everything",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T043",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 5,
+      "title": "Circuit breakers: stopping failures from spreading",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T044",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 6,
+      "title": "Bulkheads: isolating failures inside your architecture",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T045",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 7,
+      "title": "Retries + timeouts + queues: how they interact",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T046",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 8,
+      "title": "Why microservices can make a simple system complicated",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T047",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 9,
+      "title": "When NOT to use microservices",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T048",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 10,
+      "title": "The modular monolith developers overlook",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T049",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 11,
+      "title": "Service discovery: how does one service find another?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T050",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 12,
+      "title": "What happens when two services disagree about the same data?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T051",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 13,
+      "title": "Eventual consistency explained with real-world examples",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T052",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 14,
+      "title": "Distributed locks: why they're harder than they look",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T053",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 15,
+      "title": "The problem with assuming requests arrive in order",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T054",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 16,
+      "title": "Exactly-once delivery doesn't mean what you think",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T055",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 17,
+      "title": "At-least-once vs at-most-once message delivery",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T056",
+      "section": 3,
+      "sectionTitle": "Distributed Systems & Architecture",
+      "index": 18,
+      "title": "Why distributed systems need correlation IDs",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T057",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 1,
+      "title": "Why your backend shouldn't do everything synchronously",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T058",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 2,
+      "title": "Message queues: when and why to use them",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T059",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 3,
+      "title": "RabbitMQ/Kafka/SQS: they're solving different problems",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T060",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 4,
+      "title": "Dead-letter queues: the safety net developers forget",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T061",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 5,
+      "title": "What happens to a job when your worker crashes halfway through?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T062",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 6,
+      "title": "Designing jobs that are safe to retry",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T063",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 7,
+      "title": "Duplicate messages and idempotent consumers",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T064",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 8,
+      "title": "Queue backpressure: what happens when producers are faster than consumers?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T065",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 9,
+      "title": "Poison messages: when one bad message keeps crashing your worker",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T066",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 10,
+      "title": "Why background jobs need monitoring",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T067",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 11,
+      "title": "Event-driven architecture isn't automatically scalable",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T068",
+      "section": 4,
+      "sectionTitle": "Queues, Events & Background Jobs",
+      "index": 12,
+      "title": "The hidden complexity of event ordering",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T069",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 1,
+      "title": "Stack vs heap: what actually happens when your code runs?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T070",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 2,
+      "title": "What is a memory leak in a backend application?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T071",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 3,
+      "title": "Garbage collection: what happens when GC pauses your application?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T072",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 4,
+      "title": "Why increasing RAM doesn't always fix performance",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T073",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 5,
+      "title": "Memory fragmentation",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T074",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 6,
+      "title": "Virtual memory vs physical memory",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T075",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 7,
+      "title": "What is a memory page?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T076",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 8,
+      "title": "Page faults and why they matter",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T077",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 9,
+      "title": "Swap: why your available RAM can be misleading",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T078",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 10,
+      "title": "Memory-mapped files",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T079",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 11,
+      "title": "Buffering vs streaming",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T080",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 12,
+      "title": "Why loading a 2 GB file into memory can kill your server",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T081",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 13,
+      "title": "How one large request can cause an OOM crash",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T082",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 14,
+      "title": "Out-of-memory killers: what happens when the OS runs out of memory?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T083",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 15,
+      "title": "Heap growth over time: finding hidden memory leaks",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T084",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 16,
+      "title": "Object allocation and its performance cost",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T085",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 17,
+      "title": "Why copying large objects is expensive",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T086",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 18,
+      "title": "Zero-copy: moving data without unnecessarily copying it",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T087",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 19,
+      "title": "Reference vs value semantics and memory implications",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T088",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 20,
+      "title": "How connection pools consume memory",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T089",
+      "section": 5,
+      "sectionTitle": "Memory & Runtime Internals",
+      "index": 21,
+      "title": "Why caching everything can eventually hurt your application",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T090",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 1,
+      "title": "Process vs thread: what is actually different?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T091",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 2,
+      "title": "What happens when you start a backend server?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T092",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 3,
+      "title": "Threads vs async/await",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T093",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 4,
+      "title": "Concurrency vs parallelism",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T094",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 5,
+      "title": "CPU-bound vs I/O-bound workloads",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T095",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 6,
+      "title": "Context switching and its hidden cost",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T096",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 7,
+      "title": "Race conditions",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T097",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 8,
+      "title": "Deadlocks",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T098",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 9,
+      "title": "Starvation",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T099",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 10,
+      "title": "Thread pools",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T100",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 11,
+      "title": "Worker pools",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T101",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 12,
+      "title": "Process pools",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T102",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 13,
+      "title": "Why spawning a process for every request is dangerous",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T103",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 14,
+      "title": "How Node.js handles concurrency",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T104",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 15,
+      "title": "Python's GIL and what it actually means",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T105",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 16,
+      "title": "Why async doesn't automatically make code faster",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T106",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 17,
+      "title": "Event loops explained from the OS upward",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T107",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 18,
+      "title": "What happens when your event loop is blocked?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T108",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 19,
+      "title": "One CPU-heavy operation can freeze an entire server",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T109",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 20,
+      "title": "Process isolation",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T110",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 21,
+      "title": "Child processes",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T111",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 22,
+      "title": "Signals: SIGTERM, SIGKILL, SIGINT",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T112",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 23,
+      "title": "Graceful shutdown and what the OS actually does",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T113",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 24,
+      "title": "Zombie processes",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T114",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 25,
+      "title": "Orphan processes",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T115",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 26,
+      "title": "Process supervisors",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T116",
+      "section": 6,
+      "sectionTitle": "Processes, Threads & Concurrency",
+      "index": 27,
+      "title": "Why containers are not lightweight virtual machines",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T117",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 1,
+      "title": "What actually happens when you run ./server?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T118",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 2,
+      "title": "User space vs kernel space",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T119",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 3,
+      "title": "System calls",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T120",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 4,
+      "title": "File descriptors",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T121",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 5,
+      "title": "Why everything is a file in Unix-like systems",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T122",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 6,
+      "title": "Sockets as file descriptors",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T123",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 7,
+      "title": "How read() and write() actually work",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T124",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 8,
+      "title": "Blocking vs non-blocking I/O",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T125",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 9,
+      "title": "epoll, kqueue and scalable I/O",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T126",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 10,
+      "title": "Interrupts",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T127",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 11,
+      "title": "CPU scheduling",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T128",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 12,
+      "title": "CPU cache and why locality matters",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T129",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 13,
+      "title": "L1 vs L2 vs L3 cache",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T130",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 14,
+      "title": "Why sequential memory access can be dramatically faster",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T131",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 15,
+      "title": "NUMA",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T132",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 16,
+      "title": "Endianness",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T133",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 17,
+      "title": "Binary vs text data",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T134",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 18,
+      "title": "Serialization/deserialization costs",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T135",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 19,
+      "title": "fork() and process creation",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T136",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 20,
+      "title": "Signals and process lifecycle",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T137",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 21,
+      "title": "File locks",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T138",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 22,
+      "title": "OS-level resource limits",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T139",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 23,
+      "title": "ulimit",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T140",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 24,
+      "title": "Open-file limits",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T141",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 25,
+      "title": "Why your application can run out of file descriptors",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T142",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 26,
+      "title": "/proc: looking inside a running Linux system",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T143",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 27,
+      "title": "How Linux actually manages memory",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T144",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 28,
+      "title": "What happens when a process crashes?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T145",
+      "section": 7,
+      "sectionTitle": "Operating System & Low-Level Backend",
+      "index": 29,
+      "title": "Core dumps and debugging native crashes",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T146",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 1,
+      "title": "Why resizing an image can consume surprising amounts of RAM",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T147",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 2,
+      "title": "JPEG vs PNG vs WebP vs AVIF",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T148",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 3,
+      "title": "Image compression isn't just about file size",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T149",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 4,
+      "title": "Image dimensions vs file size",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T150",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 5,
+      "title": "Thumbnail generation at scale",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T151",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 6,
+      "title": "Image processing pipelines",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T152",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 7,
+      "title": "EXIF metadata",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T153",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 8,
+      "title": "Image orientation problems",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T154",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 9,
+      "title": "Progressive JPEGs",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T155",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 10,
+      "title": "Lossy vs lossless compression",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T156",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 11,
+      "title": "CPU vs GPU image processing",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T157",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 12,
+      "title": "Why image processing should often happen asynchronously",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T158",
+      "section": 8,
+      "sectionTitle": "Media Processing — Images",
+      "index": 13,
+      "title": "How to prevent maliciously large image dimensions from taking down your server",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T159",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 1,
+      "title": "What actually happens when you upload a video?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T160",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 2,
+      "title": "Video codecs vs containers",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T161",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 3,
+      "title": "H.264 vs H.265 vs AV1",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T162",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 4,
+      "title": "MP4 vs MKV vs WebM",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T163",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 5,
+      "title": "Encoding vs transcoding",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T164",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 6,
+      "title": "Bitrate",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T165",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 7,
+      "title": "Resolution",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T166",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 8,
+      "title": "Frame rate",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T167",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 9,
+      "title": "Keyframes/I-frames",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T168",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 10,
+      "title": "GOP",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T169",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 11,
+      "title": "Why video transcoding is CPU-intensive",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T170",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 12,
+      "title": "Hardware vs software encoding",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T171",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 13,
+      "title": "GPU acceleration",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T172",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 14,
+      "title": "FFmpeg architecture",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T173",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 15,
+      "title": "Why you shouldn't process a 2-hour video inside an HTTP request",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T174",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 16,
+      "title": "Background video-processing workers",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T175",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 17,
+      "title": "Video transcoding queues",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T176",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 18,
+      "title": "Adaptive bitrate streaming",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T177",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 19,
+      "title": "HLS vs DASH",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T178",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 20,
+      "title": "Generating video thumbnails",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T179",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 21,
+      "title": "Generating previews",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T180",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 22,
+      "title": "Extracting audio from video",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T181",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 23,
+      "title": "Video metadata extraction",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T182",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 24,
+      "title": "Streaming video vs downloading the entire file",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T183",
+      "section": 9,
+      "sectionTitle": "Media Processing — Video",
+      "index": 25,
+      "title": "How YouTube/Netflix-style video delivery works at a high level",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T184",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 1,
+      "title": "WAV vs MP3 vs AAC vs Opus",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T185",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 2,
+      "title": "Bitrate vs sample rate",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T186",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 3,
+      "title": "Audio transcoding",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T187",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 4,
+      "title": "Audio normalization",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T188",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 5,
+      "title": "Waveforms",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T189",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 6,
+      "title": "Speech-to-text pipelines",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T190",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 7,
+      "title": "Why audio processing can become CPU-heavy",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T191",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 8,
+      "title": "Streaming audio processing",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T192",
+      "section": 10,
+      "sectionTitle": "Media Processing — Audio",
+      "index": 9,
+      "title": "Chunking large audio files",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T193",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 1,
+      "title": "What actually happens when you type a URL?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T194",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 2,
+      "title": "DNS resolution",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T195",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 3,
+      "title": "TCP handshake",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T196",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 4,
+      "title": "TLS handshake",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T197",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 5,
+      "title": "HTTP/1.1 vs HTTP/2 vs HTTP/3",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T198",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 6,
+      "title": "TCP vs UDP",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T199",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 7,
+      "title": "Packets",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T200",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 8,
+      "title": "MTU",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T201",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 9,
+      "title": "Packet fragmentation",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T202",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 10,
+      "title": "TCP congestion control",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T203",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 11,
+      "title": "TCP retransmission",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T204",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 12,
+      "title": "Keep-alive connections",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T205",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 13,
+      "title": "Connection pooling",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T206",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 14,
+      "title": "Socket exhaustion",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T207",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 15,
+      "title": "Ephemeral ports",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T208",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 16,
+      "title": "NAT",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T209",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 17,
+      "title": "Load balancers",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T210",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 18,
+      "title": "Reverse proxies",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T211",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 19,
+      "title": "Why localhost is not the same as production networking",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T212",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 20,
+      "title": "Why network latency exists even when servers are close",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T213",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 21,
+      "title": "Bandwidth vs latency",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T214",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 22,
+      "title": "Head-of-line blocking",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T215",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 23,
+      "title": "WebSockets",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T216",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 24,
+      "title": "Server-Sent Events",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T217",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 25,
+      "title": "Long polling",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T218",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 26,
+      "title": "Streaming HTTP responses",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T219",
+      "section": 11,
+      "sectionTitle": "Networking From the Backend Perspective",
+      "index": 27,
+      "title": "Network backpressure",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T220",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 1,
+      "title": "What actually happens when you save a file?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T221",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 2,
+      "title": "RAM vs SSD vs HDD",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T222",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 3,
+      "title": "Why SSDs are faster",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T223",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 4,
+      "title": "Sequential vs random I/O",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T224",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 5,
+      "title": "Filesystems",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T225",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 6,
+      "title": "Inodes",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T226",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 7,
+      "title": "File descriptors",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T227",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 8,
+      "title": "File permissions",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T228",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 9,
+      "title": "Journaling",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T229",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 10,
+      "title": "Disk I/O bottlenecks",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T230",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 11,
+      "title": "Why deleting a file doesn't necessarily mean the data is immediately erased",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T231",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 12,
+      "title": "Temporary files",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T232",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 13,
+      "title": "Disk space vs inode exhaustion",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T233",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 14,
+      "title": "Why /tmp can become a production problem",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T234",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 15,
+      "title": "Object storage vs local filesystem",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T235",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 16,
+      "title": "S3-style object storage architecture",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T236",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 17,
+      "title": "Multipart uploads",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T237",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 18,
+      "title": "Resumable uploads",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T238",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 19,
+      "title": "Uploading a 10 GB file safely",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T239",
+      "section": 12,
+      "sectionTitle": "Storage & Filesystems",
+      "index": 20,
+      "title": "Why storing user uploads on your application server is often a bad idea",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T240",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 1,
+      "title": "Profiling vs guessing",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T241",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 2,
+      "title": "CPU profiling",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T242",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 3,
+      "title": "Memory profiling",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T243",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 4,
+      "title": "Flame graphs",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T244",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 5,
+      "title": "Latency distributions",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T245",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 6,
+      "title": "p50 vs p95 vs p99",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T246",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 7,
+      "title": "Benchmarking mistakes",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T247",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 8,
+      "title": "Load testing",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T248",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 9,
+      "title": "Stress testing",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T249",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 10,
+      "title": "Soak testing",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T250",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 11,
+      "title": "Concurrency testing",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T251",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 12,
+      "title": "Cache performance",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T252",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 13,
+      "title": "Database performance",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T253",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 14,
+      "title": "Network performance",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T254",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 15,
+      "title": "Disk performance",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T255",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 16,
+      "title": "CPU cache misses",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T256",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 17,
+      "title": "Memory bandwidth",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T257",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 18,
+      "title": "Lock contention",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T258",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 19,
+      "title": "Queue latency",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T259",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 20,
+      "title": "Backpressure",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T260",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 21,
+      "title": "Throughput vs latency",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T261",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 22,
+      "title": "Amdahl's Law",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T262",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 23,
+      "title": "Little's Law",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T263",
+      "section": 13,
+      "sectionTitle": "Performance Engineering",
+      "index": 24,
+      "title": "Why optimizing the wrong thing changes nothing",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T264",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 1,
+      "title": "What happens when your server restarts during a transaction?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T265",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 2,
+      "title": "Graceful shutdown: the feature developers forget",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T266",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 3,
+      "title": "Health checks aren't as simple as /health",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T267",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 4,
+      "title": "Liveness vs readiness checks",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T268",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 5,
+      "title": "What happens when your deployment fails halfway through?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T269",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 6,
+      "title": "Blue-green vs rolling deployments",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T270",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 7,
+      "title": "Zero-downtime deployments",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T271",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 8,
+      "title": "Feature flags as a reliability mechanism",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T272",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 9,
+      "title": "Why every production system needs observability",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T273",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 10,
+      "title": "Logs aren't observability",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T274",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 11,
+      "title": "Metrics vs logs vs traces",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T275",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 12,
+      "title": "Distributed tracing: finding where 5 seconds disappeared",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T276",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 13,
+      "title": "Alert fatigue",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T277",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 14,
+      "title": "Why monitoring CPU usage isn't enough",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T278",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 15,
+      "title": "Disaster recovery vs backups",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T279",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 16,
+      "title": "RTO vs RPO",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T280",
+      "section": 14,
+      "sectionTitle": "Reliability & Production Engineering",
+      "index": 17,
+      "title": "Designing for failure instead of assuming success",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T281",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 1,
+      "title": "Authentication is not authorization",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T282",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 2,
+      "title": "Why checking permissions only on the frontend is useless",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T283",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 3,
+      "title": "Broken access control: the vulnerability hiding in ordinary APIs",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T284",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 4,
+      "title": "Why you shouldn't trust IDs coming from users",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T285",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 5,
+      "title": "IDOR: changing /users/123 to /users/124",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T286",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 6,
+      "title": "Secrets don't belong in your Git repository",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T287",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 7,
+      "title": "Environment variables aren't automatically secure",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T288",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 8,
+      "title": "JWTs: what developers misunderstand about them",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T289",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 9,
+      "title": "Why JWT logout is complicated",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T290",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 10,
+      "title": "Refresh tokens and token rotation",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T291",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 11,
+      "title": "Password hashing vs encryption",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T292",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 12,
+      "title": "Why passwords should never be encrypted",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T293",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 13,
+      "title": "SQL injection still exists—in different forms",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T294",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 14,
+      "title": "SSRF: when your server becomes the attacker's network tool",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T295",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 15,
+      "title": "Why internal APIs still need authentication",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T296",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 16,
+      "title": "The danger of overly powerful service accounts",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T297",
+      "section": 15,
+      "sectionTitle": "Security Developers Often Underestimate",
+      "index": 17,
+      "title": "Logging sensitive information without realizing it",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T298",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 1,
+      "title": "Your architecture can be technically correct and financially terrible",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T299",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 2,
+      "title": "The hidden cost of excessive microservices",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T300",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 3,
+      "title": "Why serverless can become expensive",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T301",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 4,
+      "title": "Data transfer/egress costs developers forget",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T302",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 5,
+      "title": "The cost of unnecessary API calls",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T303",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 6,
+      "title": "Over-provisioning infrastructure",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T304",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 7,
+      "title": "Under-provisioning infrastructure",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T305",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 8,
+      "title": "Cloud architecture is also financial architecture",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T306",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 9,
+      "title": "Why storing everything forever costs more than you think",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T307",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 10,
+      "title": "The hidden cost of logs",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T308",
+      "section": 16,
+      "sectionTitle": "Architecture & Cloud Cost",
+      "index": 11,
+      "title": "Why just adding another managed service can become technical debt",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T309",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 1,
+      "title": "What actually happens when you upload a 500 MB video?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T310",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 2,
+      "title": "What actually happens when your backend receives 10,000 requests at once?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T311",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 3,
+      "title": "What actually happens when your server runs out of RAM?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T312",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 4,
+      "title": "What actually happens when you start a backend server?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T313",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 5,
+      "title": "What actually happens between clicking Upload and seeing your processed video?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T314",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 6,
+      "title": "What actually happens when a Linux process crashes?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T315",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 7,
+      "title": "What actually happens when your database connection pool runs out?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T316",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 8,
+      "title": "What actually happens when one dependency becomes slow?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T317",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 9,
+      "title": "What actually happens when a request times out?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T318",
+      "section": 17,
+      "sectionTitle": "Signature 'What Actually Happens?' Series",
+      "index": 10,
+      "title": "What actually happens when two requests modify the same record simultaneously?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T319",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 1,
+      "title": "Your system didn't fail because you had too much traffic. It failed because one dependency had no timeout.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T320",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 2,
+      "title": "A retry mechanism can turn a small outage into a major outage.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T321",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 3,
+      "title": "The database is usually not the first thing that breaks. The things around it are.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T322",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 4,
+      "title": "Your API may be fast—but is your system fast?",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T323",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 5,
+      "title": "Microservices don't remove complexity. They move complexity into the network.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T324",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 6,
+      "title": "A backup you have never restored is a hope, not a recovery strategy.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T325",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 7,
+      "title": "If your system cannot survive a server restarting, it isn't production-ready.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T326",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 8,
+      "title": "Every distributed system eventually becomes a failure-management system.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T327",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 9,
+      "title": "Your frontend can hide a broken backend. Production traffic won't.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    },
+    {
+      "id": "T328",
+      "section": 18,
+      "sectionTitle": "Strong Thought-Provoking Posts",
+      "index": 10,
+      "title": "The most dangerous bugs are often not crashes—they are correct-looking wrong results.",
+      "status": "queued",
+      "postedAt": null,
+      "postDir": null
+    }
+  ]
+}

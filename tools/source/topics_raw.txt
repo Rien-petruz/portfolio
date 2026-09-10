@@ -1,0 +1,359 @@
+BACKEND ENGINEERING & SYSTEM ARCHITECTURECONTENT MASTER LIST
+A social-media topic bank focused on the things developers often overlook—and discover too late.
+Core positioning: Teach developers not only how to build software, but what is actually happening underneath their applications: memory, processes, operating systems, networking, databases, media pipelines, distributed systems, reliability, security, performance, and cloud architecture.
+[Heading1] 1. Database & Data Architecture
+[ListNumber] Your database is not your application cache
+[ListNumber] Why database indexes can make your system slower
+[ListNumber] The hidden cost of SELECT *
+[ListNumber] What happens when your database connection pool is exhausted?
+[ListNumber] Database connection pooling: the bottleneck developers overlook
+[ListNumber] Why your database works perfectly in development but collapses in production
+[ListNumber] Read replicas don't automatically solve database scaling
+[ListNumber] When should you use SQL vs NoSQL?
+[ListNumber] The danger of storing everything in one giant table
+[ListNumber] Soft deletes: the database problem nobody talks about
+[ListNumber] Database migrations can take down production
+[ListNumber] What happens when two requests update the same record simultaneously?
+[ListNumber] Race conditions in databases
+[ListNumber] Optimistic vs pessimistic locking
+[ListNumber] Why distributed transactions are painful
+[ListNumber] Data consistency vs availability: what are you actually choosing?
+[ListNumber] The hidden consequences of deleting data
+[ListNumber] Why your database backup strategy may be useless
+[ListNumber] Point-in-time recovery: the feature you hope you never need
+[ListNumber] How bad database queries become an infrastructure problem
+[Heading1] 2. API & Backend Design
+[ListNumber] Idempotency: how to prevent duplicate payments/orders
+[ListNumber] Why retrying an API request can make things worse
+[ListNumber] Timeouts: the backend setting developers underestimate
+[ListNumber] Your API needs a timeout—even if the service is reliable
+[ListNumber] Rate limiting isn't just about stopping hackers
+[ListNumber] Pagination: why OFFSET can become expensive
+[ListNumber] Cursor pagination vs offset pagination
+[ListNumber] API versioning: what happens when you change your response format?
+[ListNumber] Backward compatibility in APIs
+[ListNumber] Why APIs should not expose your database structure
+[ListNumber] The danger of trusting data from your frontend
+[ListNumber] Request validation vs business-rule validation
+[ListNumber] Why an API returning HTTP 200 for everything is a problem
+[ListNumber] How poorly designed error responses make systems harder to maintain
+[ListNumber] The hidden complexity of file uploads
+[ListNumber] Why large API responses can kill performance
+[ListNumber] API aggregation and the N+1 request problem
+[ListNumber] What happens when one API depends on five other APIs?
+[Heading1] 3. Distributed Systems & Architecture
+[ListNumber] Distributed systems fail in ways local applications don't
+[ListNumber] The fallacy that the network is reliable
+[ListNumber] What happens when Service A is up but Service B is down?
+[ListNumber] Cascading failures: how one small failure takes down everything
+[ListNumber] Circuit breakers: stopping failures from spreading
+[ListNumber] Bulkheads: isolating failures inside your architecture
+[ListNumber] Retries + timeouts + queues: how they interact
+[ListNumber] Why microservices can make a simple system complicated
+[ListNumber] When NOT to use microservices
+[ListNumber] The modular monolith developers overlook
+[ListNumber] Service discovery: how does one service find another?
+[ListNumber] What happens when two services disagree about the same data?
+[ListNumber] Eventual consistency explained with real-world examples
+[ListNumber] Distributed locks: why they're harder than they look
+[ListNumber] The problem with assuming requests arrive in order
+[ListNumber] Exactly-once delivery doesn't mean what you think
+[ListNumber] At-least-once vs at-most-once message delivery
+[ListNumber] Why distributed systems need correlation IDs
+[Heading1] 4. Queues, Events & Background Jobs
+[ListNumber] Why your backend shouldn't do everything synchronously
+[ListNumber] Message queues: when and why to use them
+[ListNumber] RabbitMQ/Kafka/SQS: they're solving different problems
+[ListNumber] Dead-letter queues: the safety net developers forget
+[ListNumber] What happens to a job when your worker crashes halfway through?
+[ListNumber] Designing jobs that are safe to retry
+[ListNumber] Duplicate messages and idempotent consumers
+[ListNumber] Queue backpressure: what happens when producers are faster than consumers?
+[ListNumber] Poison messages: when one bad message keeps crashing your worker
+[ListNumber] Why background jobs need monitoring
+[ListNumber] Event-driven architecture isn't automatically scalable
+[ListNumber] The hidden complexity of event ordering
+[Heading1] 5. Memory & Runtime Internals
+[ListNumber] Stack vs heap: what actually happens when your code runs?
+[ListNumber] What is a memory leak in a backend application?
+[ListNumber] Garbage collection: what happens when GC pauses your application?
+[ListNumber] Why increasing RAM doesn't always fix performance
+[ListNumber] Memory fragmentation
+[ListNumber] Virtual memory vs physical memory
+[ListNumber] What is a memory page?
+[ListNumber] Page faults and why they matter
+[ListNumber] Swap: why your available RAM can be misleading
+[ListNumber] Memory-mapped files
+[ListNumber] Buffering vs streaming
+[ListNumber] Why loading a 2 GB file into memory can kill your server
+[ListNumber] How one large request can cause an OOM crash
+[ListNumber] Out-of-memory killers: what happens when the OS runs out of memory?
+[ListNumber] Heap growth over time: finding hidden memory leaks
+[ListNumber] Object allocation and its performance cost
+[ListNumber] Why copying large objects is expensive
+[ListNumber] Zero-copy: moving data without unnecessarily copying it
+[ListNumber] Reference vs value semantics and memory implications
+[ListNumber] How connection pools consume memory
+[ListNumber] Why caching everything can eventually hurt your application
+[Heading1] 6. Processes, Threads & Concurrency
+[ListNumber] Process vs thread: what is actually different?
+[ListNumber] What happens when you start a backend server?
+[ListNumber] Threads vs async/await
+[ListNumber] Concurrency vs parallelism
+[ListNumber] CPU-bound vs I/O-bound workloads
+[ListNumber] Context switching and its hidden cost
+[ListNumber] Race conditions
+[ListNumber] Deadlocks
+[ListNumber] Starvation
+[ListNumber] Thread pools
+[ListNumber] Worker pools
+[ListNumber] Process pools
+[ListNumber] Why spawning a process for every request is dangerous
+[ListNumber] How Node.js handles concurrency
+[ListNumber] Python's GIL and what it actually means
+[ListNumber] Why async doesn't automatically make code faster
+[ListNumber] Event loops explained from the OS upward
+[ListNumber] What happens when your event loop is blocked?
+[ListNumber] One CPU-heavy operation can freeze an entire server
+[ListNumber] Process isolation
+[ListNumber] Child processes
+[ListNumber] Signals: SIGTERM, SIGKILL, SIGINT
+[ListNumber] Graceful shutdown and what the OS actually does
+[ListNumber] Zombie processes
+[ListNumber] Orphan processes
+[ListNumber] Process supervisors
+[ListNumber] Why containers are not lightweight virtual machines
+[Heading1] 7. Operating System & Low-Level Backend
+[ListNumber] What actually happens when you run ./server?
+[ListNumber] User space vs kernel space
+[ListNumber] System calls
+[ListNumber] File descriptors
+[ListNumber] Why everything is a file in Unix-like systems
+[ListNumber] Sockets as file descriptors
+[ListNumber] How read() and write() actually work
+[ListNumber] Blocking vs non-blocking I/O
+[ListNumber] epoll, kqueue and scalable I/O
+[ListNumber] Interrupts
+[ListNumber] CPU scheduling
+[ListNumber] CPU cache and why locality matters
+[ListNumber] L1 vs L2 vs L3 cache
+[ListNumber] Why sequential memory access can be dramatically faster
+[ListNumber] NUMA
+[ListNumber] Endianness
+[ListNumber] Binary vs text data
+[ListNumber] Serialization/deserialization costs
+[ListNumber] fork() and process creation
+[ListNumber] Signals and process lifecycle
+[ListNumber] File locks
+[ListNumber] OS-level resource limits
+[ListNumber] ulimit
+[ListNumber] Open-file limits
+[ListNumber] Why your application can run out of file descriptors
+[ListNumber] /proc: looking inside a running Linux system
+[ListNumber] How Linux actually manages memory
+[ListNumber] What happens when a process crashes?
+[ListNumber] Core dumps and debugging native crashes
+[Heading1] 8. Media Processing — Images
+[ListNumber] Why resizing an image can consume surprising amounts of RAM
+[ListNumber] JPEG vs PNG vs WebP vs AVIF
+[ListNumber] Image compression isn't just about file size
+[ListNumber] Image dimensions vs file size
+[ListNumber] Thumbnail generation at scale
+[ListNumber] Image processing pipelines
+[ListNumber] EXIF metadata
+[ListNumber] Image orientation problems
+[ListNumber] Progressive JPEGs
+[ListNumber] Lossy vs lossless compression
+[ListNumber] CPU vs GPU image processing
+[ListNumber] Why image processing should often happen asynchronously
+[ListNumber] How to prevent maliciously large image dimensions from taking down your server
+[Heading1] 9. Media Processing — Video
+[ListNumber] What actually happens when you upload a video?
+[ListNumber] Video codecs vs containers
+[ListNumber] H.264 vs H.265 vs AV1
+[ListNumber] MP4 vs MKV vs WebM
+[ListNumber] Encoding vs transcoding
+[ListNumber] Bitrate
+[ListNumber] Resolution
+[ListNumber] Frame rate
+[ListNumber] Keyframes/I-frames
+[ListNumber] GOP
+[ListNumber] Why video transcoding is CPU-intensive
+[ListNumber] Hardware vs software encoding
+[ListNumber] GPU acceleration
+[ListNumber] FFmpeg architecture
+[ListNumber] Why you shouldn't process a 2-hour video inside an HTTP request
+[ListNumber] Background video-processing workers
+[ListNumber] Video transcoding queues
+[ListNumber] Adaptive bitrate streaming
+[ListNumber] HLS vs DASH
+[ListNumber] Generating video thumbnails
+[ListNumber] Generating previews
+[ListNumber] Extracting audio from video
+[ListNumber] Video metadata extraction
+[ListNumber] Streaming video vs downloading the entire file
+[ListNumber] How YouTube/Netflix-style video delivery works at a high level
+[Heading1] 10. Media Processing — Audio
+[ListNumber] WAV vs MP3 vs AAC vs Opus
+[ListNumber] Bitrate vs sample rate
+[ListNumber] Audio transcoding
+[ListNumber] Audio normalization
+[ListNumber] Waveforms
+[ListNumber] Speech-to-text pipelines
+[ListNumber] Why audio processing can become CPU-heavy
+[ListNumber] Streaming audio processing
+[ListNumber] Chunking large audio files
+[Heading1] 11. Networking From the Backend Perspective
+[ListNumber] What actually happens when you type a URL?
+[ListNumber] DNS resolution
+[ListNumber] TCP handshake
+[ListNumber] TLS handshake
+[ListNumber] HTTP/1.1 vs HTTP/2 vs HTTP/3
+[ListNumber] TCP vs UDP
+[ListNumber] Packets
+[ListNumber] MTU
+[ListNumber] Packet fragmentation
+[ListNumber] TCP congestion control
+[ListNumber] TCP retransmission
+[ListNumber] Keep-alive connections
+[ListNumber] Connection pooling
+[ListNumber] Socket exhaustion
+[ListNumber] Ephemeral ports
+[ListNumber] NAT
+[ListNumber] Load balancers
+[ListNumber] Reverse proxies
+[ListNumber] Why localhost is not the same as production networking
+[ListNumber] Why network latency exists even when servers are close
+[ListNumber] Bandwidth vs latency
+[ListNumber] Head-of-line blocking
+[ListNumber] WebSockets
+[ListNumber] Server-Sent Events
+[ListNumber] Long polling
+[ListNumber] Streaming HTTP responses
+[ListNumber] Network backpressure
+[Heading1] 12. Storage & Filesystems
+[ListNumber] What actually happens when you save a file?
+[ListNumber] RAM vs SSD vs HDD
+[ListNumber] Why SSDs are faster
+[ListNumber] Sequential vs random I/O
+[ListNumber] Filesystems
+[ListNumber] Inodes
+[ListNumber] File descriptors
+[ListNumber] File permissions
+[ListNumber] Journaling
+[ListNumber] Disk I/O bottlenecks
+[ListNumber] Why deleting a file doesn't necessarily mean the data is immediately erased
+[ListNumber] Temporary files
+[ListNumber] Disk space vs inode exhaustion
+[ListNumber] Why /tmp can become a production problem
+[ListNumber] Object storage vs local filesystem
+[ListNumber] S3-style object storage architecture
+[ListNumber] Multipart uploads
+[ListNumber] Resumable uploads
+[ListNumber] Uploading a 10 GB file safely
+[ListNumber] Why storing user uploads on your application server is often a bad idea
+[Heading1] 13. Performance Engineering
+[ListNumber] Profiling vs guessing
+[ListNumber] CPU profiling
+[ListNumber] Memory profiling
+[ListNumber] Flame graphs
+[ListNumber] Latency distributions
+[ListNumber] p50 vs p95 vs p99
+[ListNumber] Benchmarking mistakes
+[ListNumber] Load testing
+[ListNumber] Stress testing
+[ListNumber] Soak testing
+[ListNumber] Concurrency testing
+[ListNumber] Cache performance
+[ListNumber] Database performance
+[ListNumber] Network performance
+[ListNumber] Disk performance
+[ListNumber] CPU cache misses
+[ListNumber] Memory bandwidth
+[ListNumber] Lock contention
+[ListNumber] Queue latency
+[ListNumber] Backpressure
+[ListNumber] Throughput vs latency
+[ListNumber] Amdahl's Law
+[ListNumber] Little's Law
+[ListNumber] Why optimizing the wrong thing changes nothing
+[Heading1] 14. Reliability & Production Engineering
+[ListNumber] What happens when your server restarts during a transaction?
+[ListNumber] Graceful shutdown: the feature developers forget
+[ListNumber] Health checks aren't as simple as /health
+[ListNumber] Liveness vs readiness checks
+[ListNumber] What happens when your deployment fails halfway through?
+[ListNumber] Blue-green vs rolling deployments
+[ListNumber] Zero-downtime deployments
+[ListNumber] Feature flags as a reliability mechanism
+[ListNumber] Why every production system needs observability
+[ListNumber] Logs aren't observability
+[ListNumber] Metrics vs logs vs traces
+[ListNumber] Distributed tracing: finding where 5 seconds disappeared
+[ListNumber] Alert fatigue
+[ListNumber] Why monitoring CPU usage isn't enough
+[ListNumber] Disaster recovery vs backups
+[ListNumber] RTO vs RPO
+[ListNumber] Designing for failure instead of assuming success
+[Heading1] 15. Security Developers Often Underestimate
+[ListNumber] Authentication is not authorization
+[ListNumber] Why checking permissions only on the frontend is useless
+[ListNumber] Broken access control: the vulnerability hiding in ordinary APIs
+[ListNumber] Why you shouldn't trust IDs coming from users
+[ListNumber] IDOR: changing /users/123 to /users/124
+[ListNumber] Secrets don't belong in your Git repository
+[ListNumber] Environment variables aren't automatically secure
+[ListNumber] JWTs: what developers misunderstand about them
+[ListNumber] Why JWT logout is complicated
+[ListNumber] Refresh tokens and token rotation
+[ListNumber] Password hashing vs encryption
+[ListNumber] Why passwords should never be encrypted
+[ListNumber] SQL injection still exists—in different forms
+[ListNumber] SSRF: when your server becomes the attacker's network tool
+[ListNumber] Why internal APIs still need authentication
+[ListNumber] The danger of overly powerful service accounts
+[ListNumber] Logging sensitive information without realizing it
+[Heading1] 16. Architecture & Cloud Cost
+[ListNumber] Your architecture can be technically correct and financially terrible
+[ListNumber] The hidden cost of excessive microservices
+[ListNumber] Why serverless can become expensive
+[ListNumber] Data transfer/egress costs developers forget
+[ListNumber] The cost of unnecessary API calls
+[ListNumber] Over-provisioning infrastructure
+[ListNumber] Under-provisioning infrastructure
+[ListNumber] Cloud architecture is also financial architecture
+[ListNumber] Why storing everything forever costs more than you think
+[ListNumber] The hidden cost of logs
+[ListNumber] Why just adding another managed service can become technical debt
+[Heading1] 17. Signature 'What Actually Happens?' Series
+[ListNumber] What actually happens when you upload a 500 MB video?
+[ListNumber] What actually happens when your backend receives 10,000 requests at once?
+[ListNumber] What actually happens when your server runs out of RAM?
+[ListNumber] What actually happens when you start a backend server?
+[ListNumber] What actually happens between clicking Upload and seeing your processed video?
+[ListNumber] What actually happens when a Linux process crashes?
+[ListNumber] What actually happens when your database connection pool runs out?
+[ListNumber] What actually happens when one dependency becomes slow?
+[ListNumber] What actually happens when a request times out?
+[ListNumber] What actually happens when two requests modify the same record simultaneously?
+[Heading1] 18. Strong Thought-Provoking Posts
+[ListNumber] Your system didn't fail because you had too much traffic. It failed because one dependency had no timeout.
+[ListNumber] A retry mechanism can turn a small outage into a major outage.
+[ListNumber] The database is usually not the first thing that breaks. The things around it are.
+[ListNumber] Your API may be fast—but is your system fast?
+[ListNumber] Microservices don't remove complexity. They move complexity into the network.
+[ListNumber] A backup you have never restored is a hope, not a recovery strategy.
+[ListNumber] If your system cannot survive a server restarting, it isn't production-ready.
+[ListNumber] Every distributed system eventually becomes a failure-management system.
+[ListNumber] Your frontend can hide a broken backend. Production traffic won't.
+[ListNumber] The most dangerous bugs are often not crashes—they are correct-looking wrong results.
+[Heading1] Recommended Post Formula
+[ListBullet] HOOK — Start with a surprising statement or question.
+[ListBullet] PROBLEM — Show the real engineering problem.
+[ListBullet] REAL SCENARIO — Give a production-style example.
+[ListBullet] WHY IT HAPPENS — Explain the underlying mechanism.
+[ListBullet] ARCHITECTURE / SOLUTION — Show what a robust implementation does.
+[ListBullet] TAKEAWAY — End with one practical lesson developers can remember.
+[Heading1] Example Content Direction
+Hook: Your server has 16 GB of RAM. Why can't your application use all 16 GB?
+The goal of the series is to move from surface-level coding tutorials into systems thinking: help developers understand the runtime, OS, network, storage, database, infrastructure, and failure modes beneath the code they write.
