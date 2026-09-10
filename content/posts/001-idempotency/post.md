@@ -1,18 +1,10 @@
-> **BLOCKED — do not publish.**
-> The research brief at `content/research/T021-idempotency/brief.md` (§5.4)
-> disproves the code on slide 6. Under concurrent retries, 19 of 19 losing
-> requests find the key `in_progress` with no stored response, so
-> `replayStoredResponse()` has nothing to return. The slide must show the
-> `409 Conflict` branch. Measured, not theorised — see
-> `content/research/T021-idempotency/experiment/results.txt`.
-
 ---
 id: "001"
 topicId: T021
 topic: "Idempotency: how to prevent duplicate payments/orders"
 section: 2 — API & Backend Design
-slides: 8
-format: square (1080x1080)
+slides: 9
+formats: portrait 1080x1350 (LinkedIn/IG/FB) + story 1080x1920 (TikTok)
 ---
 
 # Idempotency: Make retries safe.
@@ -47,8 +39,18 @@ Then, server side, claim the key *before* you do the work:
     ON CONFLICT (key) DO NOTHING
     RETURNING id
 
-If the INSERT returns nothing, this is a retry — replay the stored response
-instead of charging again.
+If the INSERT returns nothing, someone else owns this key. But — and this is
+the part nearly every article on the subject gets wrong — you cannot simply
+replay their response, because there may not be one yet.
+
+I tested it: 20 concurrent retries of the same request, and 19 of the 20 losers
+found the key marked `in_progress` with nothing stored. The winner hadn't
+finished. Returning 200 there would tell the client the payment succeeded
+before it actually had.
+
+Replay only when the stored status is `done`. While the winner is still in
+flight, the correct answer is 409 Conflict — which is exactly what Stripe
+returns in the same situation.
 
 The detail that makes this actually safe: the arbitration is done by a unique
 index, not by an if-statement in your application. Two retries arriving in the
@@ -77,5 +79,5 @@ Follow for the next one.
 | PROBLEM | Slide 2 — one customer, three charges |
 | REAL SCENARIO | Slide 3 — the response died, not the write |
 | WHY IT HAPPENS | Slide 4 — the retry storm |
-| ARCHITECTURE / SOLUTION | Slides 5–7 — idempotency key, claim-first, unique index |
-| TAKEAWAY | Slide 8 — a retry is the same intent, asking again |
+| ARCHITECTURE / SOLUTION | Slides 5–8 — idempotency key, the replay trap, claim-first, unique index |
+| TAKEAWAY | Slide 9 — a retry is the same intent, asking again |

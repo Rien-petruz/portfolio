@@ -108,13 +108,29 @@
       }
     },
     {
+      "type": "concept",
+      "number": "06",
+      "label": "The bug in every tutorial",
+      "headline": "The loser has\nnothing to replay",
+      "mono": "20 concurrent retries → 19 saw 'in_progress'",
+      "desc": "The winner hasn't finished yet, so no response is stored. Returning **200** here tells the client the payment succeeded — before it has.",
+      "block": {
+        "kind": "list",
+        "items": [
+          "Replay **only** when the stored status is `done`",
+          "**409 Conflict** while the winner is still in flight",
+          "This is what **Stripe** returns in the same case"
+        ]
+      }
+    },
+    {
       "type": "code",
       "eyebrow": "Implementation",
       "headline": "Claim the key *first*",
       "file": "payments.controller.js",
       "lang": "js",
-      "code": "const key = req.header('Idempotency-Key');\n\n// The unique index is the referee.\nconst claim = await db.query(\n  `INSERT INTO idempotency_keys (key, status)\n   VALUES ($1, 'in_progress')\n   ON CONFLICT (key) DO NOTHING`, [key]);\n\nif (!claim.rowCount) return replay(res, key);",
-      "note": "If two retries race, exactly one wins the INSERT. The loser replays the stored response instead of charging again."
+      "code": "const claim = await db.query(\n  `INSERT INTO idempotency_keys (key, status)\n   VALUES ($1, 'in_progress')\n   ON CONFLICT (key) DO NOTHING\n   RETURNING key`, [key]);\n\nif (!claim.rowCount) {\n  const prior = await load(key);\n  // Winner still running — nothing to replay yet.\n  if (prior.status === 'in_progress')\n    return res.status(409);\n  return res.status(prior.code).json(prior.body);\n}",
+      "note": "The unique index arbitrates, not an if-statement. Claim it in its own transaction — never the one doing the charge."
     },
     {
       "type": "code",
@@ -133,5 +149,9 @@
       "cta": "Backend Engineering & System Architecture — daily.\nFollow @peter-kekpe for the next one.",
       "headlineSize": 76
     }
+  ],
+  "formats": [
+    "portrait",
+    "story"
   ]
 }

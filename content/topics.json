@@ -334,11 +334,10 @@
       "sectionTitle": "API & Backend Design",
       "index": 1,
       "title": "Idempotency: how to prevent duplicate payments/orders",
-      "status": "researched",
+      "status": "drafted",
       "postedAt": null,
       "postDir": "content/posts/001-idempotency",
-      "researchDir": "content/research/T021-idempotency",
-      "note": "Draft carousel 001 exists but is BLOCKED: brief 5.4 disproves its slide-6 code. Must show the 409 branch before publishing."
+      "researchDir": "content/research/T021-idempotency"
     },
     {
       "id": "T022",

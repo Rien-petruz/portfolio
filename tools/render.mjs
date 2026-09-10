@@ -53,7 +53,9 @@ const platformsFor = (fmtName) =>
 async function autoFit(page) {
   const code = await page.evaluate(() => {
     const out = [];
-    document.querySelectorAll(".codewin pre").forEach((pre, i) => {
+    const slideOf = (el) => [...document.querySelectorAll(".slide")].indexOf(el.closest(".slide"));
+    document.querySelectorAll(".codewin pre").forEach((pre) => {
+      const i = slideOf(pre);
       const el = pre.querySelector("code");
       const start = parseFloat(getComputedStyle(el).fontSize);
       let size = start;
@@ -69,7 +71,9 @@ async function autoFit(page) {
   // so a first-guess ratio always overshoots.
   const cards = await page.evaluate(() => {
     const out = [];
-    document.querySelectorAll(".win-body").forEach((body, i) => {
+    const slideOf = (el) => [...document.querySelectorAll(".slide")].indexOf(el.closest(".slide"));
+    document.querySelectorAll(".win-body").forEach((body) => {
+      const i = slideOf(body);
       const fit = body.querySelector(".win-fit");
       if (!fit) return;
       const padB = parseFloat(getComputedStyle(body).paddingBottom) || 0;

@@ -1,6 +1,6 @@
 001 — Idempotency: how to prevent duplicate payments/orders
 topic: T021
-slides: 8
+slides: 9
 
 portrait  1080x1350  →  linkedin, instagram, facebook
   LinkedIn, Instagram, Facebook — 4:5 is the tallest each feed renders without cropping
@@ -9,9 +9,10 @@ portrait  1080x1350  →  linkedin, instagram, facebook
   portrait/03.png  concept
   portrait/04.png  flow
   portrait/05.png  compare
-  portrait/06.png  code
+  portrait/06.png  concept
   portrait/07.png  code
-  portrait/08.png  takeaway
+  portrait/08.png  code
+  portrait/09.png  takeaway
   portrait.zip
 
 story  1080x1920  →  tiktok
@@ -21,9 +22,10 @@ story  1080x1920  →  tiktok
   story/03.png  concept
   story/04.png  flow
   story/05.png  compare
-  story/06.png  code
+  story/06.png  concept
   story/07.png  code
-  story/08.png  takeaway
+  story/08.png  code
+  story/09.png  takeaway
   story.zip
 
 linkedin.pdf  — upload as a LinkedIn document post
