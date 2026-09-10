@@ -59,14 +59,17 @@ ${face(brand.font.hand, a.fonts.Caveat, "400 700")}
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
-  width:${fmt.w}px;height:${fmt.h}px;overflow:hidden;
+  width:${fmt.w}px;
   font-family:"${brand.font.display}",system-ui,sans-serif;
   color:${c.ink};-webkit-font-smoothing:antialiased;
   text-rendering:geometricPrecision;
 }
+@page{size:${fmt.w}px ${fmt.h}px;margin:0}
+.slide{break-after:page;page-break-after:always}
+.slide:last-child{break-after:auto;page-break-after:auto}
 .slide{
   position:relative;width:${fmt.w}px;height:${fmt.h}px;overflow:hidden;
-  display:flex;flex-direction:column;padding:84px;
+  display:flex;flex-direction:column;padding:${fmt.pad || "84px"};
 }
 .slide>*{position:relative;z-index:2}
 .bg{position:absolute;inset:0;z-index:0}
@@ -107,7 +110,7 @@ code.inline{font-family:"${brand.font.mono}",monospace;font-size:.86em;backgroun
   radial-gradient(85% 65% at 0% 100%, #e9ebfa 0%, rgba(233,235,250,0) 62%),
   ${c.paper};}
 .t-signature .headline{font-size:118px}
-.t-signature .art{position:absolute;right:78px;bottom:250px;color:${c.navy};z-index:1}
+.t-signature .art{position:absolute;right:${fmt.artRight || 78}px;bottom:${fmt.artBottom || Math.round(fmt.h * 0.23)}px;color:${c.navy};z-index:1}
 .t-signature .swoosh{display:block;margin-top:-6px}
 .t-signature .hl{background:${c.lavender};color:${c.navy};border-radius:7px;padding:0 .14em}
 
@@ -117,7 +120,7 @@ code.inline{font-family:"${brand.font.mono}",monospace;font-size:.86em;backgroun
 .t-marker .top .idx{color:${c.gold};font-weight:800}
 .t-marker .headline{font-size:126px;letter-spacing:-4px}
 .t-marker .sub{font-size:41px;color:${c.ink};font-weight:500}
-.t-marker .doodle{position:absolute;right:96px;top:52%;color:${c.ink}}
+.t-marker .doodle{position:absolute;right:96px;top:50%;color:${c.ink}}
 
 /* ---- theme: console ---- */
 .t-console .bg{background:${c.cream}}
@@ -125,7 +128,8 @@ code.inline{font-family:"${brand.font.mono}",monospace;font-size:.86em;backgroun
   box-shadow:0 26px 60px rgba(5,6,15,.09);overflow:hidden;display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
 .t-console .chrome{display:flex;align-items:center;gap:14px;padding:26px 34px;border-bottom:3px solid ${c.rule}}
 .t-console .dot{width:22px;height:22px;border-radius:50%}
-.t-console .win-body{padding:42px 46px;flex:1 1 auto;min-height:0;overflow:hidden}
+.t-console .win-body{padding:42px 46px;flex:1 1 auto;min-height:0;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center}
 .t-console .win-fit{display:flex;flex-direction:column;gap:24px;transform-origin:0 0;width:100%}
 .t-console .kicker{font-size:44px;font-weight:800;letter-spacing:-1px;color:${c.muted}}
 .t-console .kicker .n{color:${c.blue}}
@@ -186,7 +190,8 @@ code.inline{font-family:"${brand.font.mono}",monospace;font-size:.86em;backgroun
 .codewin .bar .t{font-family:"${brand.font.mono}",monospace;font-size:26px;font-weight:500;opacity:.92}
 .codewin .bar .lang{margin-left:auto;font-size:22px;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;opacity:.65}
-.codewin pre{margin:0;padding:28px 30px;overflow:hidden;flex:1 1 auto;min-height:0}
+.codewin pre{margin:0;padding:28px 30px;overflow:hidden;flex:1 1 auto;min-height:0;
+  display:flex;flex-direction:column;justify-content:center}
 .codewin code{font-family:"${brand.font.mono}",monospace;font-size:29px;line-height:1.46;
   white-space:pre;display:block;color:${c.ink}}
 .codenote{font-size:27px;line-height:1.38;color:${c.inkSoft};display:flex;gap:14px;align-items:flex-start}

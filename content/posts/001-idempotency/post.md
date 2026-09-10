@@ -1,3 +1,11 @@
+> **BLOCKED — do not publish.**
+> The research brief at `content/research/T021-idempotency/brief.md` (§5.4)
+> disproves the code on slide 6. Under concurrent retries, 19 of 19 losing
+> requests find the key `in_progress` with no stored response, so
+> `replayStoredResponse()` has nothing to return. The slide must show the
+> `409 Conflict` branch. Measured, not theorised — see
+> `content/research/T021-idempotency/experiment/results.txt`.
+
 ---
 id: "001"
 topicId: T021

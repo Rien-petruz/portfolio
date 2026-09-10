@@ -1,0 +1,37 @@
+$ node run.mjs
+postgres: PostgreSQL 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)
+concurrency: 20 clients retrying one logical request
+
+1. naive — no dedupe
+  20 concurrent attempts, same key
+  charges landed : 20   <-- 20 charges for one order
+
+2. check-then-act — SELECT then INSERT
+  20 concurrent attempts, same key
+  charges landed : 20   <-- 20 charges for one order
+
+3. claim-first — INSERT ... ON CONFLICT DO NOTHING
+  20 concurrent attempts, same key
+  charges landed : 1
+
+4. claim-first — what the loser sees
+  20 concurrent attempts, same key
+  charges landed : 1
+  losers         : 19
+  losers that found status='in_progress' with no stored response: 19
+  -> these clients CANNOT replay a response. Returning 200 here is a lie;
+     the correct answer is 409 Conflict (or wait-and-poll).
+
+$ node blocking.mjs
+
+winner COMMITs after 600ms
+  loser still waiting after 300ms : true
+  loser finished after            : 603ms
+  loser result                    : {"rowCount":0}
+  rows in table                   : 1
+
+winner ROLLBACKs after 600ms
+  loser still waiting after 300ms : true
+  loser finished after            : 603ms
+  loser result                    : {"rowCount":1}
+  rows in table                   : 1

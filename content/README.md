@@ -1,18 +1,27 @@
 # Backend Engineering content series
 
-A daily technical posting pipeline: 328 topics from the master list, rendered
-into branded carousel slides as PNGs.
+A daily technical posting pipeline: 328 topics from the master list, studied
+in depth, then rendered into branded carousel slides for LinkedIn, Instagram,
+Facebook and TikTok.
+
+**Nothing gets designed before it has been studied.** See
+`content/research/README.md` for the standard and why it exists.
 
 ## What's here
 
 ```
 content/
   master-list.md              328 topics, 18 sections (human-readable)
-  topics.json                 the same list as data, with posting status
+  topics.json                 the same list as data, with per-topic status
+  research/
+    README.md                 the research standard — read this first
+    TEMPLATE.md               brief skeleton
+    T0XX-<slug>/brief.md      the study
+    T0XX-<slug>/experiment/   runnable proof of the claims
   posts/<id>-<slug>/
     slides.json               slide definitions for one carousel
     post.md                   caption copy + formula check
-    out/                      rendered PNGs + contact-sheet.png
+    out/                      per-platform renders (see below)
 brand/
   brand.json                  colours, fonts, author identity
   assets/avatar.png           headshot, cropped from the reference art
@@ -25,14 +34,43 @@ tools/
   icons.mjs / highlight.mjs   line-art icons, code syntax highlighting
 ```
 
+## Output, per post
+
+```
+out/
+  portrait/01.png … NN.png   1080x1350  LinkedIn · Instagram · Facebook
+  story/01.png … NN.png      1080x1920  TikTok (bottom 470px kept clear of its UI)
+  linkedin.pdf               LinkedIn carousels post as a PDF document
+  portrait.zip / story.zip   grab-and-go
+  <format>/contact-sheet.png review aid — NOT for posting
+```
+
+Every numbered PNG is standalone: one file, one slide, upload as-is. The zips
+are a convenience, not a different artifact.
+
+| Platform | Format | Notes |
+|---|---|---|
+| LinkedIn | 1080x1350 + PDF | carousels are document posts; PNGs also provided |
+| Instagram | 1080x1350 | carousel, up to 20 images |
+| Facebook | 1080x1350 | carousel |
+| TikTok | 1080x1920 | photo carousel, up to 35 images |
+
 ## The daily loop
 
 ```bash
 node tools/status.mjs                       # what's next in the queue
-mkdir -p content/posts/002-<slug>           # write slides.json + post.md
-node tools/render.mjs content/posts/002-<slug>
-node tools/status.mjs T0XX drafted 002-<slug>
-# ...after publishing:
+node tools/status.mjs T0XX researching      # claim it
+
+# 1. STUDY — write content/research/T0XX-<slug>/brief.md against the standard,
+#    with a runnable experiment where a claim can be measured.
+node tools/status.mjs T0XX researched
+
+# 2. DESIGN — only now
+mkdir -p content/posts/00N-<slug>           # slides.json + post.md
+node tools/render.mjs content/posts/00N-<slug>
+node tools/status.mjs T0XX drafted 00N-<slug>
+
+# 3. PUBLISH
 node tools/status.mjs T0XX posted
 ```
 

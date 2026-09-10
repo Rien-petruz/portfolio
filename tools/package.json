@@ -7,5 +7,8 @@
   "scripts": {
     "topics": "node build-topics.mjs",
     "render": "node render.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.23.0"
   }
 }

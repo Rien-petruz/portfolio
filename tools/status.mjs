@@ -2,8 +2,12 @@
 //
 //   node tools/status.mjs                       what's next up
 //   node tools/status.mjs --section 5           what's queued in one section
+//   node tools/status.mjs T021 researching
+//   node tools/status.mjs T021 researched
 //   node tools/status.mjs T021 drafted 001-idempotency
 //   node tools/status.mjs T021 posted
+//
+// Nothing gets designed before its brief exists — see content/research/README.md.
 //   node tools/status.mjs --stats               progress across all 18 sections
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -12,7 +16,7 @@ import { dirname, join } from "node:path";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const path = join(root, "content/topics.json");
 const db = JSON.parse(readFileSync(path, "utf8"));
-const STATUSES = ["queued", "drafted", "posted", "skipped"];
+const STATUSES = ["queued", "researching", "researched", "drafted", "posted", "skipped"];
 const args = process.argv.slice(2);
 
 const save = () => writeFileSync(path, JSON.stringify(db, null, 2) + "\n");
@@ -46,6 +50,9 @@ if (args[0] === "--stats") {
   }
   t.status = status;
   if (dir) t.postDir = dir.startsWith("content/") ? dir : `content/posts/${dir}`;
+  if (status === "researching" || status === "researched") {
+    t.researchDir = t.researchDir || `content/research/${t.id}-<slug>`;
+  }
   if (status === "posted") t.postedAt = new Date().toISOString().slice(0, 10);
   save();
   console.log(`${t.id} → ${status}${t.postDir ? `  (${t.postDir})` : ""}\n  ${t.title}`);

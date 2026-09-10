@@ -7,8 +7,24 @@
   "series": "Backend Engineering",
   "note": "Colours sampled directly from the reference cover art (tools/source/reference-cover.png).",
   "formats": {
-    "square": { "w": 1080, "h": 1080 },
-    "portrait": { "w": 1080, "h": 1350 }
+    "portrait": {
+      "w": 1080,
+      "h": 1350,
+      "pad": "96px 84px",
+      "use": "LinkedIn, Instagram, Facebook — 4:5 is the tallest each feed renders without cropping"
+    },
+    "story": {
+      "w": 1080,
+      "h": 1920,
+      "pad": "200px 96px 470px",
+      "use": "TikTok photo carousel — 9:16. Bottom padding clears TikTok's caption and action-rail overlay"
+    },
+    "square": {
+      "w": 1080,
+      "h": 1080,
+      "pad": "84px",
+      "use": "Fallback 1:1. Safe everywhere, but gives up feed height on LinkedIn/IG/FB"
+    }
   },
   "color": {
     "ink": "#05060f",
@@ -34,5 +50,28 @@
     "mono": "JetBrains Mono",
     "serif": "Source Serif 4",
     "hand": "Caveat"
-  }
+  },
+  "platforms": {
+    "linkedin": {
+      "format": "portrait",
+      "pdf": true,
+      "note": "Carousels post as a PDF document. Slides also exported as PNGs."
+    },
+    "instagram": {
+      "format": "portrait",
+      "note": "Carousel post, up to 20 images."
+    },
+    "facebook": {
+      "format": "portrait",
+      "note": "Carousel post."
+    },
+    "tiktok": {
+      "format": "story",
+      "note": "Photo carousel, up to 35 images."
+    }
+  },
+  "defaultFormats": [
+    "portrait",
+    "story"
+  ]
 }
