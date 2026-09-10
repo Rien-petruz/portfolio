@@ -20,7 +20,8 @@ content/
     T0XX-<slug>/experiment/   runnable proof of the claims
   posts/<id>-<slug>/
     slides.json               slide definitions for one carousel
-    post.md                   caption copy + formula check
+    post.md                   long-form copy + formula check
+    captions.md               title, description and per-platform captions/tags
     out/                      per-platform renders (see below)
 brand/
   brand.json                  colours, fonts, author identity
@@ -66,7 +67,7 @@ node tools/status.mjs T0XX researching      # claim it
 node tools/status.mjs T0XX researched
 
 # 2. DESIGN — only now
-mkdir -p content/posts/00N-<slug>           # slides.json + post.md
+mkdir -p content/posts/00N-<slug>           # slides.json + post.md + captions.md
 node tools/render.mjs content/posts/00N-<slug>
 node tools/status.mjs T0XX drafted 00N-<slug>
 

@@ -66,10 +66,9 @@ Design every write endpoint so the second attempt is boring.
 Backend Engineering & System Architecture — daily.
 Follow for the next one.
 
-## Hashtags
+## Captions
 
-#backend #systemdesign #softwarearchitecture #api #distributedsystems
-#engineering #softwareengineering #webdevelopment #databases #payments
+Per-platform titles, descriptions and tags live in `captions.md`.
 
 ## Formula check
 
