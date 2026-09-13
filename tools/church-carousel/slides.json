@@ -76,7 +76,15 @@
   ],
   "video": {
     "fps": 30,
-    "swipe": 0.5
+    "swipe": 0.5,
+    "audio": {
+      "file": "assets/audio/prayer-instrumental.mp3",
+      "credit": "Prayer instrumental — supplied by Peter",
+      "startAt": 0,
+      "fadeIn": 1.0,
+      "fadeOut": 2.5,
+      "loudness": -14
+    }
   },
   "post": {
     "slug": "esau-and-the-decree",

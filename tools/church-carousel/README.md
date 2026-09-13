@@ -22,6 +22,7 @@ the network.
 | `template.mjs` | Slide markup + the brand styling |
 | `render.mjs` | HTML → PNG via headless Chromium |
 | `assets/logo.jpg` | Profile mark shown on every slide |
+| `assets/audio/` | Music bed muxed into the video |
 | `assets/fonts/` | Playfair Display + Inter (latin subsets) |
 | `tojpeg.mjs` | PNG → JPEG for uploading or sharing |
 | `video.mjs` | Slides → a self-swiping MP4 |
@@ -51,8 +52,29 @@ node tools/church-carousel/video.mjs
 
 Each slide holds for its own `hold` seconds (set per slide in `slides.json`),
 then slides left as the next one arrives — a hands-free version of the swipe.
-Output is H.264 1080×1350 with a silent audio track, since some platforms
-mishandle a video with no audio at all.
+Output is H.264 1080×1350. The music bed comes from `video.audio` in
+`slides.json`:
+
+```json
+"audio": {
+  "file": "assets/audio/prayer-instrumental.mp3",
+  "startAt": 0,          // seconds into the track to begin
+  "fadeIn": 1.0,
+  "fadeOut": 2.5,
+  "loudness": -14        // LUFS
+}
+```
+
+It's trimmed to the slide runtime, normalised to −14 LUFS (what the platforms
+re-encode to anyway, so they won't crush it further), faded at both ends, and
+resampled to 48 kHz — `loudnorm` runs at its own internal rate and some
+uploaders reject what comes out otherwise.
+
+Drop the `audio` block and the video falls back to a silent track, since some
+platforms mishandle a video with no audio stream at all.
+
+Use music you have the rights to. Anything lifted from another upload risks a
+Content ID claim, which mutes or pulls the post.
 
 Pace the `hold` values by how much there is to read: a full verse needs about
 five seconds, a short line about three. Total runtime prints when the render

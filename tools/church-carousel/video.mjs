@@ -34,7 +34,7 @@ function findFfmpeg() {
 }
 
 const { slides, formats, video } = JSON.parse(readFileSync(join(here, 'slides.json'), 'utf8'));
-const { fps = 30, swipe = 0.5 } = video ?? {};
+const { fps = 30, swipe = 0.5, audio } = video ?? {};
 
 const i = process.argv.indexOf('--format');
 const only = i > -1 ? process.argv[i + 1] : undefined;
@@ -73,26 +73,51 @@ frames.slice(1).forEach((f, i) => {
   prev = out;
 });
 
+const total = frames.reduce((a, f) => a + f.hold, 0) - swipe * (frames.length - 1);
+
+  // A bed of music if slides.json names one, otherwise silence — some
+  // platforms reject or mishandle a video with no audio stream at all.
+  const track = audio?.file ? join(here, audio.file) : null;
+  if (track && !existsSync(track)) throw new Error(`Missing audio ${track}`);
+
+  const fadeIn = audio?.fadeIn ?? 1;
+  const fadeOut = audio?.fadeOut ?? 2.5;
+
+  const audioIn = track
+    ? ['-ss', String(audio.startAt ?? 0), '-i', track]
+    : ['-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100'];
+
+  // Trim to the slides, normalise to what the platforms re-encode to anyway,
+  // then fade both ends so it neither slams in nor cuts off.
+  const audioChain = track
+    ? `[${frames.length}:a]atrim=duration=${total.toFixed(3)},asetpts=N/SR/TB,`
+      + `loudnorm=I=${audio.loudness ?? -14}:TP=-1.5:LRA=11,`
+      + `afade=t=in:st=0:d=${fadeIn},`
+      + `afade=t=out:st=${(total - fadeOut).toFixed(3)}:d=${fadeOut},`
+      // loudnorm runs at its own internal rate — put it back to the 48kHz the
+      // platforms expect, or some uploaders reject the file.
+      + `aresample=48000[a]`
+    : null;
+
 const filter = [
   `${steps.join(';')}`,
   `[v]fps=${fps},scale=${format.width}:${format.height},format=yuv420p[out]`,
+  ...(audioChain ? [audioChain] : []),
 ].join(';');
 
-const total = frames.reduce((a, f) => a + f.hold, 0) - swipe * (frames.length - 1);
 const dest = join(here, format.dir, format.video);
 
 execFileSync(ffmpeg, [
   '-y', '-loglevel', 'error',
   ...inputs,
-  // A silent track: some platforms reject or mishandle a video with no audio.
-  '-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100',
+  ...audioIn,
   '-filter_complex', filter,
-  '-map', '[out]', '-map', `${frames.length}:a`,
+  '-map', '[out]', '-map', audioChain ? '[a]' : `${frames.length}:a`,
   '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-profile:v', 'high', '-level', '4.0',
-  '-c:a', 'aac', '-b:a', '96k', '-shortest',
+  '-c:a', 'aac', '-b:a', track ? '192k' : '96k', '-shortest',
   '-movflags', '+faststart',
   dest,
 ], { stdio: ['ignore', 'inherit', 'inherit'] });
 
-console.log(`✓ ${name.padEnd(9)} ${format.width}x${format.height}  ${total.toFixed(1)}s  ${(statSync(dest).size / 1024 / 1024).toFixed(1)} MB  → ${join(format.dir, format.video)}`);
+console.log(`✓ ${name.padEnd(9)} ${format.width}x${format.height}  ${total.toFixed(1)}s  ${(statSync(dest).size / 1024 / 1024).toFixed(1)} MB  ${track ? 'with music' : 'silent'}  → ${join(format.dir, format.video)}`);
 }

@@ -23,9 +23,11 @@ node tools/church-carousel/copy.mjs      # post copy -> out/post-copy.md, out/co
 asked for this specifically over a 9:16 short cut; don't add a vertical format
 or offer one again unless he asks.
 
-Videos ship with a silent audio track for the platforms that need one. Music
-goes on in-app, from the platform's own licensed library — never lifted from
-someone else's upload.
+The video carries the music bed named in `video.audio` in `slides.json` —
+Peter supplies the track. It's trimmed to the runtime, normalised to −14 LUFS,
+faded both ends and resampled to 48 kHz. With no `audio` block it falls back to
+a silent track. Only use music Peter has the rights to; anything lifted from
+another upload risks a Content ID claim.
 
 **Every post ships one title, one short description, one set of hashtags and
 one set of tags — the same copy on Facebook, YouTube, TikTok and Instagram.**
