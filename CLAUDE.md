@@ -14,15 +14,14 @@ carousel, a self-swiping video, and the copy to post them. Everything for a
 post lives in `slides.json`; the scripts only render it.
 
 ```bash
-node tools/church-carousel/render.mjs    # slides -> out/ (4:5) and out/9x16/
-node tools/church-carousel/video.mjs     # videos -> out/carousel.mp4, out/9x16/carousel-9x16.mp4
+node tools/church-carousel/render.mjs    # slides -> out/slide-NN.png
+node tools/church-carousel/video.mjs     # video  -> out/carousel.mp4
 node tools/church-carousel/copy.mjs      # post copy -> out/post-copy.md, out/copy/*.txt
 ```
 
-Every post ships in both formats: 1080×1350 for the Instagram and Facebook
-feed, 1080×1920 for TikTok and YouTube Shorts. The vertical deck is rendered
-natively, never letterboxed from the 4:5 one, and keeps its lower third clear
-of the caption and buttons those apps overlay.
+**Everything is 1080×1350 (4:5) — the house size, on every platform.** Peter
+asked for this specifically over a 9:16 short cut; don't add a vertical format
+or offer one again unless he asks.
 
 Videos ship with a silent audio track for the platforms that need one. Music
 goes on in-app, from the platform's own licensed library — never lifted from

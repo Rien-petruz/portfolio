@@ -13,14 +13,6 @@
       "dir": "out",
       "video": "carousel.mp4",
       "padBottom": 66
-    },
-    "vertical": {
-      "label": "TikTok / YouTube Shorts",
-      "width": 1080,
-      "height": 1920,
-      "dir": "out/9x16",
-      "video": "carousel-9x16.mp4",
-      "padBottom": 330
     }
   },
   "slides": [
