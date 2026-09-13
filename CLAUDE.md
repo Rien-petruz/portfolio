@@ -34,10 +34,20 @@ faded both ends and resampled to 48 kHz. With no `audio` block it falls back to
 a silent track. Only use music Peter has the rights to; anything lifted from
 another upload risks a Content ID claim.
 
-**Every post ships one title, one short description, one set of hashtags and
-one set of tags — the same copy on Facebook, YouTube, TikTok and Instagram.**
-Peter asked for this specifically; do not write per-platform variants or split
-them up again unless he asks. Never hand over slides or a video without it.
+**Every post is delivered as exactly four things:**
+
+1. **The video** — with the music bed, built the same way every time
+2. **The title**
+3. **The description**
+4. **The tags** (hashtags and keywords)
+
+Peter asked for this specifically. The video is the deliverable, not the slide
+images — the slides are just the frames it is built from, so render them, build
+the video, and hand over the video. Don't ship a post missing any of the four.
+
+**The title, description and tags are one set — the same copy on Facebook,
+YouTube, TikTok and Instagram.** Don't write per-platform variants or split
+them up again unless he asks.
 
 Because one set has to work everywhere, write to the tightest limit of the
 four: the title under 100 chars so YouTube doesn't truncate it, the caption
