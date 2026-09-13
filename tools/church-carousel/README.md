@@ -25,7 +25,29 @@ the network.
 | `assets/logo.jpg` | Profile mark shown on every slide |
 | `assets/fonts/` | Playfair Display + Inter (latin subsets) |
 | `tojpeg.mjs` | PNG → JPEG for uploading or sharing |
+| `video.mjs` | Slides → a self-swiping MP4 |
 | `out/` | Rendered slides, `slide-01.png` … (plus `.jpg` copies) |
+| `out/carousel.mp4` | The video cut of the deck |
+
+## Video
+
+```bash
+npm i ffmpeg-static                          # once
+node tools/church-carousel/video.mjs
+```
+
+Each slide holds for its own `hold` seconds (set per slide in `slides.json`),
+then slides left as the next one arrives — a hands-free version of the swipe.
+Output is H.264 1080×1350 with a silent audio track, since some platforms
+mishandle a video with no audio at all.
+
+Pace the `hold` values by how much there is to read: a full verse needs about
+five seconds, a short line about three. Total runtime prints when the render
+finishes.
+
+`video.mjs` needs a full ffmpeg — H.264 and the `xfade` filter. The ffmpeg
+bundled with Playwright's Chromium has neither (it only decodes MJPEG and
+encodes VP8), so install `ffmpeg-static` or point `FFMPEG_PATH` at a real one.
 
 ## Sharing
 
