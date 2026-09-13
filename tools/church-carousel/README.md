@@ -21,7 +21,6 @@ the network.
 | `slides.json` | All copy — edit this to write a new post |
 | `template.mjs` | Slide markup + the brand styling |
 | `render.mjs` | HTML → PNG via headless Chromium |
-| `caption.md` | Instagram caption, kept for reference |
 | `assets/logo.jpg` | Profile mark shown on every slide |
 | `assets/fonts/` | Playfair Display + Inter (latin subsets) |
 | `tojpeg.mjs` | PNG → JPEG for uploading or sharing |
@@ -29,8 +28,8 @@ the network.
 | `copy.mjs` | Post copy for all four platforms |
 | `out/` | Rendered slides, `slide-01.png` … (plus `.jpg` copies) |
 | `out/carousel.mp4` | The video cut of the deck |
-| `out/post-copy.md` | Every platform's copy in one file |
-| `out/copy/*.txt` | One paste-ready file per platform |
+| `out/post-copy.md` | The post copy, with its limit check |
+| `out/copy/post.txt` | Paste-ready title, caption, hashtags, tags |
 
 ## Format
 
@@ -69,28 +68,30 @@ encodes VP8), so install `ffmpeg-static` or point `FFMPEG_PATH` at a real one.
 node tools/church-carousel/copy.mjs
 ```
 
-Every post ships copy for Facebook, YouTube, TikTok and Instagram, and each
-gets a **title, description, hashtags and tags**. It lives in the `post` block
-of `slides.json`, one object per platform:
+One title, one short description, one set of hashtags and one set of tags —
+posted as-is on Facebook, YouTube, TikTok and Instagram. It lives in the `post`
+block of `slides.json`:
 
 ```json
-"instagram": {
-  "title": "…",         // the hook; on YouTube this is the actual title field
-  "description": "…",   // the caption body
+"post": {
+  "title": "…",         // YouTube's title field; the hook everywhere else
+  "description": "…",   // the caption body — keep it short
   "hashtags": ["#…"],   // appended to the caption by copy.mjs
   "tags": ["…"]         // YouTube's keyword field; search keywords elsewhere
 }
 ```
 
-Write each platform separately — the same caption pasted four times reads as
-filler. Instagram wants the hook above the "more" cut and up to 30 hashtags;
-Facebook wants the fuller narrative and only a few; YouTube needs the title
-under 100 chars with keywords in the tags field; TikTok wants it short with
-community hashtags.
+One set has to clear every platform at once, so `copy.mjs` checks each field
+against the tightest limit of the four and names which one binds:
 
-`copy.mjs` validates every field against the platform's real limit — caption
-length, hashtag count, YouTube's 100-char title and 500-char tag field — and
-prints whatever is over.
+| Field | Limit | Set by |
+|---|---|---|
+| Title | 100 chars | YouTube's title field |
+| Caption | 2200 chars | Instagram and TikTok |
+| Hashtags | 30 | Instagram |
+| Tags | 500 chars joined | YouTube's keyword field |
+
+Output is `out/post-copy.md` and `out/copy/post.txt`.
 
 ## Sharing
 

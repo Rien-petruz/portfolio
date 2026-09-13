@@ -1,137 +1,102 @@
-// Builds the post copy for every platform from the `post` block in
-// slides.json, and checks it against each platform's real limits.
+// Builds the post copy from the `post` block in slides.json — one title, one
+// description, one set of hashtags and tags, used on every platform.
 //
 //   node tools/church-carousel/copy.mjs
 //
-// Writes out/post-copy.md (everything in one place) and out/copy/<platform>.txt
-// (one file per platform, split by which field each part goes in).
+// Writes out/post-copy.md and out/copy/post.txt. Because one set has to work
+// everywhere, each field is checked against the tightest limit among Facebook,
+// YouTube, TikTok and Instagram, and the report names which one binds.
 
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
-const PLATFORMS = {
-  instagram: {
-    label: 'Instagram',
-    // The caption box holds the description and the hashtags together.
-    caption: (p) => `${p.description}\n\n.\n.\n.\n${p.hashtags.join(' ')}`,
-    limits: { caption: 2200, hashtags: 30 },
-    fields: 'Caption = description + hashtags. Tags are accounts you tag on the image itself.',
-  },
-  facebook: {
-    label: 'Facebook',
-    caption: (p) => `${p.description}\n\n${p.hashtags.join(' ')}`,
-    limits: { caption: 63206, hashtags: 6 },
-    fields: 'Post body = description + hashtags. Facebook rewards fewer hashtags than Instagram.',
-  },
-  youtube: {
-    label: 'YouTube',
-    caption: (p) => p.description,
-    limits: { title: 100, caption: 5000, tagsChars: 500 },
-    fields: 'Title and description are separate fields. Tags go in the keywords field; the first 3 hashtags show above the title.',
-  },
-  tiktok: {
-    label: 'TikTok',
-    caption: (p) => `${p.description}\n\n${p.hashtags.join(' ')}`,
-    limits: { caption: 2200, hashtags: 10 },
-    fields: 'Caption = description + hashtags. Tags are search keywords, not a field you fill in.',
-  },
+// The binding limit for each field, and the platform it comes from.
+const LIMITS = {
+  title: { max: 100, from: 'YouTube title' },
+  caption: { max: 2200, from: 'Instagram and TikTok captions' },
+  hashtags: { max: 30, from: 'Instagram' },
+  tagsChars: { max: 500, from: "YouTube's keyword field" },
 };
 
 const { post } = JSON.parse(readFileSync(join(here, 'slides.json'), 'utf8'));
-if (!post) throw new Error('slides.json has no `post` block — add one before running copy.mjs.');
+if (!post) throw new Error('slides.json has no `post` block.');
+
+const { title, description, hashtags, tags } = post;
+const caption = `${description}\n\n${hashtags.join(' ')}`;
+const tagLine = tags.join(', ');
+
+const rows = [
+  ['Title', title.length, LIMITS.title],
+  ['Caption', caption.length, LIMITS.caption],
+  ['Hashtags', hashtags.length, LIMITS.hashtags],
+  ['Tags', tagLine.length, LIMITS.tagsChars],
+];
+
+const over = rows.filter(([, n, lim]) => n > lim.max);
 
 const outDir = join(here, 'out');
 const copyDir = join(outDir, 'copy');
+rmSync(copyDir, { recursive: true, force: true });
 mkdirSync(copyDir, { recursive: true });
 
-const warnings = [];
-
-function check(name, spec, p, caption) {
-  const { limits } = spec;
-  const flag = (cond, msg) => { if (cond) warnings.push(`${spec.label}: ${msg}`); };
-
-  if (limits.title) flag(p.title.length > limits.title,
-    `title is ${p.title.length} chars, over the ${limits.title} limit`);
-  if (limits.caption) flag(caption.length > limits.caption,
-    `caption is ${caption.length} chars, over the ${limits.caption} limit`);
-  if (limits.hashtags) flag(p.hashtags.length > limits.hashtags,
-    `${p.hashtags.length} hashtags, over the ${limits.hashtags} limit`);
-  if (limits.tagsChars) {
-    const n = p.tags.join(',').length;
-    flag(n > limits.tagsChars, `tags total ${n} chars, over the ${limits.tagsChars} limit`);
-  }
-}
-
-const sections = [];
-
-for (const [key, spec] of Object.entries(PLATFORMS)) {
-  const p = post[key];
-  if (!p) { warnings.push(`${spec.label}: no copy in slides.json`); continue; }
-
-  const caption = spec.caption(p);
-  check(key, spec, p, caption);
-
-  writeFileSync(join(copyDir, `${key}.txt`), [
-    `=== ${spec.label.toUpperCase()} ===`,
-    spec.fields,
-    '',
-    '--- TITLE ---',
-    p.title,
-    '',
-    '--- CAPTION / DESCRIPTION ---',
-    caption,
-    '',
-    '--- HASHTAGS ---',
-    p.hashtags.join(' '),
-    '',
-    '--- TAGS / KEYWORDS ---',
-    p.tags.join(', '),
-    '',
-  ].join('\n'));
-
-  sections.push([
-    `## ${spec.label}`,
-    '',
-    `*${spec.fields}*`,
-    '',
-    `**Title** (${p.title.length} chars)`,
-    '',
-    `> ${p.title}`,
-    '',
-    `**Caption** (${caption.length} chars)`,
-    '',
-    '```',
-    caption,
-    '```',
-    '',
-    `**Hashtags** (${p.hashtags.length})`,
-    '',
-    p.hashtags.join(' '),
-    '',
-    '**Tags / keywords**',
-    '',
-    p.tags.join(', '),
-    '',
-  ].join('\n'));
-
-  console.log(`✓ ${spec.label.padEnd(10)} title ${String(p.title.length).padStart(3)}  caption ${String(caption.length).padStart(4)}  ${p.hashtags.length} hashtags  ${p.tags.length} tags`);
-}
+writeFileSync(join(copyDir, 'post.txt'), [
+  '=== THE NEWWINE PLACE — POST COPY ===',
+  'One set for Facebook, YouTube, TikTok and Instagram.',
+  '',
+  '--- TITLE ---',
+  title,
+  '',
+  '--- DESCRIPTION / CAPTION ---',
+  caption,
+  '',
+  '--- HASHTAGS ---',
+  hashtags.join(' '),
+  '',
+  '--- TAGS / KEYWORDS ---',
+  tagLine,
+  '',
+].join('\n'));
 
 writeFileSync(join(outDir, 'post-copy.md'), [
   `# Post copy — ${post.slug}`,
   '',
-  `Scripture: ${post.scripture}. Generated from \`slides.json\`.`,
+  `Scripture: ${post.scripture}. One set, posted as-is on Facebook, YouTube, TikTok and Instagram.`,
   '',
-  ...sections,
+  `## Title (${title.length} chars)`,
+  '',
+  `> ${title}`,
+  '',
+  `## Description (${description.length} chars)`,
+  '',
+  '```',
+  description,
+  '```',
+  '',
+  `## Hashtags (${hashtags.length})`,
+  '',
+  hashtags.join(' '),
+  '',
+  '## Tags / keywords',
+  '',
+  tagLine,
+  '',
+  '## Fits everywhere',
+  '',
+  '| Field | Length | Limit | Set by |',
+  '|---|---|---|---|',
+  ...rows.map(([name, n, lim]) => `| ${name} | ${n} | ${lim.max} | ${lim.from} |`),
+  '',
 ].join('\n'));
 
-if (warnings.length) {
-  console.log('\nCheck these:');
-  for (const w of warnings) console.log(`  ! ${w}`);
-} else {
-  console.log('\nEvery platform is within its limits.');
+for (const [name, n, lim] of rows) {
+  const mark = n > lim.max ? '!' : '✓';
+  console.log(`${mark} ${name.padEnd(9)} ${String(n).padStart(4)} / ${String(lim.max).padEnd(4)}  (${lim.from})`);
 }
-console.log(`\npost-copy.md + copy/*.txt → ${outDir}`);
+
+console.log(over.length
+  ? `\n${over.length} field(s) over — trim before posting.`
+  : '\nOne set, fits every platform.');
+console.log(`\npost-copy.md + copy/post.txt → ${outDir}`);

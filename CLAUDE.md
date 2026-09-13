@@ -27,21 +27,18 @@ Videos ship with a silent audio track for the platforms that need one. Music
 goes on in-app, from the platform's own licensed library — never lifted from
 someone else's upload.
 
-**Every post ships copy for all four platforms — Facebook, YouTube, TikTok,
-Instagram — and each one gets a title, a description, hashtags, and tags.**
-Never hand over slides or a video without it.
+**Every post ships one title, one short description, one set of hashtags and
+one set of tags — the same copy on Facebook, YouTube, TikTok and Instagram.**
+Peter asked for this specifically; do not write per-platform variants or split
+them up again unless he asks. Never hand over slides or a video without it.
 
-Write the four platforms separately rather than pasting one caption into all
-of them; they reward different things:
+Because one set has to work everywhere, write to the tightest limit of the
+four: the title under 100 chars so YouTube doesn't truncate it, the caption
+short, the hashtags no more than 30. Mix in community tags (#BibleTok,
+#ChristianTikTok) alongside the branded ones so the single set still travels.
 
-| | What works |
-|---|---|
-| Instagram | Hook in the first line before the "more" cut; up to 30 hashtags; comment-prompt CTA |
-| Facebook | Longer narrative, full verse quoted; only a few hashtags; a share prompt |
-| YouTube | Title under 100 chars carrying the curiosity; keywords in the tags field; first 3 hashtags show above the title |
-| TikTok | Short and punchy; community hashtags (#bibletok, #christiantiktok) over branded ones |
-
-`copy.mjs` checks each platform against its real limits and says what is over.
+`copy.mjs` checks each field against the binding limit and names the platform
+it comes from.
 
 Keep the pastor's words as written. Titles, hooks, and CTAs are ours to write;
 the teaching itself is not paraphrased.
