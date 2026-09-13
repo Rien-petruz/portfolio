@@ -6,8 +6,9 @@ ready-to-post carousel slides for **@thenewwineplace**.
 ## Render
 
 ```bash
-node tools/church-carousel/render.mjs            # writes tools/church-carousel/out/
-node tools/church-carousel/render.mjs --out ~/Desktop/post
+node tools/church-carousel/render.mjs                  # every format
+node tools/church-carousel/render.mjs --format vertical
+node tools/church-carousel/render.mjs --format feed --out ~/Desktop/post
 ```
 
 No install step: the slides are HTML rendered by the Chromium already on the
@@ -27,16 +28,31 @@ the network.
 | `tojpeg.mjs` | PNG → JPEG for uploading or sharing |
 | `video.mjs` | Slides → a self-swiping MP4 |
 | `copy.mjs` | Post copy for all four platforms |
-| `out/` | Rendered slides, `slide-01.png` … (plus `.jpg` copies) |
-| `out/carousel.mp4` | The video cut of the deck |
+| `out/` | 4:5 feed slides, `slide-01.png` … (plus `.jpg` copies) |
+| `out/carousel.mp4` | The 4:5 video cut |
+| `out/9x16/` | 9:16 slides and `carousel-9x16.mp4` |
 | `out/post-copy.md` | Every platform's copy in one file |
 | `out/copy/*.txt` | One paste-ready file per platform |
+
+## Formats
+
+Both come from the same copy — the deck is rendered twice, not letterboxed.
+
+| Format | Size | For |
+|---|---|---|
+| `feed` | 1080×1350 | Instagram and Facebook — the tallest the feed allows, so it takes the most space |
+| `vertical` | 1080×1920 | TikTok and YouTube Shorts — full screen |
+
+The vertical format sets `padBottom` to 330px so the slide's own content stays
+above the caption, handle and buttons those apps lay over the lower third.
+Adjust it in `slides.json` if either app changes its layout.
 
 ## Video
 
 ```bash
 npm i ffmpeg-static                          # once
-node tools/church-carousel/video.mjs
+node tools/church-carousel/video.mjs                   # every format
+node tools/church-carousel/video.mjs --format vertical
 ```
 
 Each slide holds for its own `hold` seconds (set per slide in `slides.json`),
@@ -96,8 +112,7 @@ saves.
 
 ## Writing a post
 
-Edit `slides.json` and re-render. Output is 1080×1350 (4:5) — the tallest
-format Instagram and Facebook both accept, so it takes up the most feed space.
+Edit `slides.json` and re-render.
 
 Copy conventions:
 

@@ -2,7 +2,10 @@
 // `hold` seconds, then slides left as the next one comes in, the way a thumb
 // would push it. Run render.mjs first.
 //
-//   node tools/church-carousel/video.mjs
+//   node tools/church-carousel/video.mjs [--format feed|vertical]
+//
+// With no --format it builds every format in slides.json: the 4:5 feed cut and
+// the 9:16 cut for TikTok and YouTube Shorts.
 //
 // Needs a full ffmpeg (H.264 + the xfade filter). It looks for $FFMPEG_PATH,
 // then an ffmpeg-static install, then ffmpeg on PATH. The Chromium that ships
@@ -30,11 +33,25 @@ function findFfmpeg() {
   }
 }
 
-const { slides, size, video } = JSON.parse(readFileSync(join(here, 'slides.json'), 'utf8'));
-const { fps = 30, swipe = 0.5, output = 'carousel.mp4' } = video ?? {};
+const { slides, formats, video } = JSON.parse(readFileSync(join(here, 'slides.json'), 'utf8'));
+const { fps = 30, swipe = 0.5 } = video ?? {};
 
+const i = process.argv.indexOf('--format');
+const only = i > -1 ? process.argv[i + 1] : undefined;
+if (only && !formats[only]) {
+  throw new Error(`Unknown format "${only}". slides.json has: ${Object.keys(formats).join(', ')}`);
+}
+const chosen = only ? [[only, formats[only]]] : Object.entries(formats);
+
+const ffmpeg = findFfmpeg();
+
+for (const [name, format] of chosen) {
+build(name, format);
+}
+
+function build(name, format) {
 const frames = slides.map((s, i) => {
-  const file = join(here, 'out', `slide-${String(i + 1).padStart(2, '0')}.png`);
+  const file = join(here, format.dir, `slide-${String(i + 1).padStart(2, '0')}.png`);
   if (!existsSync(file)) throw new Error(`Missing ${file} — run render.mjs first.`);
   return { file, hold: s.hold ?? 3.5, type: s.type };
 });
@@ -42,7 +59,7 @@ const frames = slides.map((s, i) => {
 // Each input runs for its own hold. xfade consumes `swipe` seconds of overlap
 // per transition, so the offset of transition k is the running total of the
 // holds so far, less the overlap already spent.
-const inputs = frames.flatMap((f) => ['-loop', '1', '-t', String(f.hold), '-i', f.file]);
+  const inputs = frames.flatMap((f) => ['-loop', '1', '-t', String(f.hold), '-i', f.file]);
 
 const steps = [];
 let prev = '[0:v]';
@@ -58,13 +75,13 @@ frames.slice(1).forEach((f, i) => {
 
 const filter = [
   `${steps.join(';')}`,
-  `[v]fps=${fps},scale=${size.width}:${size.height},format=yuv420p[out]`,
+  `[v]fps=${fps},scale=${format.width}:${format.height},format=yuv420p[out]`,
 ].join(';');
 
 const total = frames.reduce((a, f) => a + f.hold, 0) - swipe * (frames.length - 1);
-const dest = join(here, 'out', output);
+const dest = join(here, format.dir, format.video);
 
-execFileSync(findFfmpeg(), [
+execFileSync(ffmpeg, [
   '-y', '-loglevel', 'error',
   ...inputs,
   // A silent track: some platforms reject or mishandle a video with no audio.
@@ -77,4 +94,5 @@ execFileSync(findFfmpeg(), [
   dest,
 ], { stdio: ['ignore', 'inherit', 'inherit'] });
 
-console.log(`${output}  ${total.toFixed(1)}s  ${(statSync(dest).size / 1024 / 1024).toFixed(1)} MB  ${size.width}x${size.height}`);
+console.log(`✓ ${name.padEnd(9)} ${format.width}x${format.height}  ${total.toFixed(1)}s  ${(statSync(dest).size / 1024 / 1024).toFixed(1)} MB  → ${join(format.dir, format.video)}`);
+}

@@ -13,7 +13,7 @@ const lines = (s) =>
     .map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`)
     .join('');
 
-const css = (fonts) => `
+const css = (fonts, size, padBottom) => `
   @font-face { font-family: 'Inter'; src: url(${fonts.inter}) format('woff2'); font-weight: 100 900; }
   @font-face { font-family: 'Playfair'; src: url(${fonts.playfair}) format('woff2'); font-weight: 400 900; }
   @font-face { font-family: 'Playfair'; src: url(${fonts.playfairItalic}) format('woff2'); font-weight: 400 900; font-style: italic; }
@@ -29,13 +29,13 @@ const css = (fonts) => `
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body { width: 1080px; height: 1350px; overflow: hidden; background: var(--ink); }
+  body { width: ${size.width}px; height: ${size.height}px; overflow: hidden; background: var(--ink); }
 
   .slide {
     position: relative;
-    width: 1080px;
-    height: 1350px;
-    padding: 72px 84px 66px;
+    width: ${size.width}px;
+    height: ${size.height}px;
+    padding: 72px 84px ${padBottom}px;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
     overflow: hidden;
@@ -223,9 +223,10 @@ function content(slide) {
   }
 }
 
-export function renderSlide({ slide, index, total, brand, avatar, fonts }) {
+export function renderSlide({ slide, index, total, brand, avatar, fonts, format }) {
+  const size = { width: format.width, height: format.height };
   return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><style>${css(fonts)}</style></head>
+<html lang="en"><head><meta charset="utf-8"><style>${css(fonts, size, format.padBottom ?? 66)}</style></head>
 <body><section class="slide">
     ${head(brand, avatar)}
     ${content(slide)}
