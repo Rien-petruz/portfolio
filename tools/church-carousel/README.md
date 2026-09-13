@@ -1,0 +1,57 @@
+# Church carousel generator — The NewWine Place
+
+Turns a teaching (scripture + message + pastor's byline) into a set of
+ready-to-post carousel slides for **@thenewwineplace**.
+
+## Render
+
+```bash
+node tools/church-carousel/render.mjs            # writes tools/church-carousel/out/
+node tools/church-carousel/render.mjs --out ~/Desktop/post
+```
+
+No install step: the slides are HTML rendered by the Chromium already on the
+machine, with the fonts and logo inlined as data URIs so a render never touches
+the network.
+
+## Files
+
+| File | Purpose |
+|---|---|
+| `slides.json` | All copy — edit this to write a new post |
+| `template.mjs` | Slide markup + the brand styling |
+| `render.mjs` | HTML → PNG via headless Chromium |
+| `caption.md` | Caption + hashtags for the post body |
+| `assets/logo.jpg` | Profile mark shown on every slide |
+| `assets/fonts/` | Playfair Display + Inter (latin subsets) |
+| `out/` | Rendered slides, `slide-01.png` … |
+
+## Writing a post
+
+Edit `slides.json` and re-render. Output is 1080×1350 (4:5) — the tallest
+format Instagram and Facebook both accept, so it takes up the most feed space.
+
+Copy conventions:
+
+- `*word*` wraps a phrase in the gold italic highlight.
+- `\n` is a line break, `\n\n` a new paragraph.
+- Slide 1 should be a curiosity hook; the last slide carries the pastor's name.
+
+Slide types:
+
+| `type` | Fields | Use for |
+|---|---|---|
+| `hook` | `eyebrow`, `title`, `sub`, `cue` | Opening slide |
+| `verse` | `eyebrow`, `verse`, `ref` | Scripture |
+| `statement` | `kicker`, `lead`, `body` | Teaching beats |
+| `quote` | `eyebrow`, `quote` | The one line to screenshot |
+| `closing` | `title`, `author`, `church`, `cta` | Byline + call to action |
+
+Keep the deck to 10 slides or fewer — that is Instagram's carousel limit.
+
+## Environment note
+
+`render.mjs` prefers Chromium's `headless_shell` binary. The full `chrome`
+binary reserves ~87px of window chrome, which makes `--window-size` produce a
+short viewport and clips the slide footer; `CHROME_PATH` overrides the search
+if neither is where the script looks.
