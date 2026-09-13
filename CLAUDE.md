@@ -10,14 +10,19 @@ framework). Source lives in `src/`; `src/App.jsx` is the whole page.
 ## Social posts — The NewWine Place
 
 `tools/church-carousel/` turns a teaching from Pst Emmanuel Omini into a
-carousel, a self-swiping video, and the copy to post them. Everything for a
-post lives in `slides.json`; the scripts only render it.
+carousel, a self-swiping video, and the copy to post them. Each teaching is one
+file in `posts/`; brand, formats and the music bed are shared in `config.json`.
+The scripts only render what those files say.
 
 ```bash
-node tools/church-carousel/render.mjs    # slides -> out/slide-NN.png
-node tools/church-carousel/video.mjs     # video  -> out/carousel.mp4
-node tools/church-carousel/copy.mjs      # post copy -> out/post-copy.md, out/copy/*.txt
+node tools/church-carousel/render.mjs --post <slug>   # slides -> out/<slug>/
+node tools/church-carousel/video.mjs  --post <slug>   # video  -> out/<slug>/carousel.mp4
+node tools/church-carousel/copy.mjs   --post <slug>   # copy   -> out/<slug>/post-copy.md
 ```
+
+A new teaching is a new file in `posts/`, never an edit over the last one.
+Give it a `theme` — `night` or `parchment` — and don't run the same theme as
+the post before it, so the feed doesn't read as one long block.
 
 **Everything is 1080×1350 (4:5) — the house size, on every platform.** Peter
 asked for this specifically over a 9:16 short cut; don't add a vertical format
@@ -42,5 +47,11 @@ short, the hashtags no more than 30. Mix in community tags (#BibleTok,
 `copy.mjs` checks each field against the binding limit and names the platform
 it comes from.
 
-Keep the pastor's words as written. Titles, hooks, and CTAs are ours to write;
-the teaching itself is not paraphrased.
+**Post the teaching exactly as Peter sends it. Never add a Bible verse, a
+scripture slide or a reference he didn't include** — he asked for this
+specifically. If a teaching mentions a passage without quoting it, leave it
+mentioned.
+
+Beyond that, keep the pastor's words as written, his own grammar included.
+Titles, hooks, and CTAs are ours to write; the teaching itself is never
+paraphrased.

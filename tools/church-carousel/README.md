@@ -6,9 +6,12 @@ ready-to-post carousel slides for **@thenewwineplace**.
 ## Render
 
 ```bash
-node tools/church-carousel/render.mjs
-node tools/church-carousel/render.mjs --out ~/Desktop/post
+node tools/church-carousel/render.mjs --post name-your-reality
+node tools/church-carousel/render.mjs --post name-your-reality --out ~/Desktop/post
 ```
+
+Every script takes `--post <slug>`, matching a file in `posts/`, and writes to
+`out/<slug>/`.
 
 No install step: the slides are HTML rendered by the Chromium already on the
 machine, with the fonts and logo inlined as data URIs so a render never touches
@@ -18,7 +21,9 @@ the network.
 
 | File | Purpose |
 |---|---|
-| `slides.json` | All copy — edit this to write a new post |
+| `posts/*.json` | One file per teaching — slides, theme and post copy |
+| `config.json` | Brand, formats and the music bed, shared by every post |
+| `load.mjs` | Resolves `--post <slug>` and merges it with the config |
 | `template.mjs` | Slide markup + the brand styling |
 | `render.mjs` | HTML → PNG via headless Chromium |
 | `assets/logo.jpg` | Profile mark shown on every slide |
@@ -39,7 +44,7 @@ post takes the most space on screen. This is the house size; use it on every
 platform, including TikTok and YouTube, where it posts fine and simply sits
 inside a little letterboxing.
 
-`formats` in `slides.json` is what defines it. The scripts loop whatever is in
+`formats` in `config.json` is what defines it. The scripts loop whatever is in
 there and take `--format <name>` to build just one, so a second size can be
 added later without touching them.
 
@@ -47,13 +52,13 @@ added later without touching them.
 
 ```bash
 npm i ffmpeg-static                          # once
-node tools/church-carousel/video.mjs
+node tools/church-carousel/video.mjs --post name-your-reality
 ```
 
-Each slide holds for its own `hold` seconds (set per slide in `slides.json`),
+Each slide holds for its own `hold` seconds (set per slide in the post's file),
 then slides left as the next one arrives — a hands-free version of the swipe.
 Output is H.264 1080×1350. The music bed comes from `video.audio` in
-`slides.json`:
+`config.json`:
 
 ```json
 "audio": {
@@ -87,12 +92,12 @@ encodes VP8), so install `ffmpeg-static` or point `FFMPEG_PATH` at a real one.
 ## Post copy
 
 ```bash
-node tools/church-carousel/copy.mjs
+node tools/church-carousel/copy.mjs --post name-your-reality
 ```
 
 One title, one short description, one set of hashtags and one set of tags —
-posted as-is on Facebook, YouTube, TikTok and Instagram. It lives in the `post`
-block of `slides.json`:
+posted as-is on Facebook, YouTube, TikTok and Instagram. It lives in the `post` block of the
+post's file:
 
 ```json
 "post": {
@@ -130,7 +135,22 @@ saves.
 
 ## Writing a post
 
-Edit `slides.json` and re-render.
+Add a file to `posts/`. Never edit over the last teaching — each one keeps its
+own file and its own `out/<slug>/` folder.
+
+Post the teaching exactly as sent. Don't add a verse, a scripture slide or a
+reference that wasn't in it.
+
+Pick a `theme` and alternate it from the post before, so consecutive posts
+don't look identical in the feed:
+
+| Theme | Look |
+|---|---|
+| `night` | Near-black, the logo's purple and red glowing in at the corners, gold accents |
+| `parchment` | Warm bone paper, plum ink, the logo's purple carrying the emphasis |
+
+Themes are defined in `template.mjs` — add another there when these two start
+repeating.
 
 Copy conventions:
 

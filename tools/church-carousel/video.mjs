@@ -2,10 +2,7 @@
 // `hold` seconds, then slides left as the next one comes in, the way a thumb
 // would push it. Run render.mjs first.
 //
-//   node tools/church-carousel/video.mjs [--format feed|vertical]
-//
-// With no --format it builds every format in slides.json: the 4:5 feed cut and
-// the 9:16 cut for TikTok and YouTube Shorts.
+//   node tools/church-carousel/video.mjs --post <slug>
 //
 // Needs a full ffmpeg (H.264 + the xfade filter). It looks for $FFMPEG_PATH,
 // then an ffmpeg-static install, then ffmpeg on PATH. The Chromium that ships
@@ -14,6 +11,7 @@
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { existsSync, readFileSync, statSync } from 'node:fs';
+import { loadPost } from './load.mjs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -33,28 +31,28 @@ function findFfmpeg() {
   }
 }
 
-const { slides, formats, video } = JSON.parse(readFileSync(join(here, 'slides.json'), 'utf8'));
+const { slides, formats, video, slug } = loadPost(here, process.argv);
 const { fps = 30, swipe = 0.5, audio } = video ?? {};
 
 const i = process.argv.indexOf('--format');
 const only = i > -1 ? process.argv[i + 1] : undefined;
 if (only && !formats[only]) {
-  throw new Error(`Unknown format "${only}". slides.json has: ${Object.keys(formats).join(', ')}`);
+  throw new Error(`Unknown format "${only}". config.json has: ${Object.keys(formats).join(', ')}`);
 }
 const chosen = only ? [[only, formats[only]]] : Object.entries(formats);
 
 const ffmpeg = findFfmpeg();
 
 for (const [name, format] of chosen) {
-build(name, format);
+  build(format);
 }
 
-function build(name, format) {
-const frames = slides.map((s, i) => {
-  const file = join(here, format.dir, `slide-${String(i + 1).padStart(2, '0')}.png`);
-  if (!existsSync(file)) throw new Error(`Missing ${file} — run render.mjs first.`);
-  return { file, hold: s.hold ?? 3.5, type: s.type };
-});
+function build(format) {
+  const frames = slides.map((s, i) => {
+    const file = join(here, format.dir, slug, `slide-${String(i + 1).padStart(2, '0')}.png`);
+    if (!existsSync(file)) throw new Error(`Missing ${file} — run render.mjs first.`);
+    return { file, hold: s.hold ?? 3.5, type: s.type };
+  });
 
 // Each input runs for its own hold. xfade consumes `swipe` seconds of overlap
 // per transition, so the offset of transition k is the running total of the
@@ -105,7 +103,7 @@ const filter = [
   ...(audioChain ? [audioChain] : []),
 ].join(';');
 
-const dest = join(here, format.dir, format.video);
+const dest = join(here, format.dir, slug, format.video);
 
 execFileSync(ffmpeg, [
   '-y', '-loglevel', 'error',
@@ -119,5 +117,5 @@ execFileSync(ffmpeg, [
   dest,
 ], { stdio: ['ignore', 'inherit', 'inherit'] });
 
-console.log(`✓ ${name.padEnd(9)} ${format.width}x${format.height}  ${total.toFixed(1)}s  ${(statSync(dest).size / 1024 / 1024).toFixed(1)} MB  ${track ? 'with music' : 'silent'}  → ${join(format.dir, format.video)}`);
+console.log(`✓ ${slug}  ${format.width}x${format.height}  ${total.toFixed(1)}s  ${(statSync(dest).size / 1024 / 1024).toFixed(1)} MB  ${track ? 'with music' : 'silent'}  → ${join(format.dir, slug, format.video)}`);
 }

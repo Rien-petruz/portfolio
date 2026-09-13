@@ -1,5 +1,39 @@
 // Slide markup + styling for The NewWine Place carousel.
 // `*word*` marks a highlighted phrase, `\n` a line break, `\n\n` a paragraph.
+//
+// A post picks its look with `theme` — the colours all come from the logo, so
+// the decks stay a family while no two consecutive posts look the same.
+
+export const THEMES = {
+  // Near-black with the logo's purple and red glowing in from the corners.
+  night: {
+    ground: '#0b0b10',
+    text: '#f4f2ee',
+    textRgb: '244, 242, 238',
+    accent: '#f5c518',
+    accentRgb: '245, 197, 24',
+    glow1: 'rgba(160, 43, 217, 0.30)',
+    glow2: 'rgba(229, 27, 35, 0.26)',
+    wash: 'rgba(245, 197, 24, 0.055)',
+    grainOpacity: 0.5,
+    grainBlend: 'overlay',
+    shadow: 'rgba(0, 0, 0, 0.45)',
+  },
+  // Warm bone paper, plum ink, the logo's purple carrying the emphasis.
+  parchment: {
+    ground: '#efe8da',
+    text: '#241026',
+    textRgb: '36, 16, 38',
+    accent: '#7a1ba5',
+    accentRgb: '122, 27, 165',
+    glow1: 'rgba(184, 134, 11, 0.30)',
+    glow2: 'rgba(122, 27, 165, 0.18)',
+    wash: 'rgba(196, 146, 32, 0.10)',
+    grainOpacity: 0.28,
+    grainBlend: 'multiply',
+    shadow: 'rgba(36, 16, 38, 0.20)',
+  },
+};
 
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -13,18 +47,17 @@ const lines = (s) =>
     .map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`)
     .join('');
 
-const css = (fonts, size, padBottom) => `
+const css = (fonts, size, padBottom, t) => `
   @font-face { font-family: 'Inter'; src: url(${fonts.inter}) format('woff2'); font-weight: 100 900; }
   @font-face { font-family: 'Playfair'; src: url(${fonts.playfair}) format('woff2'); font-weight: 400 900; }
   @font-face { font-family: 'Playfair'; src: url(${fonts.playfairItalic}) format('woff2'); font-weight: 400 900; font-style: italic; }
 
   :root {
-    --ink: #0b0b10;
-    --paper: #f4f2ee;
-    --gold: #f5c518;
-    --red: #e51b23;
-    --purple: #a02bd9;
-    --muted: rgba(244, 242, 238, 0.64);
+    --ink: ${t.ground};
+    --paper: ${t.text};
+    --gold: ${t.accent};
+    --muted: rgba(${t.textRgb}, 0.64);
+    --body: rgba(${t.textRgb}, 0.88);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,9 +73,9 @@ const css = (fonts, size, padBottom) => `
     grid-template-rows: auto minmax(0, 1fr) auto;
     overflow: hidden;
     background:
-      radial-gradient(820px 620px at 88% -6%, rgba(160, 43, 217, 0.30), transparent 62%),
-      radial-gradient(760px 640px at -12% 104%, rgba(229, 27, 35, 0.26), transparent 60%),
-      radial-gradient(1000px 900px at 50% 42%, rgba(245, 197, 24, 0.055), transparent 70%),
+      radial-gradient(820px 620px at 88% -6%, ${t.glow1}, transparent 62%),
+      radial-gradient(760px 640px at -12% 104%, ${t.glow2}, transparent 60%),
+      radial-gradient(1000px 900px at 50% 42%, ${t.wash}, transparent 70%),
       var(--ink);
     color: var(--paper);
     font-family: 'Inter', sans-serif;
@@ -54,8 +87,8 @@ const css = (fonts, size, padBottom) => `
     content: '';
     position: absolute;
     inset: 0;
-    opacity: 0.5;
-    mix-blend-mode: overlay;
+    opacity: ${t.grainOpacity};
+    mix-blend-mode: ${t.grainBlend};
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.42'/></svg>");
   }
 
@@ -63,7 +96,7 @@ const css = (fonts, size, padBottom) => `
     content: '';
     position: absolute;
     inset: 38px;
-    border: 1px solid rgba(245, 197, 24, 0.20);
+    border: 1px solid rgba(${t.accentRgb}, 0.22);
     border-radius: 10px;
     pointer-events: none;
   }
@@ -75,8 +108,8 @@ const css = (fonts, size, padBottom) => `
   .avatar {
     width: 96px; height: 96px; border-radius: 50%;
     overflow: hidden; background: #fff; flex: none;
-    border: 3px solid rgba(245, 197, 24, 0.85);
-    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
+    border: 3px solid rgba(${t.accentRgb}, 0.85);
+    box-shadow: 0 10px 34px ${t.shadow};
   }
   /* The supplied logo sits on a wide mock-up wall — zoom past the padding
      so the mark itself reads at avatar size. */
@@ -121,7 +154,7 @@ const css = (fonts, size, padBottom) => `
     letter-spacing: -1px;
   }
 
-  .text { margin-top: 44px; font-size: 42px; line-height: 1.56; color: rgba(244, 242, 238, 0.88); }
+  .text { margin-top: 44px; font-size: 42px; line-height: 1.56; color: var(--body); }
   .text p + p { margin-top: 30px; }
 
   .kicker {
@@ -139,7 +172,7 @@ const css = (fonts, size, padBottom) => `
     line-height: 1.34;
     margin-top: 44px;
     padding-left: 40px;
-    border-left: 4px solid rgba(245, 197, 24, 0.6);
+    border-left: 4px solid rgba(${t.accentRgb}, 0.6);
   }
   .ref { margin-top: 40px; padding-left: 44px; font-size: 28px; font-weight: 700; letter-spacing: 2.6px; text-transform: uppercase; color: var(--gold); }
 
@@ -155,14 +188,14 @@ const css = (fonts, size, padBottom) => `
   .byline { margin-top: 16px; font-size: 26px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
   .cta {
     margin-top: 62px; padding: 22px 44px; border-radius: 999px;
-    border: 1px solid rgba(245, 197, 24, 0.5); background: rgba(245, 197, 24, 0.08);
+    border: 1px solid rgba(${t.accentRgb}, 0.5); background: rgba(${t.accentRgb}, 0.10);
     font-size: 27px; font-weight: 700; letter-spacing: 0.4px; color: var(--gold);
   }
 
   /* ---------- footer ---------- */
   .foot { display: flex; align-items: center; justify-content: space-between; font-size: 23px; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; color: var(--muted); }
   .dots { display: flex; gap: 11px; }
-  .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(244, 242, 238, 0.26); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(${t.textRgb}, 0.26); }
   .dot.on { background: var(--gold); transform: scale(1.32); }
   .cue { color: var(--gold); }
 `;
@@ -223,10 +256,12 @@ function content(slide) {
   }
 }
 
-export function renderSlide({ slide, index, total, brand, avatar, fonts, format }) {
+export function renderSlide({ slide, index, total, brand, avatar, fonts, format, theme = 'night' }) {
   const size = { width: format.width, height: format.height };
+  const t = THEMES[theme];
+  if (!t) throw new Error(`Unknown theme "${theme}". Have: ${Object.keys(THEMES).join(', ')}`);
   return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><style>${css(fonts, size, format.padBottom ?? 66)}</style></head>
+<html lang="en"><head><meta charset="utf-8"><style>${css(fonts, size, format.padBottom ?? 66, t)}</style></head>
 <body><section class="slide">
     ${head(brand, avatar)}
     ${content(slide)}

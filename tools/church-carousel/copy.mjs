@@ -1,13 +1,14 @@
 // Builds the post copy from the `post` block in slides.json — one title, one
 // description, one set of hashtags and tags, used on every platform.
 //
-//   node tools/church-carousel/copy.mjs
+//   node tools/church-carousel/copy.mjs --post <slug>
 //
 // Writes out/post-copy.md and out/copy/post.txt. Because one set has to work
 // everywhere, each field is checked against the tightest limit among Facebook,
 // YouTube, TikTok and Instagram, and the report names which one binds.
 
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { loadPost } from './load.mjs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -21,8 +22,8 @@ const LIMITS = {
   tagsChars: { max: 500, from: "YouTube's keyword field" },
 };
 
-const { post } = JSON.parse(readFileSync(join(here, 'slides.json'), 'utf8'));
-if (!post) throw new Error('slides.json has no `post` block.');
+const { post, slug } = loadPost(here, process.argv);
+if (!post) throw new Error(`posts/${slug}.json has no \`post\` block.`);
 
 const { title, description, hashtags, tags } = post;
 const caption = `${description}\n\n${hashtags.join(' ')}`;
@@ -37,7 +38,7 @@ const rows = [
 
 const over = rows.filter(([, n, lim]) => n > lim.max);
 
-const outDir = join(here, 'out');
+const outDir = join(here, 'out', slug);
 const copyDir = join(outDir, 'copy');
 rmSync(copyDir, { recursive: true, force: true });
 mkdirSync(copyDir, { recursive: true });
@@ -61,9 +62,9 @@ writeFileSync(join(copyDir, 'post.txt'), [
 ].join('\n'));
 
 writeFileSync(join(outDir, 'post-copy.md'), [
-  `# Post copy — ${post.slug}`,
+  `# Post copy — ${slug}`,
   '',
-  `Scripture: ${post.scripture}. One set, posted as-is on Facebook, YouTube, TikTok and Instagram.`,
+  `${post.scripture ? `Scripture: ${post.scripture}. ` : ''}One set, posted as-is on Facebook, YouTube, TikTok and Instagram.`,
   '',
   `## Title (${title.length} chars)`,
   '',

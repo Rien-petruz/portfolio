@@ -2,13 +2,11 @@
 // with this environment. Fonts and the logo are inlined as data URIs so a
 // render never depends on the network.
 //
-//   node tools/church-carousel/render.mjs [--format feed|vertical] [--out <dir>]
-//
-// With no --format it renders every format in slides.json: the 4:5 feed deck
-// and the 9:16 cut for TikTok and YouTube Shorts.
+//   node tools/church-carousel/render.mjs --post <slug> [--out <dir>]
 
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { loadPost } from './load.mjs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderSlide } from './template.mjs';
@@ -39,12 +37,11 @@ const flag = (name) => {
   return i > -1 ? process.argv[i + 1] : undefined;
 };
 
-const config = JSON.parse(readFileSync(join(here, 'slides.json'), 'utf8'));
-const { brand, slides, formats } = config;
+const { brand, slides, formats, theme, slug } = loadPost(here, process.argv);
 
 const only = flag('--format');
 if (only && !formats[only]) {
-  throw new Error(`Unknown format "${only}". slides.json has: ${Object.keys(formats).join(', ')}`);
+  throw new Error(`Unknown format "${only}". config.json has: ${Object.keys(formats).join(', ')}`);
 }
 const chosen = only ? [[only, formats[only]]] : Object.entries(formats);
 
@@ -58,7 +55,7 @@ const avatar = dataUri(brand.avatar, 'image/jpeg');
 const chrome = findChrome();
 
 for (const [name, format] of chosen) {
-  const outDir = resolve(here, flag('--out') ?? format.dir);
+  const outDir = resolve(here, flag('--out') ?? join(format.dir, slug));
   const workDir = join(outDir, '.html');
 
   rmSync(workDir, { recursive: true, force: true });
@@ -69,7 +66,7 @@ for (const [name, format] of chosen) {
     const html = join(workDir, `slide-${n}.html`);
     const png = join(outDir, `slide-${n}.png`);
 
-    writeFileSync(html, renderSlide({ slide, index: i, total: slides.length, brand, avatar, fonts, format }));
+    writeFileSync(html, renderSlide({ slide, index: i, total: slides.length, brand, avatar, fonts, format, theme }));
 
     execFileSync(chrome, [
       ...(chrome.endsWith('headless_shell') ? [] : ['--headless=new']),
@@ -85,5 +82,5 @@ for (const [name, format] of chosen) {
   });
 
   rmSync(workDir, { recursive: true, force: true });
-  console.log(`✓ ${name.padEnd(9)} ${format.width}x${format.height}  ${slides.length} slides → ${outDir}`);
+  console.log(`✓ ${slug}  ${theme}  ${format.width}x${format.height}  ${slides.length} slides → ${outDir}`);
 }

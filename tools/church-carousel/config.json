@@ -1,0 +1,30 @@
+{
+  "brand": {
+    "handle": "@thenewwineplace",
+    "church": "The NewWine Place",
+    "author": "Pst Emmanuel Omini",
+    "avatar": "assets/logo.jpg"
+  },
+  "formats": {
+    "feed": {
+      "label": "Instagram / Facebook feed",
+      "width": 1080,
+      "height": 1350,
+      "dir": "out",
+      "video": "carousel.mp4",
+      "padBottom": 66
+    }
+  },
+  "video": {
+    "fps": 30,
+    "swipe": 0.5,
+    "audio": {
+      "file": "assets/audio/prayer-instrumental.mp3",
+      "credit": "Prayer instrumental — supplied by Peter",
+      "startAt": 0,
+      "fadeIn": 1.0,
+      "fadeOut": 2.5,
+      "loudness": -14
+    }
+  }
+}
