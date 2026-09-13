@@ -21,13 +21,16 @@ the network.
 | `slides.json` | All copy — edit this to write a new post |
 | `template.mjs` | Slide markup + the brand styling |
 | `render.mjs` | HTML → PNG via headless Chromium |
-| `caption.md` | Caption + hashtags for the post body |
+| `caption.md` | Instagram caption, kept for reference |
 | `assets/logo.jpg` | Profile mark shown on every slide |
 | `assets/fonts/` | Playfair Display + Inter (latin subsets) |
 | `tojpeg.mjs` | PNG → JPEG for uploading or sharing |
 | `video.mjs` | Slides → a self-swiping MP4 |
+| `copy.mjs` | Post copy for all four platforms |
 | `out/` | Rendered slides, `slide-01.png` … (plus `.jpg` copies) |
 | `out/carousel.mp4` | The video cut of the deck |
+| `out/post-copy.md` | Every platform's copy in one file |
+| `out/copy/*.txt` | One paste-ready file per platform |
 
 ## Video
 
@@ -48,6 +51,35 @@ finishes.
 `video.mjs` needs a full ffmpeg — H.264 and the `xfade` filter. The ffmpeg
 bundled with Playwright's Chromium has neither (it only decodes MJPEG and
 encodes VP8), so install `ffmpeg-static` or point `FFMPEG_PATH` at a real one.
+
+## Post copy
+
+```bash
+node tools/church-carousel/copy.mjs
+```
+
+Every post ships copy for Facebook, YouTube, TikTok and Instagram, and each
+gets a **title, description, hashtags and tags**. It lives in the `post` block
+of `slides.json`, one object per platform:
+
+```json
+"instagram": {
+  "title": "…",         // the hook; on YouTube this is the actual title field
+  "description": "…",   // the caption body
+  "hashtags": ["#…"],   // appended to the caption by copy.mjs
+  "tags": ["…"]         // YouTube's keyword field; search keywords elsewhere
+}
+```
+
+Write each platform separately — the same caption pasted four times reads as
+filler. Instagram wants the hook above the "more" cut and up to 30 hashtags;
+Facebook wants the fuller narrative and only a few; YouTube needs the title
+under 100 chars with keywords in the tags field; TikTok wants it short with
+community hashtags.
+
+`copy.mjs` validates every field against the platform's real limit — caption
+length, hashtag count, YouTube's 100-char title and 500-char tag field — and
+prints whatever is over.
 
 ## Sharing
 
