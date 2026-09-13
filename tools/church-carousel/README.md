@@ -24,7 +24,21 @@ the network.
 | `caption.md` | Caption + hashtags for the post body |
 | `assets/logo.jpg` | Profile mark shown on every slide |
 | `assets/fonts/` | Playfair Display + Inter (latin subsets) |
-| `out/` | Rendered slides, `slide-01.png` … |
+| `tojpeg.mjs` | PNG → JPEG for uploading or sharing |
+| `out/` | Rendered slides, `slide-01.png` … (plus `.jpg` copies) |
+
+## Sharing
+
+`slide-NN.png` is the master. For anywhere that wants a smaller file:
+
+```bash
+node tools/church-carousel/tojpeg.mjs 0.82 tools/church-carousel/out/slide-0*.png
+```
+
+Quality `0.82` lands around 60-110 KB a slide, which is well above what
+Instagram keeps after its own re-compression. The grain texture dominates the
+file size, so dropping quality further buys little and costs more than it
+saves.
 
 ## Writing a post
 
