@@ -84,11 +84,13 @@ for (const [name, format] of chosen) {
   });
 
   // The thumbnail is the opening slide laid out again at 9:16 — the shape the
-  // vertical feeds want for a cover. The deck and video stay 4:5.
+  // vertical feeds want for a cover. The deck and video stay 4:5. No footer:
+  // a slide counter and "swipe" belong on a deck, not on a standalone cover.
   const cover = join(workDir, 'thumbnail.html');
   writeFileSync(cover, renderSlide({
     slide: slides[0], index: 0, total: slides.length, brand, avatar, fonts, theme,
     format: thumbnail,
+    footer: false,
   }));
   shoot(cover, join(outDir, 'thumbnail.png'), thumbnail);
 

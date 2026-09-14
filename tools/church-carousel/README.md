@@ -48,7 +48,8 @@ inside a little letterboxing.
 The thumbnail is the one exception, at **1080×1920 (9:16)** — the shape the
 vertical feeds want for a cover. It is the opening slide laid out again at that
 size rather than a crop or a pad, so nothing is cut off and the type stays
-sharp. `thumbnail` in `config.json` sets it.
+sharp. It carries no footer — a slide counter and "swipe" make no sense on a
+standalone cover. `thumbnail` in `config.json` sets the size.
 
 `formats` in `config.json` defines the deck size. The scripts loop whatever is in
 there and take `--format <name>` to build just one, so a second size can be

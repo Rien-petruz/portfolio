@@ -32,8 +32,9 @@ a vertical video format or offer one again unless he asks.
 
 **The thumbnail is the exception: 1080×1920 (9:16), at his request.** It is the
 opening slide laid out again at that size — a real render, not a crop or a pad
-of the 4:5 slide. `thumbnail` in `config.json` sets it. Don't "correct" it back
-to 4:5.
+of the 4:5 slide — and with no footer, since a slide counter and "swipe" belong
+on a deck, not on a standalone cover. `thumbnail` in `config.json` sets the
+size. Don't "correct" it back to 4:5 or put the footer back.
 
 The video carries the music bed named in `video.audio` in `slides.json` —
 Peter supplies the track. It's trimmed to the runtime, normalised to −14 LUFS,

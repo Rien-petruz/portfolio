@@ -271,7 +271,7 @@ function content(slide) {
   }
 }
 
-export function renderSlide({ slide, index, total, brand, avatar, fonts, format, theme = 'night' }) {
+export function renderSlide({ slide, index, total, brand, avatar, fonts, format, theme = 'night', footer = true }) {
   const size = { width: format.width, height: format.height };
   const t = THEMES[theme];
   if (!t) throw new Error(`Unknown theme "${theme}". Have: ${Object.keys(THEMES).join(', ')}`);
@@ -280,6 +280,6 @@ export function renderSlide({ slide, index, total, brand, avatar, fonts, format,
 <body><section class="slide">
     ${head(brand, avatar)}
     ${content(slide)}
-    ${foot(index, total, slide.cue, brand.handle)}
+    ${footer ? foot(index, total, slide.cue, brand.handle) : ''}
   </section></body></html>`;
 }
