@@ -21,8 +21,10 @@ node tools/church-carousel/copy.mjs   --post <slug>   # copy   -> out/<slug>/pos
 ```
 
 A new teaching is a new file in `posts/`, never an edit over the last one.
-Give it a `theme` — `night` or `parchment` — and don't run the same theme as
-the post before it, so the feed doesn't read as one long block.
+Give it a `theme` — `night`, `parchment` or `vintage` — and rotate it, never
+repeating the post before. Peter notices when two look alike, so when in doubt
+reach for the one he has not seen in a while, or add a new palette to
+`template.mjs` (drawn from the logo, so the decks stay a family).
 
 **Everything is 1080×1350 (4:5) — the house size, on every platform.** Peter
 asked for this specifically over a 9:16 short cut; don't add a vertical format

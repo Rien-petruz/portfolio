@@ -19,6 +19,21 @@ export const THEMES = {
     grainBlend: 'overlay',
     shadow: 'rgba(0, 0, 0, 0.45)',
   },
+  // Deep wine — the church's own name — with crimson and the logo's purple
+  // burning in at the corners, and warm gold carrying the emphasis.
+  vintage: {
+    ground: '#2e0a12',
+    text: '#f7efe4',
+    textRgb: '247, 239, 228',
+    accent: '#f0b429',
+    accentRgb: '240, 180, 41',
+    glow1: 'rgba(196, 30, 58, 0.34)',
+    glow2: 'rgba(122, 27, 165, 0.26)',
+    wash: 'rgba(240, 180, 41, 0.07)',
+    grainOpacity: 0.42,
+    grainBlend: 'overlay',
+    shadow: 'rgba(0, 0, 0, 0.50)',
+  },
   // Warm bone paper, plum ink, the logo's purple carrying the emphasis.
   parchment: {
     ground: '#efe8da',
