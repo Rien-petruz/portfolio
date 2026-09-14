@@ -5,7 +5,7 @@
 //   node tools/church-carousel/render.mjs --post <slug> [--out <dir>]
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { loadPost } from './load.mjs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -81,6 +81,10 @@ for (const [name, format] of chosen) {
     ], { stdio: ['ignore', 'ignore', 'pipe'] });
   });
 
+  // The opening slide doubles as the video's thumbnail — same file, named for
+  // what it's for, so it isn't hunted for among the numbered slides.
+  copyFileSync(join(outDir, 'slide-01.png'), join(outDir, 'thumbnail.png'));
+
   rmSync(workDir, { recursive: true, force: true });
-  console.log(`✓ ${slug}  ${theme}  ${format.width}x${format.height}  ${slides.length} slides → ${outDir}`);
+  console.log(`✓ ${slug}  ${theme}  ${format.width}x${format.height}  ${slides.length} slides + thumbnail → ${outDir}`);
 }

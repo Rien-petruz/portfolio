@@ -36,16 +36,18 @@ faded both ends and resampled to 48 kHz. With no `audio` block it falls back to
 a silent track. Only use music Peter has the rights to; anything lifted from
 another upload risks a Content ID claim.
 
-**Every post is delivered as exactly four things:**
+**Every post is delivered as exactly five things:**
 
 1. **The video** — with the music bed, built the same way every time
-2. **The title**
-3. **The description**
-4. **The tags** (hashtags and keywords)
+2. **The thumbnail** — `out/<slug>/thumbnail.png`, the opening slide, sent as a file
+3. **The title**
+4. **The description**
+5. **The tags** (hashtags and keywords)
 
-Peter asked for this specifically. The video is the deliverable, not the slide
-images — the slides are just the frames it is built from, so render them, build
-the video, and hand over the video. Don't ship a post missing any of the four.
+Peter asked for each of these specifically. Apart from the thumbnail, the slide
+images are not the deliverable — they are the frames the video is built from,
+so render them, build the video, and hand over the video. Don't ship a post
+missing any of the five.
 
 **The title, description and tags are one set — the same copy on Facebook,
 YouTube, TikTok and Instagram.** Don't write per-platform variants or split

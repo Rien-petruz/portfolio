@@ -33,6 +33,7 @@ the network.
 | `video.mjs` | Slides → a self-swiping MP4 |
 | `copy.mjs` | Post copy for all four platforms |
 | `out/` | Rendered slides, `slide-01.png` … (plus `.jpg` copies) |
+| `out/<slug>/thumbnail.png` | The opening slide, for use as the video thumbnail |
 | `out/carousel.mp4` | The video cut of the deck |
 | `out/post-copy.md` | The post copy, with its limit check |
 | `out/copy/post.txt` | Paste-ready title, caption, hashtags, tags |
