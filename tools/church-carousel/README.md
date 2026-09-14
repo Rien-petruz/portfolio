@@ -33,19 +33,24 @@ the network.
 | `video.mjs` | Slides → a self-swiping MP4 |
 | `copy.mjs` | Post copy for all four platforms |
 | `out/` | Rendered slides, `slide-01.png` … (plus `.jpg` copies) |
-| `out/<slug>/thumbnail.png` | The opening slide, for use as the video thumbnail |
+| `out/<slug>/thumbnail.png` | The opening slide at 9:16, for use as the video thumbnail |
 | `out/carousel.mp4` | The video cut of the deck |
 | `out/post-copy.md` | The post copy, with its limit check |
 | `out/copy/post.txt` | Paste-ready title, caption, hashtags, tags |
 
 ## Format
 
-Everything renders at **1080×1350 (4:5)** — the tallest the feed allows, so a
+The deck and the video render at **1080×1350 (4:5)** — the tallest the feed allows, so a
 post takes the most space on screen. This is the house size; use it on every
 platform, including TikTok and YouTube, where it posts fine and simply sits
 inside a little letterboxing.
 
-`formats` in `config.json` is what defines it. The scripts loop whatever is in
+The thumbnail is the one exception, at **1080×1920 (9:16)** — the shape the
+vertical feeds want for a cover. It is the opening slide laid out again at that
+size rather than a crop or a pad, so nothing is cut off and the type stays
+sharp. `thumbnail` in `config.json` sets it.
+
+`formats` in `config.json` defines the deck size. The scripts loop whatever is in
 there and take `--format <name>` to build just one, so a second size can be
 added later without touching them.
 

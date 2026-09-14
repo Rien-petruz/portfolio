@@ -26,9 +26,14 @@ repeating the post before. Peter notices when two look alike, so when in doubt
 reach for the one he has not seen in a while, or add a new palette to
 `template.mjs` (drawn from the logo, so the decks stay a family).
 
-**Everything is 1080×1350 (4:5) — the house size, on every platform.** Peter
-asked for this specifically over a 9:16 short cut; don't add a vertical format
-or offer one again unless he asks.
+**The deck and the video are 1080×1350 (4:5) — the house size, on every
+platform.** Peter asked for this specifically over a 9:16 short cut; don't add
+a vertical video format or offer one again unless he asks.
+
+**The thumbnail is the exception: 1080×1920 (9:16), at his request.** It is the
+opening slide laid out again at that size — a real render, not a crop or a pad
+of the 4:5 slide. `thumbnail` in `config.json` sets it. Don't "correct" it back
+to 4:5.
 
 The video carries the music bed named in `video.audio` in `slides.json` —
 Peter supplies the track. It's trimmed to the runtime, normalised to −14 LUFS,
@@ -39,7 +44,7 @@ another upload risks a Content ID claim.
 **Every post is delivered as exactly five things:**
 
 1. **The video** — with the music bed, built the same way every time
-2. **The thumbnail** — `out/<slug>/thumbnail.png`, the opening slide, sent as a file
+2. **The thumbnail** — `out/<slug>/thumbnail.png`, the opening slide at 9:16, sent as a file
 3. **The title**
 4. **The description**
 5. **The tags** (hashtags and keywords)

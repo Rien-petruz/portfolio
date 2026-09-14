@@ -5,7 +5,7 @@
 //   node tools/church-carousel/render.mjs --post <slug> [--out <dir>]
 
 import { execFileSync } from 'node:child_process';
-import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { loadPost } from './load.mjs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -37,7 +37,7 @@ const flag = (name) => {
   return i > -1 ? process.argv[i + 1] : undefined;
 };
 
-const { brand, slides, formats, theme, slug } = loadPost(here, process.argv);
+const { brand, slides, formats, thumbnail, theme, slug } = loadPost(here, process.argv);
 
 const only = flag('--format');
 if (only && !formats[only]) {
@@ -54,6 +54,19 @@ const avatar = dataUri(brand.avatar, 'image/jpeg');
 
 const chrome = findChrome();
 
+const shoot = (html, png, { width, height }) =>
+  execFileSync(chrome, [
+    ...(chrome.endsWith('headless_shell') ? [] : ['--headless=new']),
+    '--no-sandbox',
+    '--disable-gpu',
+    '--hide-scrollbars',
+    '--force-device-scale-factor=1',
+    '--virtual-time-budget=3000',
+    `--window-size=${width},${height}`,
+    `--screenshot=${png}`,
+    `file://${html}`,
+  ], { stdio: ['ignore', 'ignore', 'pipe'] });
+
 for (const [name, format] of chosen) {
   const outDir = resolve(here, flag('--out') ?? join(format.dir, slug));
   const workDir = join(outDir, '.html');
@@ -67,24 +80,18 @@ for (const [name, format] of chosen) {
     const png = join(outDir, `slide-${n}.png`);
 
     writeFileSync(html, renderSlide({ slide, index: i, total: slides.length, brand, avatar, fonts, format, theme }));
-
-    execFileSync(chrome, [
-      ...(chrome.endsWith('headless_shell') ? [] : ['--headless=new']),
-      '--no-sandbox',
-      '--disable-gpu',
-      '--hide-scrollbars',
-      '--force-device-scale-factor=1',
-      '--virtual-time-budget=3000',
-      `--window-size=${format.width},${format.height}`,
-      `--screenshot=${png}`,
-      `file://${html}`,
-    ], { stdio: ['ignore', 'ignore', 'pipe'] });
+    shoot(html, png, format);
   });
 
-  // The opening slide doubles as the video's thumbnail — same file, named for
-  // what it's for, so it isn't hunted for among the numbered slides.
-  copyFileSync(join(outDir, 'slide-01.png'), join(outDir, 'thumbnail.png'));
+  // The thumbnail is the opening slide laid out again at 9:16 — the shape the
+  // vertical feeds want for a cover. The deck and video stay 4:5.
+  const cover = join(workDir, 'thumbnail.html');
+  writeFileSync(cover, renderSlide({
+    slide: slides[0], index: 0, total: slides.length, brand, avatar, fonts, theme,
+    format: thumbnail,
+  }));
+  shoot(cover, join(outDir, 'thumbnail.png'), thumbnail);
 
   rmSync(workDir, { recursive: true, force: true });
-  console.log(`✓ ${slug}  ${theme}  ${format.width}x${format.height}  ${slides.length} slides + thumbnail → ${outDir}`);
+  console.log(`✓ ${slug}  ${theme}  ${format.width}x${format.height}  ${slides.length} slides + ${thumbnail.width}x${thumbnail.height} thumbnail → ${outDir}`);
 }

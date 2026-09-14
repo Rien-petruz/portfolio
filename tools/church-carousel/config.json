@@ -26,5 +26,11 @@
       "fadeOut": 2.5,
       "loudness": -14
     }
+  },
+  "thumbnail": {
+    "label": "Video cover",
+    "width": 1080,
+    "height": 1920,
+    "padBottom": 300
   }
 }
