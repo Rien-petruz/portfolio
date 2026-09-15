@@ -75,3 +75,14 @@ mentioned.
 Beyond that, keep the pastor's words as written, his own grammar included.
 Titles, hooks, and CTAs are ours to write; the teaching itself is never
 paraphrased.
+
+**The title has to carry the moral, not describe the scene.** Peter rejected
+"Same Storm. One Panicked, One Slept." for exactly this: it recounted what
+happened in the passage instead of the lesson drawn from it. Ask what the
+teaching is telling the reader about themselves, then say that in a way that
+opens a question — "The Real Storm Wasn't The One They Could See" carries the
+moral (the real problem is inside) and still makes you want the answer. A title
+that only narrates the story is a miss, however neat it sounds.
+
+The opening slide's headline and the post title should say the same thing, so
+the thumbnail and the title agree.

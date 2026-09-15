@@ -2,9 +2,9 @@
 
 One set, posted as-is on Facebook, YouTube, TikTok and Instagram.
 
-## Title (51 chars)
+## Title (59 chars)
 
-> Same Storm. One Panicked, One Slept. | Mark 4:35-40
+> The Real Storm Wasn't The One They Could See | Mark 4:35-40
 
 ## Description (1153 chars)
 
@@ -44,7 +44,7 @@ mark 4:35-40, jesus calms the storm, fear and faith, storms of life, faith over 
 
 | Field | Length | Limit | Set by |
 |---|---|---|---|
-| Title | 51 | 100 | YouTube title |
+| Title | 59 | 100 | YouTube title |
 | Caption | 1358 | 2200 | Instagram and TikTok captions |
 | Hashtags | 14 | 30 | Instagram |
 | Tags | 202 | 500 | YouTube's keyword field |
