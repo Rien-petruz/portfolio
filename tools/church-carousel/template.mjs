@@ -19,6 +19,21 @@ export const THEMES = {
     grainBlend: 'overlay',
     shadow: 'rgba(0, 0, 0, 0.45)',
   },
+  // Deep sea-blue before a storm, with the logo's purple and a cold steel
+  // light at the corners, and gold holding the emphasis.
+  tempest: {
+    ground: '#0c1c2e',
+    text: '#eaf1f7',
+    textRgb: '234, 241, 247',
+    accent: '#f5c518',
+    accentRgb: '245, 197, 24',
+    glow1: 'rgba(122, 27, 165, 0.32)',
+    glow2: 'rgba(24, 104, 138, 0.42)',
+    wash: 'rgba(245, 197, 24, 0.05)',
+    grainOpacity: 0.45,
+    grainBlend: 'overlay',
+    shadow: 'rgba(0, 0, 0, 0.50)',
+  },
   // Deep wine — the church's own name — with crimson and the logo's purple
   // burning in at the corners, and warm gold carrying the emphasis.
   vintage: {

@@ -1,0 +1,50 @@
+# Post copy — the-storm-within
+
+One set, posted as-is on Facebook, YouTube, TikTok and Instagram.
+
+## Title (51 chars)
+
+> Same Storm. One Panicked, One Slept. | Mark 4:35-40
+
+## Description (1153 chars)
+
+```
+In Mark 4:35-40, the bible shows us two responses to the storm - Jesus's and his disciples'
+
+The storm had hit them. While his disciples were greatly troubled and feared for their lives, Jesus was somewhere sleeping.
+
+The same situation, different responses. Sometimes, the real problem is not what is happening on the outside but what has happened on the inside.
+
+The disciples ran to Jesus and questioned why He would sleep while their own lives were under threat.
+
+Jesus, after rebuking the storm, turns to them and says, "why are you so FEARFUL, is it that you do not have FAITH?"
+
+He didn't speak to them about how powerful the storm was. Rather, He speaks to them about what is happening in them.
+
+They could not address the storm on the outside because they have a greater storm on the inside - fear and faithlessness.
+
+Until there is quietness on your inside, every little wind around you will be a major concern.
+
+Many times, the bigger problem is not what is happening around you, but what has happened inside of you.
+
+— Pst Emmanuel Omini
+
+Which storm is louder for you right now — the one outside, or the one within? Tell us in the comments.
+```
+
+## Hashtags (14)
+
+#TheNewWinePlace #PstEmmanuelOmini #Mark4 #StormsOfLife #BibleTok #ChristianTikTok #BibleTeaching #FaithOverFear #PeaceOfGod #ChristianMindset #WordOfGod #DailyDevotional #ChristianMotivation #InnerPeace
+
+## Tags / keywords
+
+mark 4:35-40, jesus calms the storm, fear and faith, storms of life, faith over fear, inner peace, christian mindset, bible teaching, pst emmanuel omini, the newwine place, word of god, daily devotional
+
+## Fits everywhere
+
+| Field | Length | Limit | Set by |
+|---|---|---|---|
+| Title | 51 | 100 | YouTube title |
+| Caption | 1358 | 2200 | Instagram and TikTok captions |
+| Hashtags | 14 | 30 | Instagram |
+| Tags | 202 | 500 | YouTube's keyword field |

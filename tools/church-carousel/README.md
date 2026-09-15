@@ -156,6 +156,7 @@ don't look identical in the feed:
 | `night` | Near-black, the logo's purple and red glowing in at the corners, gold accents |
 | `parchment` | Warm bone paper, plum ink, the logo's purple carrying the emphasis |
 | `vintage` | Deep wine, crimson and purple at the corners, warm gold emphasis |
+| `tempest` | Deep sea-blue, purple and a cold steel light, gold emphasis |
 
 Every palette is drawn from the logo, so the decks stay a family. Themes are
 defined in `template.mjs` — add another there when these three start repeating.
