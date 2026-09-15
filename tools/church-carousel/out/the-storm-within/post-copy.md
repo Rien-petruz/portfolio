@@ -6,7 +6,7 @@ One set, posted as-is on Facebook, YouTube, TikTok and Instagram.
 
 > The Real Storm Wasn't The One They Could See | Mark 4:35-40
 
-## Description (1026 chars)
+## Description (1025 chars)
 
 ```
 In Mark 4:35-40, the bible shows us two responses to the storm - Jesus's and his disciples'
@@ -21,7 +21,7 @@ Jesus, after rebuking the storm, turns to them and says, "why are you so FEARFUL
 
 He didn't speak to them about how powerful the storm was. Rather, He speaks to them about what is happening in them.
 
-They could not address the storm on the outside because there have a greater storm on the inside - fear and faithlessness.
+They could not address the storm on the outside because they have a greater storm on the inside - fear and faithlessness.
 
 Until there is quietness on your inside, every little wind around you will be a major concern.
 
@@ -41,6 +41,6 @@ mark 4:35-40, jesus calms the storm, fear and faith, storms of life, faith over 
 | Field | Length | Limit | Set by |
 |---|---|---|---|
 | Title | 59 | 100 | YouTube title |
-| Caption | 1231 | 2200 | Instagram and TikTok captions |
+| Caption | 1230 | 2200 | Instagram and TikTok captions |
 | Hashtags | 14 | 30 | Instagram |
 | Tags | 202 | 500 | YouTube's keyword field |
