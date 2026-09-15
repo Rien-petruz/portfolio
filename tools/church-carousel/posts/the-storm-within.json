@@ -92,8 +92,14 @@
       "hold": 4.2
     },
     {
+      "type": "quote",
+      "eyebrow": "Remember",
+      "quote": "Many times, the bigger problem is not what is happening around you, but what has happend *inside of you*.",
+      "hold": 4.8
+    },
+    {
       "type": "closing",
-      "title": "The Bigger\nProblem Is\n*Inside*.",
+      "title": "The Storm\n*Within*.",
       "author": "Pst Emmanuel Omini",
       "church": "The NewWine Place",
       "cta": "Follow @thenewwineplace for more",
