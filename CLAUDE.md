@@ -67,11 +67,16 @@ short, the hashtags no more than 30. Mix in community tags (#BibleTok,
 `copy.mjs` checks each field against the binding limit and names the platform
 it comes from.
 
-**The description is Peter's text, character for character, and nothing else.**
-No byline, no "tell us in the comments", no closing line of ours, and no
-spelling or grammar corrections — he asked for this specifically after earlier
-posts carried both. If something reads like a typo, leave it and say so in the
-reply; he decides.
+**The description is short — two or three sentences he can copy and paste.**
+Pick the strongest self-contained lines from the teaching and use them
+verbatim; the video already carries the whole thing, so the caption doesn't
+repeat it. Never summarise or paraphrase to get it short — a shorter
+description means fewer of his sentences, never reworded ones.
+
+**Every word of it is Peter's, character for character.** No byline, no "tell
+us in the comments", no closing line of ours, and no spelling or grammar
+corrections — he asked for this specifically after earlier posts carried both.
+If something reads like a typo, leave it and say so in the reply; he decides.
 
 **Never add a Bible verse, a scripture slide or a reference he didn't
 include.** If a teaching mentions a passage without quoting it, leave it
