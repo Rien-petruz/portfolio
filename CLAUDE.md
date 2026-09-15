@@ -67,14 +67,20 @@ short, the hashtags no more than 30. Mix in community tags (#BibleTok,
 `copy.mjs` checks each field against the binding limit and names the platform
 it comes from.
 
-**Post the teaching exactly as Peter sends it. Never add a Bible verse, a
-scripture slide or a reference he didn't include** — he asked for this
-specifically. If a teaching mentions a passage without quoting it, leave it
+**The description is Peter's text, character for character, and nothing else.**
+No byline, no "tell us in the comments", no closing line of ours, and no
+spelling or grammar corrections — he asked for this specifically after earlier
+posts carried both. If something reads like a typo, leave it and say so in the
+reply; he decides.
+
+**Never add a Bible verse, a scripture slide or a reference he didn't
+include.** If a teaching mentions a passage without quoting it, leave it
 mentioned.
 
-Beyond that, keep the pastor's words as written, his own grammar included.
-Titles, hooks, and CTAs are ours to write; the teaching itself is never
-paraphrased.
+The slides carry his sentences under the same rule. The title, the opening
+hook and its sub-line are the only copy that is ours to write.
+
+The teaching itself is never paraphrased, shortened or tidied.
 
 **The title has to carry the moral, not describe the scene.** Peter rejected
 "Same Storm. One Panicked, One Slept." for exactly this: it recounted what
