@@ -84,9 +84,16 @@ mentioned.
 
 A slide can carry a line-art motif with `"art": "<name>"` — Peter asked for
 imagery that conveys the message. They are original drawings in `MOTIFS` in
-`template.mjs`, not photographs: nothing here generates or licenses photos, so
-if he wants real images he supplies them. Never draw a recognisable character
-or copy an existing illustration.
+`template.mjs`. Never draw a recognisable character or copy an existing
+illustration.
+
+**Real photographs have to come from Peter.** He asked for them; this
+environment can't supply them. Nothing here generates images, and the egress
+proxy denies every image host — Wikimedia, Unsplash, Pexels, Pixabay and
+Openverse were all refused (only package registries and Google Fonts are
+reachable). Don't spend a turn re-testing that. When he sends photos, composite
+them as a full-bleed background behind a theme-coloured scrim so the type stays
+legible, and keep the motifs for slides he hasn't supplied an image for.
 
 The slides carry his sentences under the same rule. The title, the opening
 hook and its sub-line are the only copy that is ours to write.
