@@ -55,6 +55,21 @@ export const THEMES = {
     grainBlend: 'overlay',
     shadow: 'rgba(0, 0, 0, 0.45)',
   },
+  // Deep violet after dark, lit by the logo's purple and red — and the only
+  // palette that carries its emphasis in coral rather than gold.
+  nocturne: {
+    ground: '#17112e',
+    text: '#f0ecf7',
+    textRgb: '240, 236, 247',
+    accent: '#ff7a59',
+    accentRgb: '255, 122, 89',
+    glow1: 'rgba(160, 43, 217, 0.34)',
+    glow2: 'rgba(229, 27, 35, 0.24)',
+    wash: 'rgba(255, 122, 89, 0.05)',
+    grainOpacity: 0.45,
+    grainBlend: 'overlay',
+    shadow: 'rgba(0, 0, 0, 0.50)',
+  },
   // Deep sea-blue before a storm, with the logo's purple and a cold steel
   // light at the corners, and gold holding the emphasis.
   tempest: {

@@ -21,10 +21,16 @@ node tools/church-carousel/copy.mjs   --post <slug>   # copy   -> out/<slug>/pos
 ```
 
 A new teaching is a new file in `posts/`, never an edit over the last one.
-Give it a `theme` — `night`, `parchment`, `vintage` or `tempest` — and rotate
-it, never repeating the post before. Peter notices when two look alike, so when in doubt
-reach for the one he has not seen in a while, or add a new palette to
-`template.mjs` (drawn from the logo, so the decks stay a family).
+Give it a `theme` — `night`, `parchment`, `vintage`, `tempest` or `nocturne`.
+**Peter tracks these across posts and wants one he has not seen, not a
+rotation through the existing set.** He has now asked three separate times for
+a look he hasn't had, so unless the deck count is well past the palette count,
+add a new one to `template.mjs` rather than reaching for an old favourite.
+
+New palettes stay in the family by taking their accent and glows from the
+logo's purple, red and gold — the ground is free to go anywhere. Vary the
+accent too: `night`, `vintage` and `tempest` all emphasise in gold, which is
+why `nocturne` uses coral.
 
 **The deck and the video are 1080×1350 (4:5) — the house size, on every
 platform.** Peter asked for this specifically over a 9:16 short cut; don't add
