@@ -1,0 +1,95 @@
+{
+  "slug": "miracles-in-motion",
+  "theme": "parchment",
+  "post": {
+    "title": "The Miracle Doesn't Meet You Where You Wait | Luke 17",
+    "description": "There are miracles that are received only when men are in motion.\n\nThe miracle is somewhere in your journey, but you won't see it until you have moved.\n\nMove!",
+    "hashtags": [
+      "#TheNewWinePlace", "#PstEmmanuelOmini", "#Luke17", "#TenLepers",
+      "#MiraclesInMotion", "#BibleTok", "#ChristianTikTok", "#BibleTeaching",
+      "#FaithInAction", "#StepOut", "#WordOfGod", "#DailyDevotional",
+      "#ChristianMotivation", "#MoveForward"
+    ],
+    "tags": [
+      "luke 17", "ten lepers", "miracles in motion", "faith in action",
+      "water into wine", "crossing the jordan", "step out in faith",
+      "bible teaching", "pst emmanuel omini", "the newwine place",
+      "word of god", "daily devotional"
+    ]
+  },
+  "slides": [
+    {
+      "type": "hook",
+      "eyebrow": "Luke 17",
+      "art": "road",
+      "title": "The Miracle\nDoesn't Meet You\nWhere You *Wait*.",
+      "sub": "Ten lepers, a wedding in Cana, and a river that would not part — three miracles that all waited for the same thing before they showed up.",
+      "cue": "Swipe →",
+      "hold": 4.0
+    },
+    {
+      "type": "statement",
+      "kicker": "01",
+      "art": "figures",
+      "lead": "In Luke 17, 10 lepers came to Jesus, seeking to be cleansed.",
+      "body": "Jesus spoke to them from a distance and asked them to go show themselves to the priest.",
+      "hold": 4.8
+    },
+    {
+      "type": "statement",
+      "kicker": "02",
+      "art": "door",
+      "lead": "Showing themselves to the priest is what they should do after they have been cleansed.",
+      "body": "Yet, Jesus asked them to do so while they were *yet lepers*.",
+      "hold": 4.8
+    },
+    {
+      "type": "statement",
+      "kicker": "03",
+      "art": "steps",
+      "lead": "The bible says while they were on their way, they were cleansed.",
+      "body": "They didn't receive the miracle until they *WERE ON THEIR WAY*.",
+      "hold": 4.8
+    },
+    {
+      "type": "statement",
+      "kicker": "04",
+      "art": "jar",
+      "lead": "At Cana Jesus instructed the men to take \"water\" to the chief of the ceremony at a time when wine was needed.",
+      "body": "The water didn't become wine *until they moved*.",
+      "hold": 5.4
+    },
+    {
+      "type": "statement",
+      "kicker": "05",
+      "art": "river",
+      "lead": "The priests (when Israel wanted to cross the Jordan) didn't see the river path until they stepped their feet in the water.",
+      "body": "There are miracles that are received only when men are *in motion*.",
+      "hold": 5.6
+    },
+    {
+      "type": "statement",
+      "kicker": "06",
+      "art": "arrow",
+      "lead": "While you are waiting for miracles to happen before you move, God has purposed that it is when you have moved that you'd see the miracles.",
+      "body": "There are miracles that can only be received by people who are *in motion*.",
+      "hold": 6.0
+    },
+    {
+      "type": "quote",
+      "eyebrow": "The Point",
+      "art": "marker",
+      "quote": "The miracle is somewhere in your journey, but you won't see it *until you have moved*.",
+      "hold": 4.4
+    },
+    {
+      "type": "closing",
+      "art": "steps",
+      "title": "*Move!*",
+      "author": "Pst Emmanuel Omini",
+      "church": "The NewWine Place",
+      "cta": "Follow @thenewwineplace for more",
+      "hold": 3.6
+    }
+  ]
+}

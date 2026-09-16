@@ -167,6 +167,24 @@ Copy conventions:
 - `\n` is a line break, `\n\n` a new paragraph.
 - Slide 1 should be a curiosity hook; the last slide carries the pastor's name.
 
+Any slide can carry a motif with `"art": "<name>"` — a line drawing set in the
+empty band under the header, stroked in the theme accent at low opacity so it
+reads without competing with the type:
+
+| Motif | Shows |
+|---|---|
+| `road` | a road running to the horizon |
+| `figures` | a group standing at a distance |
+| `door` | a doorway to walk through |
+| `steps` | footprints going on ahead |
+| `jar` | a vessel pouring out |
+| `river` | waters standing apart, dry ground between |
+| `arrow` | forward |
+| `marker` | something waiting further along the path |
+
+They're original drawings in `MOTIFS` in `template.mjs` — add more there. Keep
+them simple: at 22% opacity behind big type, detail turns to mud.
+
 Slide types:
 
 | `type` | Fields | Use for |

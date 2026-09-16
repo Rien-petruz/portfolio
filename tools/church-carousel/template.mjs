@@ -4,6 +4,42 @@
 // A post picks its look with `theme` — the colours all come from the logo, so
 // the decks stay a family while no two consecutive posts look the same.
 
+// Original line-art motifs, drawn to carry the beat of a slide without
+// competing with the type. Stroked in the theme accent at low opacity, set in
+// the empty band under the header. A slide opts in with `art: "<name>"`.
+export const MOTIFS = {
+  // a road running to the horizon
+  road: `<path d="M8 96 L41 10"/><path d="M92 96 L59 10"/>
+    <path d="M50 88 v-11"/><path d="M50 66 v-9"/><path d="M50 47 v-7"/><path d="M50 32 v-5"/>`,
+
+  // a group standing at a distance
+  figures: `<circle cx="22" cy="34" r="7"/><path d="M22 43 v20"/><path d="M11 52 h22"/><path d="M22 63 l-8 16"/><path d="M22 63 l8 16"/>
+    <circle cx="50" cy="30" r="6"/><path d="M50 38 v18"/><path d="M40 46 h20"/><path d="M50 56 l-7 14"/><path d="M50 56 l7 14"/>
+    <circle cx="76" cy="36" r="5"/><path d="M76 43 v15"/><path d="M68 50 h16"/><path d="M76 58 l-6 12"/><path d="M76 58 l6 12"/>`,
+
+  // a doorway to walk through
+  door: `<path d="M26 92 V34 a24 24 0 0 1 48 0 v58"/><path d="M14 92 h72"/><path d="M50 10 v82"/><circle cx="40" cy="60" r="3"/>`,
+
+  // footprints going on ahead
+  steps: `<ellipse cx="34" cy="86" rx="7" ry="10"/><ellipse cx="62" cy="70" rx="6.5" ry="9.5"/>
+    <ellipse cx="38" cy="53" rx="6" ry="9"/><ellipse cx="64" cy="37" rx="5.5" ry="8"/><ellipse cx="42" cy="22" rx="5" ry="7.5"/>`,
+
+  // a vessel pouring out
+  jar: `<path d="M34 24 h32 l-4 14 a22 22 0 0 1 -24 0 z"/><path d="M38 38 a22 26 0 0 0 24 0 l3 38 a16 8 0 0 1 -30 0 z"/>
+    <path d="M66 30 q14 6 14 22"/><path d="M80 56 v14"/><path d="M74 74 h12 l-2 16 h-8 z"/>`,
+
+  // waters standing apart, dry ground between
+  river: `<path d="M20 14 q-8 12 0 24 q8 12 0 24 q-8 12 0 24"/><path d="M80 14 q8 12 0 24 q-8 12 0 24 q8 12 0 24"/>
+    <path d="M38 92 V24"/><path d="M62 92 V24"/><path d="M46 80 h8"/><path d="M46 62 h8"/><path d="M46 44 h8"/>`,
+
+  // forward
+  arrow: `<path d="M18 26 L44 52 L18 78"/><path d="M44 26 L70 52 L44 78"/><path d="M70 26 L96 52 L70 78"/>`,
+
+  // something waiting further along the path
+  marker: `<path d="M18 94 q26 -16 22 -36 q-4 -20 20 -28 q16 -5 24 6"/>
+    <path d="M78 14 l5 11 12 2 -9 9 2 12 -10 -6 -11 6 2 -12 -8 -9 12 -2 z"/>`,
+};
+
 export const THEMES = {
   // Near-black with the logo's purple and red glowing in from the corners.
   night: {
@@ -133,6 +169,22 @@ const css = (fonts, size, padBottom, t) => `
 
   .slide > * { position: relative; z-index: 1; }
 
+  /* ---------- motif ---------- */
+  .motif {
+    position: absolute;
+    top: ${Math.round(padBottom > 120 ? 210 : 190)}px;
+    right: 84px;
+    width: 236px; height: 236px;
+    color: var(--gold);
+    opacity: 0.22;
+    pointer-events: none;
+  }
+  .motif svg { width: 100%; height: 100%; display: block; }
+  .motif path, .motif circle, .motif ellipse {
+    fill: none; stroke: currentColor; stroke-width: 2.6;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+
   /* ---------- header ---------- */
   .head { display: flex; align-items: center; gap: 22px; }
   .avatar {
@@ -230,6 +282,12 @@ const css = (fonts, size, padBottom, t) => `
   .cue { color: var(--gold); }
 `;
 
+function art(name) {
+  const d = MOTIFS[name];
+  if (!d) throw new Error(`Unknown motif "${name}". Have: ${Object.keys(MOTIFS).join(', ')}`);
+  return `<div class="motif"><svg viewBox="0 0 100 100" aria-hidden="true">${d}</svg></div>`;
+}
+
 function head(brand, avatar) {
   return `<header class="head">
       <span class="avatar"><img src="${avatar}" alt=""></span>
@@ -293,6 +351,7 @@ export function renderSlide({ slide, index, total, brand, avatar, fonts, format,
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><style>${css(fonts, size, format.padBottom ?? 66, t)}</style></head>
 <body><section class="slide">
+    ${slide.art ? art(slide.art) : ''}
     ${head(brand, avatar)}
     ${content(slide)}
     ${footer ? foot(index, total, slide.cue, brand.handle) : ''}
