@@ -21,7 +21,8 @@ node tools/church-carousel/copy.mjs   --post <slug>   # copy   -> out/<slug>/pos
 ```
 
 A new teaching is a new file in `posts/`, never an edit over the last one.
-Give it a `theme` — `night`, `parchment`, `vintage`, `tempest` or `nocturne`.
+Give it a `theme` — `night`, `parchment`, `vintage`, `tempest`, `nocturne` or
+`vigil`.
 **Peter tracks these across posts and wants one he has not seen, not a
 rotation through the existing set.** He has now asked three separate times for
 a look he hasn't had, so unless the deck count is well past the palette count,
@@ -78,6 +79,11 @@ Pick the strongest self-contained lines from the teaching and use them
 verbatim; the video already carries the whole thing, so the caption doesn't
 repeat it. Never summarise or paraphrase to get it short — a shorter
 description means fewer of his sentences, never reworded ones.
+
+Check it mechanically before rendering: assert every sentence he sent appears
+on a slide, comparing exact strings. That check has caught real slips — an
+added space inside `who"SPOKE"`, a typographic ellipsis where he typed three
+dots. Straight quotes, three-dot ellipses and his spacing all stay as sent.
 
 **Every word of it is Peter's, character for character.** No byline, no "tell
 us in the comments", no closing line of ours, and no spelling or grammar

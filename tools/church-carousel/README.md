@@ -158,6 +158,7 @@ don't look identical in the feed:
 | `vintage` | Deep wine, crimson and purple at the corners, warm gold emphasis |
 | `tempest` | Deep sea-blue, purple and a cold steel light, gold emphasis |
 | `nocturne` | Deep violet, purple and red at the corners, coral emphasis |
+| `vigil` | Near-black with a pine cast, gold and red at the corners, lilac emphasis |
 
 Every palette is drawn from the logo, so the decks stay a family. Themes are
 defined in `template.mjs` — add another there when these three start repeating.
@@ -182,6 +183,13 @@ reads without competing with the type:
 | `river` | waters standing apart, dry ground between |
 | `arrow` | forward |
 | `marker` | something waiting further along the path |
+| `bridge` | a span joining two sides |
+| `book` | an open book |
+| `voice` | a voice carrying |
+| `scroll` | a scroll |
+| `dawn` | light coming up over the horizon |
+| `flame` | fire |
+| `scales` | a balance holding two things at once |
 
 They're original drawings in `MOTIFS` in `template.mjs` — add more there. Keep
 them simple: at 22% opacity behind big type, detail turns to mud.

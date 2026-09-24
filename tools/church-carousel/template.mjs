@@ -8,6 +8,30 @@
 // competing with the type. Stroked in the theme accent at low opacity, set in
 // the empty band under the header. A slide opts in with `art: "<name>"`.
 export const MOTIFS = {
+  // a span joining two sides
+  bridge: `<path d="M6 88 h88"/><path d="M14 88 V54"/><path d="M86 88 V54"/><path d="M14 54 q36 -34 72 0"/><path d="M34 88 V62"/><path d="M50 88 V58"/><path d="M66 88 V62"/>`,
+
+  // an open book
+  book: `<path d="M50 32 v56"/><path d="M50 32 q-20 -10 -42 -5 v54 q22 -5 42 5"/><path d="M50 32 q20 -10 42 -5 v54 q-22 -5 -42 5"/>`,
+
+  // a voice carrying
+  voice: `<circle cx="18" cy="50" r="7"/><path d="M34 36 q13 14 0 28"/><path d="M50 26 q21 24 0 48"/><path d="M66 16 q29 34 0 68"/>`,
+
+  // a scroll
+  scroll: `<path d="M28 24 h44 v52 h-44 z"/><path d="M28 24 a6 6 0 0 1 0 -12 h44 a6 6 0 0 1 0 12"/>
+    <path d="M28 76 a6 6 0 0 0 0 12 h44 a6 6 0 0 0 0 -12"/><path d="M40 40 h20"/><path d="M40 52 h20"/>`,
+
+  // light coming up over the horizon
+  dawn: `<path d="M12 74 h76"/><path d="M32 74 a18 18 0 0 1 36 0"/><path d="M50 38 v-12"/>
+    <path d="M28 50 l-9 -9"/><path d="M72 50 l9 -9"/><path d="M18 64 l-11 -5"/><path d="M82 64 l11 -5"/>`,
+
+  // fire
+  flame: `<path d="M50 88 c-16 0 -26 -11 -26 -24 c0 -17 14 -23 16 -42 c10 8 15 17 15 25 c4 -4 6 -10 6 -16 c10 11 15 23 15 33 c0 13 -10 24 -26 24 z"/>`,
+
+  // a balance holding two things at once
+  scales: `<path d="M50 20 v54"/><path d="M50 74 v14"/><path d="M38 88 h24"/><path d="M16 30 h68"/>
+    <path d="M16 30 v8"/><path d="M84 30 v8"/><path d="M4 38 a12 10 0 0 0 24 0 z"/><path d="M72 38 a12 10 0 0 0 24 0 z"/><circle cx="50" cy="20" r="4"/>`,
+
   // a road running to the horizon
   road: `<path d="M8 96 L41 10"/><path d="M92 96 L59 10"/>
     <path d="M50 88 v-11"/><path d="M50 66 v-9"/><path d="M50 47 v-7"/><path d="M50 32 v-5"/>`,
@@ -54,6 +78,21 @@ export const THEMES = {
     grainOpacity: 0.5,
     grainBlend: 'overlay',
     shadow: 'rgba(0, 0, 0, 0.45)',
+  },
+  // Near-black with a pine cast, warmed by gold and red at the corners, and
+  // the only dark palette that emphasises in the logo's purple rather than gold.
+  vigil: {
+    ground: '#101614',
+    text: '#eef2ef',
+    textRgb: '238, 242, 239',
+    accent: '#b57bff',
+    accentRgb: '181, 123, 255',
+    glow1: 'rgba(245, 197, 24, 0.20)',
+    glow2: 'rgba(229, 27, 35, 0.26)',
+    wash: 'rgba(181, 123, 255, 0.05)',
+    grainOpacity: 0.45,
+    grainBlend: 'overlay',
+    shadow: 'rgba(0, 0, 0, 0.50)',
   },
   // Deep violet after dark, lit by the logo's purple and red — and the only
   // palette that carries its emphasis in coral rather than gold.
