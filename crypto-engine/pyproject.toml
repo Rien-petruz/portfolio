@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "marketintel"
-version = "0.3.0"
-description = "Low-latency crypto market intelligence engine (Binance spot market data, observation-only)."
+version = "1.0.0"
+description = "Multi-exchange crypto market intelligence engine (Binance + Coinbase market data, PAPER TRADING ONLY)."
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "Proprietary" }
@@ -18,6 +18,8 @@ dependencies = [
     "sortedcontainers>=2.4",
     "fastapi>=0.111",
     "uvicorn>=0.30",
+    "numpy>=1.26",
+    "asyncpg>=0.29",
 ]
 
 [project.optional-dependencies]
@@ -25,7 +27,8 @@ dev = [
     "pytest>=8.2",
     "pytest-asyncio>=0.23",
     "hypothesis>=6.100",
-    "numpy>=1.26",
+    "playwright>=1.45",
+    "ruff>=0.5",
 ]
 
 [project.scripts]
@@ -42,3 +45,15 @@ addopts = "-ra"
 markers = [
     "live: requires network access to Binance (deselected unless MIE_LIVE_TESTS=1)",
 ]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S"]
+ignore = ["E501", "S101", "S311", "S104", "S110", "B008", "B027", "B905", "UP046"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S", "B"]
+"benchmarks/**" = ["S"]

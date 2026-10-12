@@ -1,67 +1,119 @@
-# Example configuration. Copy to config/engine.toml and point MIE_CONFIG_FILE at it,
-# or pass --config. Every key can also be overridden by an environment variable:
-#   MIE_<SECTION>__<KEY>, e.g. MIE_FEED__STALE_AFTER_MS=15000
-# Public market data needs no credentials. Never put API keys in this file.
+# Example configuration. Copy to config/engine.toml and pass --config (or set MIE_CONFIG_FILE).
+# Any key can be overridden by environment variables: MIE_<SECTION>__<KEY>, e.g.
+#   MIE_BINANCE__STALE_AFTER_MS=15000   MIE_PERSISTENCE__DATABASE_URL=postgresql://...
+# PAPER TRADING ONLY: there is no live-execution setting. Public market data needs no API keys.
 
 data_source = "LIVE"
 log_level = "INFO"
 
 [binance]
-ws_base_url = "wss://stream.binance.com:9443"   # market-data-only alternative: wss://data-stream.binance.vision
-rest_base_url = "https://api.binance.com"       # alternative: https://data-api.binance.vision
-max_streams_per_connection = 200                 # Binance hard limit: 1024
+enabled = true
+ws_base_url = "wss://stream.binance.com:9443"      # market-data-only alternative: wss://data-stream.binance.vision
+rest_base_url = "https://api.binance.com"          # alternative: https://data-api.binance.vision
+max_streams_per_connection = 200                    # exchange limit 1024
 max_symbols_per_connection = 40
-subscribe_mode = "url"                           # or "message" (paced SUBSCRIBE requests)
-subscribe_messages_per_second = 3.0              # Binance limit: 5 incoming msgs/s incl. ping/pong
-connection_max_age_s = 82800                     # rotate at 23h; Binance disconnects at 24h
-connect_attempts_per_window = 200                # Binance limit: 300 per 5 min per IP
-connect_window_s = 300
-open_timeout_s = 10
-ping_interval_s = 20
-ping_timeout_s = 20
-rest_weight_budget_per_min = 3000                # Binance limit: 6000
-compression = false
-
-[universe]
-min_symbols = 50
-max_symbols = 60
-quote_assets = ["USDT"]
-explicit_symbols = []                            # if non-empty, used verbatim instead of auto-selection
-required_symbols = ["BTCUSDT", "ETHUSDT", "ETHBTC", "BNBUSDT", "BNBBTC", "BNBETH", "SOLUSDT", "SOLBTC",
-                    "XRPUSDT", "XRPBTC", "BTCUSDC", "ETHUSDC", "USDCUSDT", "FDUSDUSDT", "BTCFDUSD"]
-exclude_symbols = []
-depth_symbols = ["BTCUSDT", "ETHUSDT"]           # local L2 books (REST snapshot + @depth@100ms)
-depth_snapshot_limit = 1000
-subscribe_trades = true
-
-[feed]
+subscribe_mode = "url"                              # or "message" (paced SUBSCRIBE, <= 4 msg/s; limit 5)
+connection_max_age_s = 82800                        # rotate at 23h (exchange disconnects at 24h)
+connect_attempts_per_window = 200                   # exchange limit 300 / 5 min / IP
+rest_weight_budget_per_min = 3000                   # exchange limit 6000
 quiet_after_ms = 2000
 stale_after_ms = 30000
 connection_stall_ms = 10000
-watchdog_interval_ms = 250
+min_symbols = 50
+max_symbols = 60
+quote_assets = ["USDT"]
+explicit_symbols = []
+depth_symbols = ["BTCUSDT", "ETHUSDT"]
+depth_snapshot_limit = 1000
+fees = { maker_bps = 10.0, taker_bps = 10.0 }       # set your actual tier / BNB discount
 
-[backoff]
-base_s = 0.5
-cap_s = 30.0
-rate_limited_min_s = 60.0
-stable_after_s = 30.0
+[coinbase]
+enabled = true
+ws_base_url = "wss://advanced-trade-ws.coinbase.com"
+rest_base_url = "https://api.coinbase.com"
+max_symbols_per_connection = 10
+subscribe_messages_per_second = 2.0                 # unauthenticated inbound limit is low
+quote_currencies = ["USD", "USDT"]
+max_products = 40
+required_products = ["BTC-USD", "ETH-USD", "USDT-USD", "BTC-USDT", "ETH-USDT"]
+use_level2 = true
+quiet_after_ms = 3000
+stale_after_ms = 30000
+connection_stall_ms = 8000                          # heartbeats arrive every second
+fees = { maker_bps = 60.0, taker_bps = 120.0 }      # lowest Advanced Trade tier; configure yours
+
+[registry]
+allow_inferred_mapping = false
+conversion_instruments = ["COINBASE:USDT-USD", "BINANCE:USDCUSDT", "BINANCE:FDUSDUSDT"]
+
+[feed]
+watchdog_interval_ms = 250
+max_delivery_lag_ms = 2000
 
 [engine]
-trade_queue_capacity = 8192
-loop_lag_interval_ms = 50
+summary_interval_ms = 1000          # health/summary/dashboard cadence (NOT a market-data limit)
+feature_interval_ms = 100
+baseline_refresh_ms = 1000
+trade_queue_capacity = 16384
 loop_lag_degraded_ms = 50.0
-report_interval_s = 10.0
+
+[strategies.cross_exchange]
+enabled = true
+min_net_edge_bps = 2.0
+max_quote_age_ms = 1500
+max_recv_skew_ms = 500
+max_event_skew_ms = 750
+max_notional_usd = 2000.0
+min_liquidity_usd = 50.0
+max_slippage_bps = 10.0
+
+[strategies.triangular]
+enabled = true
+start_assets = ["USDT"]
+min_net_edge_bps = 1.0
+max_start_notional_usd = 1000.0
+
+[strategies.anomalies]
+enabled = true
+windows_s = [1.0, 5.0, 30.0, 60.0]
+z_threshold = 5.0
+
+[strategies.patterns]
+enabled = true
+eval_horizons_s = [1.0, 5.0, 30.0]
+
+[paper]
+mode = "paper"                      # the only accepted value
+trade_strategies = ["cross_exchange", "triangular"]
+auto_base_inventory_usd = 5000.0
+latency_jitter_ms = 20.0
+starting_balances = { BINANCE = { USDT = 50000.0, BTC = 0.5, ETH = 5.0 }, COINBASE = { USD = 50000.0, USDT = 10000.0, BTC = 0.5, ETH = 5.0 } }
+order_latency_ms = { BINANCE = 60.0, COINBASE = 90.0 }
+
+[risk]
+max_order_notional_usd = 2500.0
+max_position_usd_per_asset = 10000.0
+max_exposure_usd_per_venue = 25000.0
+max_total_exposure_usd = 40000.0
+max_daily_loss_usd = 1000.0
+min_net_edge_bps = 2.0
+max_quote_age_ms = 1500
+max_skew_ms = 500
+max_slippage_bps = 10.0
+min_liquidity_usd = 50.0
+max_signals_per_minute = 20
+
+[persistence]
+enabled = true
+# database_url comes from MIE_PERSISTENCE__DATABASE_URL (never put credentials in this file)
+jsonl_dir = "data/audit"            # used when no database URL is configured
 
 [api]
 enabled = true
 host = "127.0.0.1"
 port = 8080
+# dashboard_dir = "dashboard/dist"
 
 [recording]
 enabled = false
 directory = "recordings"
-queue_capacity = 100000
-
-[execution]
-mode = "observe"               # observe | paper (paper trading arrives in Phase 6)
-live_trading_enabled = false   # refused by this build

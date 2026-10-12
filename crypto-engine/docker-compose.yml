@@ -1,49 +1,64 @@
-# Local development stack.
+# Local development stack - PAPER TRADING ONLY.
 #
-#   docker compose up engine            # live Binance public market data
-#   docker compose --profile sim up     # synthetic exchange + engine (no internet needed)
+#   docker compose up --build                     # live public market data + PostgreSQL + dashboard (:8080)
+#   docker compose --profile sim up --build       # synthetic Binance + Coinbase, no internet needed (:8081)
 #
-# No database or cache yet: nothing in Phases 1-3 needs durable storage beyond
-# optional raw-frame recordings (a volume). PostgreSQL is introduced with
-# paper trading / audit logs in Phase 6.
+# Credentials below are for a local, unexposed development database only.
+# Override MIE_DB_PASSWORD in .env for anything else.
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: mie
+      POSTGRES_PASSWORD: ${MIE_DB_PASSWORD:-mie-dev-only}
+      POSTGRES_DB: mie
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mie -d mie"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
   engine:
-    build:
-      context: .
-      dockerfile: deploy/Dockerfile
+    build: { context: ., dockerfile: deploy/Dockerfile }
     command: ["run"]
+    depends_on:
+      postgres: { condition: service_healthy }
     env_file:
       - path: .env
         required: false
     environment:
       MIE_CONFIG_FILE: /app/config/engine.example.toml
-      MIE_API__HOST: 0.0.0.0
+      MIE_PERSISTENCE__DATABASE_URL: postgresql://mie:${MIE_DB_PASSWORD:-mie-dev-only}@postgres:5432/mie
     ports:
       - "127.0.0.1:8080:8080"
     volumes:
       - ./recordings:/app/recordings
     restart: unless-stopped
 
-  sim-exchange:
+  sim-exchanges:
     profiles: ["sim"]
-    build:
-      context: .
-      dockerfile: deploy/Dockerfile
-    command: ["sim-server", "--host", "0.0.0.0", "--port", "9443", "--rate", "2000"]
-    expose:
-      - "9443"
+    build: { context: ., dockerfile: deploy/Dockerfile }
+    command: ["sim-server", "--host", "0.0.0.0", "--binance-port", "9443", "--coinbase-port", "9444", "--rate", "2000"]
+    expose: ["9443", "9444"]
 
   engine-sim:
     profiles: ["sim"]
-    build:
-      context: .
-      dockerfile: deploy/Dockerfile
+    build: { context: ., dockerfile: deploy/Dockerfile }
     command: ["run"]
-    depends_on: [sim-exchange]
+    depends_on:
+      postgres: { condition: service_healthy }
+      sim-exchanges: { condition: service_started }
     environment:
       MIE_DATA_SOURCE: SIMULATED
-      MIE_BINANCE__WS_BASE_URL: ws://sim-exchange:9443
-      MIE_BINANCE__REST_BASE_URL: http://sim-exchange:9443
-      MIE_API__HOST: 0.0.0.0
+      MIE_BINANCE__WS_BASE_URL: ws://sim-exchanges:9443
+      MIE_BINANCE__REST_BASE_URL: http://sim-exchanges:9443
+      MIE_COINBASE__WS_BASE_URL: ws://sim-exchanges:9444
+      MIE_COINBASE__REST_BASE_URL: http://sim-exchanges:9444
+      MIE_PERSISTENCE__DATABASE_URL: postgresql://mie:${MIE_DB_PASSWORD:-mie-dev-only}@postgres:5432/mie
     ports:
       - "127.0.0.1:8081:8080"
+
+volumes:
+  pgdata:

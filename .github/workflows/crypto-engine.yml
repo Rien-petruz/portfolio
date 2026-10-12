@@ -6,12 +6,27 @@ on:
   pull_request:
     paths: ["crypto-engine/**", ".github/workflows/crypto-engine.yml"]
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.12", "3.13"]
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: mie
+          POSTGRES_PASSWORD: ci-only
+          POSTGRES_DB: mie_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U mie -d mie_test" --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      MIE_TEST_DATABASE_URL: postgresql://mie:ci-only@127.0.0.1:5432/mie_test
     defaults:
       run:
         working-directory: crypto-engine
@@ -21,6 +36,33 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -e ".[dev]"
+      - run: ruff check src tests benchmarks
+      - name: Paper-only guard (no order/withdraw code paths)
+        run: python -m pytest -q tests/unit/test_paper_only.py
       - run: python -m pytest -q
-      - name: Hot-path benchmark (informational)
-        run: python benchmarks/bench_hotpath.py --frames 50000
+      - name: Load benchmark, 50 symbols (informational)
+        run: python benchmarks/bench_load.py --sizes 50 --seconds 10 --warmup 5
+
+  dashboard:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: crypto-engine/dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: crypto-engine/dashboard/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+
+  docker:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: crypto-engine
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f deploy/Dockerfile -t mie:ci .

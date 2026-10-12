@@ -1,0 +1,10 @@
+**/__pycache__
+**/*.pyc
+.venv
+dashboard/node_modules
+dashboard/dist
+recordings
+data
+.pytest_cache
+.hypothesis
+*.egg-info

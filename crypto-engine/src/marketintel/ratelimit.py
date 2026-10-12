@@ -6,7 +6,7 @@ import asyncio
 import random
 import time
 from collections import deque
-from typing import Callable
+from collections.abc import Callable
 
 
 class SlidingWindowLimiter:

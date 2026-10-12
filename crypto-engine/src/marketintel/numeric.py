@@ -34,8 +34,15 @@ def parse_e8(s: str) -> int:
     # Fast path: Binance's canonical format, e.g. "25.35190000" (ASCII digits,
     # exactly 8 decimals). One int() call on the concatenated digits.
     i, dot, f = s.partition(".")
-    if dot and len(f) == SCALE and i.isdigit() and f.isdigit() and s.isascii():
-        return int(i + f)
+    if s.isascii() and i.isdigit():
+        n = len(f)
+        if dot:
+            if n == SCALE and f.isdigit():
+                return int(i + f)
+            if 0 < n < SCALE and f.isdigit():
+                return int(i + f) * _POW10[SCALE - n]
+        else:
+            return int(i) * ONE
     if _NUM_RE.fullmatch(s) is None:
         raise ValueError(f"not a decimal number: {s!r}")
     neg = s[0] == "-"

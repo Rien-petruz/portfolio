@@ -9,3 +9,11 @@ dist/
 recordings/
 *.tsv.gz
 .env
+dashboard/node_modules/
+dashboard/dist/
+*.tsbuildinfo
+data/
+dashboard/node_modules/
+dashboard/dist/
+*.tsbuildinfo
+data/

@@ -1,0 +1,607 @@
+{
+  "label": "SIMULATED DATA - localhost, processing cost only",
+  "machine": {
+    "python": "3.13.16",
+    "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+    "cpus": 4
+  },
+  "params": {
+    "sizes": [
+      50,
+      100,
+      250
+    ],
+    "seconds": 30.0,
+    "warmup": 10.0,
+    "per_symbol_rate": 40.0,
+    "coinbase_products": 40,
+    "out": "benchmarks/results-load.json"
+  },
+  "runs": [
+    {
+      "binance_symbols": 50,
+      "coinbase_products": 40,
+      "coinbase_sim_listed": 41,
+      "synthetic_assets": 0,
+      "all_instruments_usable": true,
+      "startup_to_all_usable_s": 1.44,
+      "connections": {
+        "BINANCE": [
+          2,
+          2
+        ],
+        "COINBASE": [
+          4,
+          4
+        ]
+      },
+      "usable": {
+        "BINANCE": [
+          50,
+          50
+        ],
+        "COINBASE": [
+          40,
+          40
+        ]
+      },
+      "frames_per_s": 2983.6,
+      "frames_per_s_by_venue": {
+        "COINBASE": 903.8,
+        "BINANCE": 2079.8
+      },
+      "engine_cpu_utilisation": 0.754,
+      "simulator_cpu_utilisation": 0.523,
+      "health": "OK",
+      "health_reasons": [],
+      "latency_us": {
+        "ingest.recv_to_decoded.BINANCE": {
+          "count": 62415,
+          "p50": 13.3,
+          "p95": 43.0,
+          "p99": 108.5,
+          "max": 7774.8,
+          "mean": 18.4
+        },
+        "ingest.recv_to_decoded.COINBASE": {
+          "count": 27004,
+          "p50": 92.2,
+          "p95": 270.3,
+          "p99": 409.6,
+          "max": 19803.1,
+          "mean": 114.1
+        },
+        "ingest.recv_to_state.BINANCE": {
+          "count": 62415,
+          "p50": 22.0,
+          "p95": 77.8,
+          "p99": 163.8,
+          "max": 7794.2,
+          "mean": 31.0
+        },
+        "ingest.recv_to_state.COINBASE": {
+          "count": 27004,
+          "p50": 147.5,
+          "p95": 401.4,
+          "p99": 606.2,
+          "max": 19930.7,
+          "mean": 174.7
+        }
+      },
+      "event_loop_lag_us": {
+        "count": 564,
+        "p50": 2490.4,
+        "p95": 9175.0,
+        "p99": 14155.8,
+        "max": 49166.6,
+        "mean": 3250.6
+      },
+      "jobs_us": {
+        "job.AnomalyDetector.refresh": {
+          "count": 30,
+          "p50": 6.3,
+          "p95": 9.7,
+          "p99": 18.8,
+          "max": 18.8,
+          "mean": 7.1
+        },
+        "job.CrossExchangeScanner._sweep": {
+          "count": 30,
+          "p50": 3080.2,
+          "p95": 5898.2,
+          "p99": 6342.1,
+          "max": 6342.1,
+          "mean": 3435.9
+        },
+        "job.Engine._report": {
+          "count": 3,
+          "p50": 3276.8,
+          "p95": 4034.7,
+          "p99": 4034.7,
+          "max": 4034.7,
+          "mean": 3082.6
+        },
+        "job.Engine._summary": {
+          "count": 30,
+          "p50": 671.7,
+          "p95": 1048.6,
+          "p99": 4911.6,
+          "max": 4911.6,
+          "mean": 807.3
+        },
+        "job.FeatureGrid.sample": {
+          "count": 300,
+          "p50": 1540.1,
+          "p95": 2228.2,
+          "p99": 2818.0,
+          "max": 3865.0,
+          "mean": 1604.9
+        },
+        "job.PaperEngine._expire": {
+          "count": 120,
+          "p50": 9.7,
+          "p95": 15.1,
+          "p99": 20.5,
+          "max": 20.9,
+          "mean": 9.6
+        },
+        "job.SignalEvaluator._baseline_tick.<locals>.score": {
+          "count": 66,
+          "p50": 17.9,
+          "p95": 41.0,
+          "p99": 60.6,
+          "max": 60.6,
+          "mean": 19.8
+        },
+        "job.TriangularScanner.periodic.sweep": {
+          "count": 30,
+          "p50": 286.7,
+          "p95": 606.2,
+          "p99": 637.5,
+          "max": 637.5,
+          "mean": 292.6
+        }
+      },
+      "queues": [
+        {
+          "name": "cross_exchange",
+          "kind": "conflating",
+          "depth": 0,
+          "max_depth": 55,
+          "published": 87446,
+          "conflated": 7326,
+          "dropped": 0
+        },
+        {
+          "name": "triangular",
+          "kind": "conflating",
+          "depth": 0,
+          "max_depth": 55,
+          "published": 87446,
+          "conflated": 7326,
+          "dropped": 0
+        },
+        {
+          "name": "paper",
+          "kind": "drop_oldest",
+          "depth": 0,
+          "capacity": 16384,
+          "max_depth": 30,
+          "published": 33368,
+          "conflated": 0,
+          "dropped": 0
+        },
+        {
+          "name": "features",
+          "kind": "drop_oldest",
+          "depth": 0,
+          "capacity": 16384,
+          "max_depth": 30,
+          "published": 33368,
+          "conflated": 0,
+          "dropped": 0
+        }
+      ],
+      "audit_dropped": 0,
+      "cross_exchange_pairs": 41,
+      "triangular_routes": 26,
+      "measured_window_s": 30.01
+    },
+    {
+      "binance_symbols": 100,
+      "coinbase_products": 40,
+      "coinbase_sim_listed": 41,
+      "synthetic_assets": 41,
+      "all_instruments_usable": true,
+      "startup_to_all_usable_s": 1.33,
+      "connections": {
+        "BINANCE": [
+          3,
+          3
+        ],
+        "COINBASE": [
+          4,
+          4
+        ]
+      },
+      "usable": {
+        "BINANCE": [
+          100,
+          100
+        ],
+        "COINBASE": [
+          40,
+          40
+        ]
+      },
+      "frames_per_s": 5620.6,
+      "frames_per_s_by_venue": {
+        "COINBASE": 917.9,
+        "BINANCE": 4702.6
+      },
+      "engine_cpu_utilisation": 0.866,
+      "simulator_cpu_utilisation": 0.755,
+      "health": "OK",
+      "health_reasons": [],
+      "latency_us": {
+        "ingest.recv_to_decoded.BINANCE": {
+          "count": 141092,
+          "p50": 11.8,
+          "p95": 29.7,
+          "p99": 75.8,
+          "max": 18741.8,
+          "mean": 15.5
+        },
+        "ingest.recv_to_decoded.COINBASE": {
+          "count": 27421,
+          "p50": 90.1,
+          "p95": 262.1,
+          "p99": 393.2,
+          "max": 18371.9,
+          "mean": 110.2
+        },
+        "ingest.recv_to_state.BINANCE": {
+          "count": 141092,
+          "p50": 19.5,
+          "p95": 61.4,
+          "p99": 114.7,
+          "max": 18792.8,
+          "mean": 25.9
+        },
+        "ingest.recv_to_state.COINBASE": {
+          "count": 27421,
+          "p50": 147.5,
+          "p95": 393.2,
+          "p99": 589.8,
+          "max": 18510.5,
+          "mean": 170.3
+        }
+      },
+      "event_loop_lag_us": {
+        "count": 543,
+        "p50": 3866.6,
+        "p95": 14942.2,
+        "p99": 23593.0,
+        "max": 88890.2,
+        "mean": 5276.3
+      },
+      "jobs_us": {
+        "job.AnomalyDetector.refresh": {
+          "count": 30,
+          "p50": 6.9,
+          "p95": 10.0,
+          "p99": 14.6,
+          "max": 14.6,
+          "mean": 7.5
+        },
+        "job.CrossExchangeScanner._sweep": {
+          "count": 30,
+          "p50": 2752.5,
+          "p95": 5767.2,
+          "p99": 6193.5,
+          "max": 6193.5,
+          "mean": 3169.9
+        },
+        "job.Engine._report": {
+          "count": 3,
+          "p50": 1933.3,
+          "p95": 3733.5,
+          "p99": 3733.5,
+          "max": 3733.5,
+          "mean": 2518.3
+        },
+        "job.Engine._summary": {
+          "count": 30,
+          "p50": 720.9,
+          "p95": 1245.2,
+          "p99": 1700.7,
+          "max": 1700.7,
+          "mean": 813.1
+        },
+        "job.FeatureGrid.sample": {
+          "count": 300,
+          "p50": 1835.0,
+          "p95": 2752.5,
+          "p99": 2949.1,
+          "max": 3090.9,
+          "mean": 1945.7
+        },
+        "job.PaperEngine._expire": {
+          "count": 120,
+          "p50": 10.5,
+          "p95": 18.9,
+          "p99": 24.1,
+          "max": 51.9,
+          "mean": 11.2
+        },
+        "job.PaperEngine._leg_done.<locals>.<lambda>": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "p99": null,
+          "max": null,
+          "mean": null
+        },
+        "job.PaperEngine.submit.<locals>.<lambda>": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "p99": null,
+          "max": null,
+          "mean": null
+        },
+        "job.SignalEvaluator._baseline_tick.<locals>.score": {
+          "count": 66,
+          "p50": 18.9,
+          "p95": 34.8,
+          "p99": 53.3,
+          "max": 53.3,
+          "mean": 19.8
+        },
+        "job.TriangularScanner.periodic.sweep": {
+          "count": 30,
+          "p50": 221.2,
+          "p95": 671.7,
+          "p99": 750.2,
+          "max": 750.2,
+          "mean": 276.5
+        }
+      },
+      "queues": [
+        {
+          "name": "cross_exchange",
+          "kind": "conflating",
+          "depth": 8,
+          "max_depth": 118,
+          "published": 168051,
+          "conflated": 17526,
+          "dropped": 0
+        },
+        {
+          "name": "triangular",
+          "kind": "conflating",
+          "depth": 8,
+          "max_depth": 118,
+          "published": 168051,
+          "conflated": 17526,
+          "dropped": 0
+        },
+        {
+          "name": "paper",
+          "kind": "drop_oldest",
+          "depth": 2,
+          "capacity": 16384,
+          "max_depth": 92,
+          "published": 61366,
+          "conflated": 0,
+          "dropped": 0
+        },
+        {
+          "name": "features",
+          "kind": "drop_oldest",
+          "depth": 2,
+          "capacity": 16384,
+          "max_depth": 92,
+          "published": 61366,
+          "conflated": 0,
+          "dropped": 0
+        }
+      ],
+      "audit_dropped": 0,
+      "cross_exchange_pairs": 41,
+      "triangular_routes": 26,
+      "measured_window_s": 30.0
+    },
+    {
+      "binance_symbols": 250,
+      "coinbase_products": 40,
+      "coinbase_sim_listed": 41,
+      "synthetic_assets": 191,
+      "all_instruments_usable": true,
+      "startup_to_all_usable_s": 1.49,
+      "connections": {
+        "BINANCE": [
+          7,
+          7
+        ],
+        "COINBASE": [
+          4,
+          4
+        ]
+      },
+      "usable": {
+        "BINANCE": [
+          250,
+          250
+        ],
+        "COINBASE": [
+          40,
+          40
+        ]
+      },
+      "frames_per_s": 13627.3,
+      "frames_per_s_by_venue": {
+        "COINBASE": 921.2,
+        "BINANCE": 12706.1
+      },
+      "engine_cpu_utilisation": 0.963,
+      "simulator_cpu_utilisation": 1.239,
+      "health": "DEGRADED",
+      "health_reasons": [
+        "event-loop lag above threshold"
+      ],
+      "latency_us": {
+        "ingest.recv_to_decoded.BINANCE": {
+          "count": 381604,
+          "p50": 9.5,
+          "p95": 19.5,
+          "p99": 54.3,
+          "max": 13838.7,
+          "mean": 11.6
+        },
+        "ingest.recv_to_decoded.COINBASE": {
+          "count": 27546,
+          "p50": 79.9,
+          "p95": 225.3,
+          "p99": 344.1,
+          "max": 13582.7,
+          "mean": 95.2
+        },
+        "ingest.recv_to_state.BINANCE": {
+          "count": 381604,
+          "p50": 15.9,
+          "p95": 36.9,
+          "p99": 75.8,
+          "max": 13870.1,
+          "mean": 19.5
+        },
+        "ingest.recv_to_state.COINBASE": {
+          "count": 27546,
+          "p50": 129.0,
+          "p95": 344.1,
+          "p99": 507.9,
+          "max": 13697.6,
+          "mean": 147.8
+        }
+      },
+      "event_loop_lag_us": {
+        "count": 477,
+        "p50": 8126.5,
+        "p95": 42991.6,
+        "p99": 71303.2,
+        "max": 114253.1,
+        "mean": 12839.0
+      },
+      "jobs_us": {
+        "job.AnomalyDetector.refresh": {
+          "count": 30,
+          "p50": 6.7,
+          "p95": 9.5,
+          "p99": 13.7,
+          "max": 13.7,
+          "mean": 7.1
+        },
+        "job.CrossExchangeScanner._sweep": {
+          "count": 30,
+          "p50": 2621.4,
+          "p95": 5111.8,
+          "p99": 6100.0,
+          "max": 6100.0,
+          "mean": 3029.0
+        },
+        "job.Engine._report": {
+          "count": 3,
+          "p50": 2293.8,
+          "p95": 4512.4,
+          "p99": 4512.4,
+          "max": 4512.4,
+          "mean": 2877.9
+        },
+        "job.Engine._summary": {
+          "count": 30,
+          "p50": 999.4,
+          "p95": 1736.7,
+          "p99": 1750.0,
+          "max": 1750.0,
+          "mean": 1137.3
+        },
+        "job.FeatureGrid.sample": {
+          "count": 299,
+          "p50": 2359.3,
+          "p95": 3735.6,
+          "p99": 4063.2,
+          "max": 4921.9,
+          "mean": 2551.5
+        },
+        "job.PaperEngine._expire": {
+          "count": 120,
+          "p50": 10.5,
+          "p95": 17.4,
+          "p99": 44.0,
+          "max": 47.7,
+          "mean": 11.3
+        },
+        "job.SignalEvaluator._baseline_tick.<locals>.score": {
+          "count": 66,
+          "p50": 21.5,
+          "p95": 61.4,
+          "p99": 112.1,
+          "max": 112.1,
+          "mean": 23.9
+        },
+        "job.TriangularScanner.periodic.sweep": {
+          "count": 30,
+          "p50": 6.8,
+          "p95": 303.1,
+          "p99": 306.5,
+          "max": 306.5,
+          "mean": 59.7
+        }
+      },
+      "queues": [
+        {
+          "name": "cross_exchange",
+          "kind": "conflating",
+          "depth": 107,
+          "max_depth": 249,
+          "published": 410669,
+          "conflated": 65951,
+          "dropped": 0
+        },
+        {
+          "name": "triangular",
+          "kind": "conflating",
+          "depth": 107,
+          "max_depth": 249,
+          "published": 410669,
+          "conflated": 65951,
+          "dropped": 0
+        },
+        {
+          "name": "paper",
+          "kind": "drop_oldest",
+          "depth": 51,
+          "capacity": 16384,
+          "max_depth": 286,
+          "published": 146436,
+          "conflated": 0,
+          "dropped": 0
+        },
+        {
+          "name": "features",
+          "kind": "drop_oldest",
+          "depth": 51,
+          "capacity": 16384,
+          "max_depth": 286,
+          "published": 146436,
+          "conflated": 0,
+          "dropped": 0
+        }
+      ],
+      "audit_dropped": 0,
+      "cross_exchange_pairs": 41,
+      "triangular_routes": 26,
+      "measured_window_s": 30.03
+    }
+  ]
+}

@@ -13,6 +13,9 @@ dashboards can show "now" without old samples diluting it.
 
 from __future__ import annotations
 
+from bisect import bisect_left
+from itertools import accumulate
+from operator import add
 from typing import Any
 
 from ..clock import NS_PER_US, mono_ns
@@ -61,13 +64,10 @@ class LatencyHistogram:
         self.count += 1
         self.total += v
 
-    def merge(self, other: "LatencyHistogram") -> None:
+    def merge(self, other: LatencyHistogram) -> None:
         if other.count == 0:
             return
-        c = self.counts
-        for i, n in enumerate(other.counts):
-            if n:
-                c[i] += n
+        self.counts = list(map(add, self.counts, other.counts))
         self.min = other.min if self.count == 0 else min(self.min, other.min)
         self.max = max(self.max, other.max)
         self.count += other.count
@@ -79,34 +79,31 @@ class LatencyHistogram:
 
     def percentile(self, q: float) -> int:
         """Value at quantile q in [0, 1] (bucket upper bound, clamped to max)."""
+        return self.percentiles((q,))[0]
+
+    def percentiles(self, qs: tuple[float, ...]) -> list[int]:
         if self.count == 0:
-            return 0
-        if q <= 0:
-            return self.min
-        if q >= 1:
-            return self.max
-        rank = max(1, int(q * self.count + 0.999999999))
-        seen = 0
-        for i, n in enumerate(self.counts):
-            if n:
-                seen += n
-                if seen >= rank:
-                    return min(_upper(i), self.max)
-        return self.max
+            return [0 for _ in qs]
+        cum = list(accumulate(self.counts))  # C-level; one pass for all quantiles
+        out = []
+        for q in qs:
+            if q <= 0:
+                out.append(self.min)
+            elif q >= 1:
+                out.append(self.max)
+            else:
+                rank = max(1, int(q * self.count + 0.999999999))
+                out.append(min(_upper(bisect_left(cum, rank)), self.max))
+        return out
 
     def summary_us(self) -> dict[str, Any]:
         """Summary in microseconds (floats, 1 decimal)."""
         if self.count == 0:
             return {"count": 0, "p50": None, "p95": None, "p99": None, "max": None, "mean": None}
         f = lambda ns: round(ns / NS_PER_US, 1)  # noqa: E731
-        return {
-            "count": self.count,
-            "p50": f(self.percentile(0.50)),
-            "p95": f(self.percentile(0.95)),
-            "p99": f(self.percentile(0.99)),
-            "max": f(self.max),
-            "mean": f(self.total / self.count),
-        }
+        p50, p95, p99 = self.percentiles((0.50, 0.95, 0.99))
+        return {"count": self.count, "p50": f(p50), "p95": f(p95), "p99": f(p99), "max": f(self.max),
+                "mean": f(self.total / self.count)}
 
 
 class WindowedLatency:
@@ -132,7 +129,12 @@ class WindowedLatency:
         self.last_window_s = (now - self._window_start) / 1e9
         self._window_start = now
 
-    def summary(self) -> dict[str, Any]:
+    def summary(self, lifetime: bool = True) -> dict[str, Any]:
+        if not lifetime:
+            partial = self.last.count == 0
+            w = (self.current if partial else self.last).summary_us()
+            w["partial"] = partial
+            return {"window": w}
         life = LatencyHistogram()
         life.merge(self.lifetime)
         life.merge(self.current)
