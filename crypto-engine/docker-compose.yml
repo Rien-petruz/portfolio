@@ -1,0 +1,49 @@
+# Local development stack.
+#
+#   docker compose up engine            # live Binance public market data
+#   docker compose --profile sim up     # synthetic exchange + engine (no internet needed)
+#
+# No database or cache yet: nothing in Phases 1-3 needs durable storage beyond
+# optional raw-frame recordings (a volume). PostgreSQL is introduced with
+# paper trading / audit logs in Phase 6.
+services:
+  engine:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+    command: ["run"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      MIE_CONFIG_FILE: /app/config/engine.example.toml
+      MIE_API__HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./recordings:/app/recordings
+    restart: unless-stopped
+
+  sim-exchange:
+    profiles: ["sim"]
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+    command: ["sim-server", "--host", "0.0.0.0", "--port", "9443", "--rate", "2000"]
+    expose:
+      - "9443"
+
+  engine-sim:
+    profiles: ["sim"]
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+    command: ["run"]
+    depends_on: [sim-exchange]
+    environment:
+      MIE_DATA_SOURCE: SIMULATED
+      MIE_BINANCE__WS_BASE_URL: ws://sim-exchange:9443
+      MIE_BINANCE__REST_BASE_URL: http://sim-exchange:9443
+      MIE_API__HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:8081:8080"

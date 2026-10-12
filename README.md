@@ -60,6 +60,10 @@ portfolio/
 | Hotel Management System | Laravel, MySQL, Bootstrap | Hotel booking platform with overbooking prevention |
 | Attendee Registry App | React, Express.js, TypeScript, PostgreSQL | Church event attendance tracker with admin dashboard and bulk email |
 
+## Crypto Market Intelligence Engine
+
+[`crypto-engine/`](crypto-engine/) is a separate Python project in this repository: a low-latency Binance spot market-data engine with 50+ symbol ingestion, validated market state, local order books, feed-health monitoring and measured latency. It is observation-only. See [crypto-engine/README.md](crypto-engine/README.md).
+
 ## Contact
 
 - Email: kekpepeter@gmail.com

@@ -1,0 +1,341 @@
+{
+  "meta": {
+    "python": "3.13.16",
+    "machine": "x86_64",
+    "cpus": 4
+  },
+  "results": [
+    {
+      "target_updates_per_s": 1000.0,
+      "symbols": 69,
+      "shards": 2,
+      "frames_per_s": 1372,
+      "engine_cpu_pct": 12.9,
+      "simulator_cpu_pct": 19.0,
+      "engine_cpu_us_per_frame": 93.7,
+      "latency_us": {
+        "recv_to_normalized": {
+          "count": 16463,
+          "p50": 10.2,
+          "p95": 45.1,
+          "p99": 106.5,
+          "max": 1248.1,
+          "mean": 15.5,
+          "partial": false
+        },
+        "recv_to_state_applied": {
+          "count": 16463,
+          "p50": 18.4,
+          "p95": 81.9,
+          "p99": 180.2,
+          "max": 1402.9,
+          "mean": 28.2,
+          "partial": false
+        },
+        "recv_to_quote_consumer": {
+          "count": 11761,
+          "p50": 88.1,
+          "p95": 303.1,
+          "p99": 466.9,
+          "max": 2714.1,
+          "mean": 116.5,
+          "partial": false
+        },
+        "recv_to_trade_consumer": {
+          "count": 4231,
+          "p50": 114.7,
+          "p95": 344.1,
+          "p99": 507.9,
+          "max": 1504.4,
+          "mean": 146.9,
+          "partial": false
+        },
+        "exchange_event_to_recv_trade": {
+          "count": 4231,
+          "p50": 3932.2,
+          "p95": 5374.0,
+          "p99": 6946.8,
+          "max": 13944.6,
+          "mean": 4008.3,
+          "partial": false
+        },
+        "exchange_event_to_recv_depth": {
+          "count": 229,
+          "p50": 3342.3,
+          "p95": 4063.2,
+          "p99": 4587.5,
+          "max": 4923.3,
+          "mean": 3304.3,
+          "partial": false
+        },
+        "event_loop_lag": {
+          "count": 237,
+          "p50": 770.0,
+          "p95": 1867.8,
+          "p99": 2687.0,
+          "max": 3525.6,
+          "mean": 821.2,
+          "partial": false
+        }
+      },
+      "quote_conflated_pct": 2.1,
+      "trade_queue_dropped": 0,
+      "invalid": {},
+      "health": "OK",
+      "health_reasons": [],
+      "status_counts": {
+        "LIVE": 69
+      }
+    },
+    {
+      "target_updates_per_s": 3000.0,
+      "symbols": 69,
+      "shards": 2,
+      "frames_per_s": 4068,
+      "engine_cpu_pct": 30.7,
+      "simulator_cpu_pct": 39.7,
+      "engine_cpu_us_per_frame": 75.4,
+      "latency_us": {
+        "recv_to_normalized": {
+          "count": 48818,
+          "p50": 10.0,
+          "p95": 21.5,
+          "p99": 71.7,
+          "max": 2234.7,
+          "mean": 12.9,
+          "partial": false
+        },
+        "recv_to_state_applied": {
+          "count": 48818,
+          "p50": 17.4,
+          "p95": 52.2,
+          "p99": 108.5,
+          "max": 2260.8,
+          "mean": 23.0,
+          "partial": false
+        },
+        "recv_to_quote_consumer": {
+          "count": 35233,
+          "p50": 69.6,
+          "p95": 344.1,
+          "p99": 688.1,
+          "max": 6904.6,
+          "mean": 119.7,
+          "partial": false
+        },
+        "recv_to_trade_consumer": {
+          "count": 12563,
+          "p50": 96.3,
+          "p95": 385.0,
+          "p99": 753.7,
+          "max": 6912.8,
+          "mean": 147.6,
+          "partial": false
+        },
+        "exchange_event_to_recv_trade": {
+          "count": 12565,
+          "p50": 4718.6,
+          "p95": 10223.6,
+          "p99": 15204.4,
+          "max": 38171.2,
+          "mean": 5226.9,
+          "partial": false
+        },
+        "exchange_event_to_recv_depth": {
+          "count": 224,
+          "p50": 2228.2,
+          "p95": 2883.6,
+          "p99": 3080.2,
+          "max": 3148.3,
+          "mean": 2196.2,
+          "partial": false
+        },
+        "event_loop_lag": {
+          "count": 235,
+          "p50": 688.1,
+          "p95": 1671.2,
+          "p99": 13107.2,
+          "max": 40498.6,
+          "mean": 1063.1,
+          "partial": false
+        }
+      },
+      "quote_conflated_pct": 2.1,
+      "trade_queue_dropped": 0,
+      "invalid": {},
+      "health": "OK",
+      "health_reasons": [],
+      "status_counts": {
+        "LIVE": 69
+      }
+    },
+    {
+      "target_updates_per_s": 8000.0,
+      "symbols": 69,
+      "shards": 2,
+      "frames_per_s": 10788,
+      "engine_cpu_pct": 66.4,
+      "simulator_cpu_pct": 77.1,
+      "engine_cpu_us_per_frame": 61.6,
+      "latency_us": {
+        "recv_to_normalized": {
+          "count": 129454,
+          "p50": 8.4,
+          "p95": 16.9,
+          "p99": 54.3,
+          "max": 2288.8,
+          "mean": 10.5,
+          "partial": false
+        },
+        "recv_to_state_applied": {
+          "count": 129454,
+          "p50": 15.4,
+          "p95": 32.3,
+          "p99": 77.8,
+          "max": 5138.6,
+          "mean": 18.9,
+          "partial": false
+        },
+        "recv_to_quote_consumer": {
+          "count": 93700,
+          "p50": 59.4,
+          "p95": 335.9,
+          "p99": 802.8,
+          "max": 8702.7,
+          "mean": 111.4,
+          "partial": false
+        },
+        "recv_to_trade_consumer": {
+          "count": 33446,
+          "p50": 79.9,
+          "p95": 385.0,
+          "p99": 999.4,
+          "max": 5577.9,
+          "mean": 141.0,
+          "partial": false
+        },
+        "exchange_event_to_recv_trade": {
+          "count": 33446,
+          "p50": 17301.5,
+          "p95": 45088.8,
+          "p99": 69206.0,
+          "max": 128573.5,
+          "mean": 19923.0,
+          "partial": false
+        },
+        "exchange_event_to_recv_depth": {
+          "count": 202,
+          "p50": 2490.4,
+          "p95": 3211.3,
+          "p99": 3997.7,
+          "max": 7024.2,
+          "mean": 2499.2,
+          "partial": false
+        },
+        "event_loop_lag": {
+          "count": 238,
+          "p50": 278.5,
+          "p95": 1343.5,
+          "p99": 2162.7,
+          "max": 2853.8,
+          "mean": 468.7,
+          "partial": false
+        }
+      },
+      "quote_conflated_pct": 2.2,
+      "trade_queue_dropped": 0,
+      "invalid": {},
+      "health": "OK",
+      "health_reasons": [],
+      "status_counts": {
+        "LIVE": 69
+      }
+    },
+    {
+      "target_updates_per_s": 20000.0,
+      "symbols": 69,
+      "shards": 2,
+      "frames_per_s": 13857,
+      "engine_cpu_pct": 89.3,
+      "simulator_cpu_pct": 98.5,
+      "engine_cpu_us_per_frame": 64.4,
+      "latency_us": {
+        "recv_to_normalized": {
+          "count": 166289,
+          "p50": 8.7,
+          "p95": 17.4,
+          "p99": 51.2,
+          "max": 2593.0,
+          "mean": 10.6,
+          "partial": false
+        },
+        "recv_to_state_applied": {
+          "count": 166289,
+          "p50": 16.1,
+          "p95": 33.8,
+          "p99": 73.7,
+          "max": 3229.0,
+          "mean": 19.3,
+          "partial": false
+        },
+        "recv_to_quote_consumer": {
+          "count": 120586,
+          "p50": 60.4,
+          "p95": 385.0,
+          "p99": 786.4,
+          "max": 11707.7,
+          "mean": 119.4,
+          "partial": false
+        },
+        "recv_to_trade_consumer": {
+          "count": 42918,
+          "p50": 84.0,
+          "p95": 434.2,
+          "p99": 966.7,
+          "max": 11707.2,
+          "mean": 150.1,
+          "partial": false
+        },
+        "exchange_event_to_recv_trade": {
+          "count": 42918,
+          "p50": 2013265.9,
+          "p95": 5637144.6,
+          "p99": 6024052.4,
+          "max": 6024052.4,
+          "mean": 2405162.3,
+          "partial": false
+        },
+        "exchange_event_to_recv_depth": {
+          "count": 6,
+          "p50": 85334.4,
+          "p95": 85334.4,
+          "p99": 85334.4,
+          "max": 85334.4,
+          "mean": 84587.0,
+          "partial": false
+        },
+        "event_loop_lag": {
+          "count": 237,
+          "p50": 225.3,
+          "p95": 1540.1,
+          "p99": 3538.9,
+          "max": 17307.9,
+          "mean": 495.7,
+          "partial": false
+        }
+      },
+      "quote_conflated_pct": 2.4,
+      "trade_queue_dropped": 0,
+      "invalid": {},
+      "health": "DEGRADED",
+      "health_reasons": [
+        "BTCUSDT is STALE",
+        "only 0 usable symbols",
+        "shards [0, 1] delivering data later than 2000 ms"
+      ],
+      "status_counts": {
+        "STALE": 69
+      }
+    }
+  ]
+}

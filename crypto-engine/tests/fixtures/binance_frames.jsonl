@@ -1,0 +1,6 @@
+{"stream":"bnbusdt@bookTicker","data":{"u":400900217,"s":"BNBUSDT","b":"25.35190000","B":"31.21000000","a":"25.36520000","A":"40.66000000"}}
+{"u":400900218,"s":"BNBUSDT","b":"25.35200000","B":"1.00000000","a":"25.36520000","A":"40.66000000"}
+{"stream":"bnbbtc@trade","data":{"e":"trade","E":1672515782136,"s":"BNBBTC","t":12345,"p":"0.001","q":"100","T":1672515782136,"m":true,"M":true}}
+{"stream":"bnbbtc@depth@100ms","data":{"e":"depthUpdate","E":1672515782136,"s":"BNBBTC","U":157,"u":160,"b":[["0.0024","10"]],"a":[["0.0026","100"]]}}
+{"stream":"!serverShutdown","data":{"e":"serverShutdown","E":1770123456789}}
+{"result":null,"id":1}

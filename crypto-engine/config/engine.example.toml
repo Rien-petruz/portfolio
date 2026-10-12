@@ -1,0 +1,67 @@
+# Example configuration. Copy to config/engine.toml and point MIE_CONFIG_FILE at it,
+# or pass --config. Every key can also be overridden by an environment variable:
+#   MIE_<SECTION>__<KEY>, e.g. MIE_FEED__STALE_AFTER_MS=15000
+# Public market data needs no credentials. Never put API keys in this file.
+
+data_source = "LIVE"
+log_level = "INFO"
+
+[binance]
+ws_base_url = "wss://stream.binance.com:9443"   # market-data-only alternative: wss://data-stream.binance.vision
+rest_base_url = "https://api.binance.com"       # alternative: https://data-api.binance.vision
+max_streams_per_connection = 200                 # Binance hard limit: 1024
+max_symbols_per_connection = 40
+subscribe_mode = "url"                           # or "message" (paced SUBSCRIBE requests)
+subscribe_messages_per_second = 3.0              # Binance limit: 5 incoming msgs/s incl. ping/pong
+connection_max_age_s = 82800                     # rotate at 23h; Binance disconnects at 24h
+connect_attempts_per_window = 200                # Binance limit: 300 per 5 min per IP
+connect_window_s = 300
+open_timeout_s = 10
+ping_interval_s = 20
+ping_timeout_s = 20
+rest_weight_budget_per_min = 3000                # Binance limit: 6000
+compression = false
+
+[universe]
+min_symbols = 50
+max_symbols = 60
+quote_assets = ["USDT"]
+explicit_symbols = []                            # if non-empty, used verbatim instead of auto-selection
+required_symbols = ["BTCUSDT", "ETHUSDT", "ETHBTC", "BNBUSDT", "BNBBTC", "BNBETH", "SOLUSDT", "SOLBTC",
+                    "XRPUSDT", "XRPBTC", "BTCUSDC", "ETHUSDC", "USDCUSDT", "FDUSDUSDT", "BTCFDUSD"]
+exclude_symbols = []
+depth_symbols = ["BTCUSDT", "ETHUSDT"]           # local L2 books (REST snapshot + @depth@100ms)
+depth_snapshot_limit = 1000
+subscribe_trades = true
+
+[feed]
+quiet_after_ms = 2000
+stale_after_ms = 30000
+connection_stall_ms = 10000
+watchdog_interval_ms = 250
+
+[backoff]
+base_s = 0.5
+cap_s = 30.0
+rate_limited_min_s = 60.0
+stable_after_s = 30.0
+
+[engine]
+trade_queue_capacity = 8192
+loop_lag_interval_ms = 50
+loop_lag_degraded_ms = 50.0
+report_interval_s = 10.0
+
+[api]
+enabled = true
+host = "127.0.0.1"
+port = 8080
+
+[recording]
+enabled = false
+directory = "recordings"
+queue_capacity = 100000
+
+[execution]
+mode = "observe"               # observe | paper (paper trading arrives in Phase 6)
+live_trading_enabled = false   # refused by this build

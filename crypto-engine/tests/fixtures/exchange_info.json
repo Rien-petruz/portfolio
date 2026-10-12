@@ -1,0 +1,38 @@
+{
+  "timezone": "UTC",
+  "serverTime": 1700000000000,
+  "rateLimits": [],
+  "symbols": [
+    {"symbol": "BTCUSDT", "status": "TRADING", "baseAsset": "BTC", "quoteAsset": "USDT", "isSpotTradingAllowed": true,
+     "filters": [
+       {"filterType": "PRICE_FILTER", "minPrice": "0.01000000", "maxPrice": "1000000.00000000", "tickSize": "0.01000000"},
+       {"filterType": "LOT_SIZE", "minQty": "0.00001000", "maxQty": "9000.00000000", "stepSize": "0.00001000"},
+       {"filterType": "ICEBERG_PARTS", "limit": 10},
+       {"filterType": "NOTIONAL", "minNotional": "5.00000000", "applyMinToMarket": true, "maxNotional": "9000000.00000000", "applyMaxToMarket": false, "avgPriceMins": 5}
+     ]},
+    {"symbol": "ETHBTC", "status": "TRADING", "baseAsset": "ETH", "quoteAsset": "BTC", "isSpotTradingAllowed": true,
+     "filters": [
+       {"filterType": "PRICE_FILTER", "minPrice": "0.00001000", "maxPrice": "922327.00000000", "tickSize": "0.00001000"},
+       {"filterType": "LOT_SIZE", "minQty": "0.00010000", "maxQty": "100000.00000000", "stepSize": "0.00010000"},
+       {"filterType": "MIN_NOTIONAL", "minNotional": "0.00010000", "applyToMarket": true, "avgPriceMins": 5}
+     ]},
+    {"symbol": "ETHUSDT", "status": "TRADING", "baseAsset": "ETH", "quoteAsset": "USDT", "isSpotTradingAllowed": true,
+     "filters": [
+       {"filterType": "PRICE_FILTER", "minPrice": "0.01000000", "maxPrice": "1000000.00000000", "tickSize": "0.01000000"},
+       {"filterType": "LOT_SIZE", "minQty": "0.00010000", "maxQty": "9000.00000000", "stepSize": "0.00010000"},
+       {"filterType": "NOTIONAL", "minNotional": "5.00000000", "applyMinToMarket": true, "maxNotional": "9000000.00000000", "applyMaxToMarket": false, "avgPriceMins": 5}
+     ]},
+    {"symbol": "OLDUSDT", "status": "BREAK", "baseAsset": "OLD", "quoteAsset": "USDT", "isSpotTradingAllowed": true,
+     "filters": []},
+    {"symbol": "MARGUSDT", "status": "TRADING", "baseAsset": "MARG", "quoteAsset": "USDT", "isSpotTradingAllowed": false,
+     "filters": []},
+    {"symbol": "DOGEUSDT", "status": "TRADING", "baseAsset": "DOGE", "quoteAsset": "USDT", "isSpotTradingAllowed": true,
+     "filters": [
+       {"filterType": "PRICE_FILTER", "minPrice": "0.00001000", "maxPrice": "1000.00000000", "tickSize": "0.00001000"},
+       {"filterType": "LOT_SIZE", "minQty": "1.00000000", "maxQty": "9000000.00000000", "stepSize": "1.00000000"},
+       {"filterType": "NOTIONAL", "minNotional": "1.00000000", "applyMinToMarket": true, "maxNotional": "9000000.00000000", "applyMaxToMarket": false, "avgPriceMins": 5}
+     ]},
+    {"symbol": "BADUSDT", "status": "TRADING", "baseAsset": "BAD", "quoteAsset": "USDT",
+     "filters": [{"filterType": "PRICE_FILTER", "minPrice": "x", "maxPrice": "1", "tickSize": "1"}]}
+  ]
+}
